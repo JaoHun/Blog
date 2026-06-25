@@ -1,0 +1,9 @@
+.worktrees/
+worktrees/
+node_modules/
+.next/
+out/
+dist/
+coverage/
+.env*
+!.env.example
