@@ -1,33 +1,69 @@
 import { z } from 'zod';
 
-const dateStringSchema = z
-  .string()
-  .min(1)
-  .refine((value) => !Number.isNaN(Date.parse(value)), {
-    message: 'Expected a valid date string',
-  });
+const calendarDatePattern = /^(\d{4})-(\d{2})-(\d{2})$/;
+
+const requiredStringSchema = z.string().trim().min(1);
+
+const isStrictCalendarDate = (value: string) => {
+  const match = calendarDatePattern.exec(value);
+
+  if (!match) {
+    return false;
+  }
+
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  const date = new Date(Date.UTC(year, month - 1, day));
+
+  return (
+    date.getUTCFullYear() === year &&
+    date.getUTCMonth() === month - 1 &&
+    date.getUTCDate() === day
+  );
+};
+
+const formatDate = (date: Date) => date.toISOString().slice(0, 10);
+
+const calendarDateSchema = z.union([
+  z
+    .string()
+    .trim()
+    .refine(isStrictCalendarDate, {
+      message: 'Expected a valid YYYY-MM-DD calendar date',
+    }),
+  z
+    .date()
+    .refine((date) => !Number.isNaN(date.getTime()), {
+      message: 'Expected a valid Date object',
+    })
+    .transform(formatDate),
+]);
 
 const imagePathSchema = z
   .string()
+  .trim()
   .startsWith('/images/', 'Image paths must start with /images/');
 
 const slugSchema = z
   .string()
+  .trim()
   .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Slug must use lowercase letters, numbers, and hyphens');
 
 const internalOrExternalHrefSchema = z
   .string()
+  .trim()
   .refine((href) => href.startsWith('/') || href.startsWith('https://'), {
     message: 'Href must start with / or https://',
   });
 
 export const postFrontmatterSchema = z
   .object({
-    title: z.string().min(1),
-    date: dateStringSchema,
-    updated: dateStringSchema.optional(),
+    title: requiredStringSchema,
+    date: calendarDateSchema,
+    updated: calendarDateSchema.optional(),
     excerpt: z.string().trim().min(20).max(220),
-    category: z.string().min(1),
+    category: requiredStringSchema,
     tags: z.array(z.string().trim().min(1)).min(1),
     featured: z.boolean().default(false),
     sticky: z.boolean().default(false),
@@ -53,23 +89,23 @@ export const postFrontmatterSchema = z
 export type PostFrontmatter = z.infer<typeof postFrontmatterSchema>;
 
 export const siteSchema = z.object({
-  name: z.string().min(1),
-  description: z.string().min(1),
-  url: z.string().url(),
+  name: requiredStringSchema,
+  description: requiredStringSchema,
+  url: z.string().trim().url(),
   defaultOgImage: imagePathSchema,
-  pageSize: z.number().int().positive().default(10),
+  pageSize: z.number().int().min(1).max(50).default(10),
 });
 
 export const authorLinkSchema = z.object({
-  label: z.string().min(1),
+  label: requiredStringSchema,
   href: internalOrExternalHrefSchema,
 });
 
 export const authorSchema = z
   .object({
-    name: z.string().min(1),
-    bio: z.string().min(1),
-    email: z.string().email().optional(),
+    name: requiredStringSchema,
+    bio: requiredStringSchema,
+    email: z.string().trim().email().optional(),
     links: z.array(authorLinkSchema).default([]),
   })
   .refine(({ email, links }) => Boolean(email) || links.length > 0, {
@@ -78,17 +114,17 @@ export const authorSchema = z
   });
 
 export const navItemSchema = z.object({
-  label: z.string().min(1),
+  label: requiredStringSchema,
   href: internalOrExternalHrefSchema,
 });
 
 export const projectSchema = z.object({
-  name: z.string().min(1),
-  description: z.string().min(1),
+  name: requiredStringSchema,
+  description: requiredStringSchema,
   techStack: z.array(z.string().trim().min(1)).min(1),
   status: z.enum(['active', 'maintained', 'archived', 'planned']),
   featured: z.boolean().default(false),
-  sourceUrl: z.string().url().optional(),
-  demoUrl: z.string().url().optional(),
+  sourceUrl: z.string().trim().url().optional(),
+  demoUrl: z.string().trim().url().optional(),
   articleUrl: internalOrExternalHrefSchema.optional(),
 });
