@@ -59,6 +59,19 @@ describe('content schemas', () => {
     expect(result.success).toBe(false);
   });
 
+  it('rejects date strings with leading or trailing whitespace', () => {
+    const result = postFrontmatterSchema.safeParse({
+      title: 'Shipping a reliable blog content pipeline',
+      date: ' 2026-06-20 ',
+      excerpt:
+        'A practical note on validating blog content before rendering it in the frontend.',
+      category: 'Engineering',
+      tags: ['nextjs', 'content'],
+    });
+
+    expect(result.success).toBe(false);
+  });
+
   it('rejects updated dates earlier than the publish date', () => {
     const result = postFrontmatterSchema.safeParse({
       title: 'Shipping a reliable blog content pipeline',

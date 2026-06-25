@@ -38,7 +38,6 @@ const calendarDateSchema = z.preprocess(
   },
   z
     .string()
-    .trim()
     .refine(isStrictCalendarDate, {
       message: 'Expected a valid YYYY-MM-DD calendar date',
     }),
