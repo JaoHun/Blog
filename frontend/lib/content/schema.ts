@@ -23,22 +23,26 @@ const isStrictCalendarDate = (value: string) => {
   );
 };
 
-const formatDate = (date: Date) => date.toISOString().slice(0, 10);
+const calendarDateSchema = z.preprocess(
+  (value, context) => {
+    if (value instanceof Date) {
+      context.addIssue({
+        code: 'custom',
+        message: 'Dates must be quoted YYYY-MM-DD strings',
+      });
 
-const calendarDateSchema = z.union([
+      return z.NEVER;
+    }
+
+    return value;
+  },
   z
     .string()
     .trim()
     .refine(isStrictCalendarDate, {
       message: 'Expected a valid YYYY-MM-DD calendar date',
     }),
-  z
-    .date()
-    .refine((date) => !Number.isNaN(date.getTime()), {
-      message: 'Expected a valid Date object',
-    })
-    .transform(formatDate),
-]);
+);
 
 const imagePathSchema = z
   .string()

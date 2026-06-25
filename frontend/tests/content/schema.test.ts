@@ -29,8 +29,8 @@ describe('content schemas', () => {
     expect(frontmatter.type).toBe('tech');
   });
 
-  it('normalizes Date object frontmatter dates to YYYY-MM-DD strings', () => {
-    const frontmatter = postFrontmatterSchema.parse({
+  it('rejects Date object frontmatter dates', () => {
+    const result = postFrontmatterSchema.safeParse({
       title: 'Shipping a reliable blog content pipeline',
       date: new Date('2026-06-20T00:00:00.000Z'),
       updated: new Date('2026-06-25T00:00:00.000Z'),
@@ -40,8 +40,10 @@ describe('content schemas', () => {
       tags: ['nextjs', 'content'],
     });
 
-    expect(frontmatter.date).toBe('2026-06-20');
-    expect(frontmatter.updated).toBe('2026-06-25');
+    expect(result.success).toBe(false);
+    expect(result.error?.issues[0]?.message).toContain(
+      'Dates must be quoted YYYY-MM-DD strings',
+    );
   });
 
   it('rejects invalid calendar dates', () => {
