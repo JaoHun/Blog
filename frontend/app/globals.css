@@ -57,3 +57,23 @@ a {
   background: var(--accent);
   color: #ffffff;
 }
+
+.post-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+}
+
+pre {
+  max-width: 100%;
+}
+
+mark {
+  border-radius: 0.25rem;
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  color: inherit;
+  padding: 0 0.125rem;
+}

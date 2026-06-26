@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
-import { siteConfig } from '@/config/site';
+import { BackToTop } from '@/components/common/BackToTop';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { ThemeProvider } from '@/components/theme/ThemeProvider';
+import { siteConfig } from '@/config/site';
 
 import './globals.css';
 
@@ -55,6 +56,7 @@ export default function RootLayout({
         <ThemeProvider>
           <SiteHeader />
           <main className="mx-auto w-full max-w-5xl flex-1 px-5 py-10">{children}</main>
+          <BackToTop />
           <SiteFooter />
         </ThemeProvider>
       </body>

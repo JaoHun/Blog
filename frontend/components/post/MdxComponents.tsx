@@ -3,6 +3,7 @@ import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { ExternalLink } from '@/components/common/ExternalLink';
 import { ProjectCard } from '@/components/project/ProjectCard';
 import { CodeBlock } from '@/components/post/CodeBlock';
+import { PostImage } from '@/components/post/PostImage';
 
 function headingId(value: ReactNode) {
   return String(value)
@@ -14,13 +15,6 @@ function headingId(value: ReactNode) {
 
 function Callout({ children }: { children: ReactNode }) {
   return <aside className="my-6 rounded-lg border border-border bg-code-bg p-4">{children}</aside>;
-}
-
-function PostImage(props: ComponentPropsWithoutRef<'img'>) {
-  return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img {...props} alt={props.alt ?? ''} className="my-6 rounded-lg border border-border" loading="lazy" />
-  );
 }
 
 export const mdxComponents = {
@@ -43,7 +37,9 @@ export const mdxComponents = {
       {children}
     </h3>
   ),
-  img: PostImage,
+  img: (props: ComponentPropsWithoutRef<'img'>) => (
+    <PostImage {...props} alt={typeof props.alt === 'string' ? props.alt : ''} />
+  ),
   p: ({ children }: { children?: ReactNode }) => <p className="my-5 leading-8 text-muted">{children}</p>,
   pre: CodeBlock,
   ProjectCard,
