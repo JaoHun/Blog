@@ -3,8 +3,8 @@ import { describe, expect, it } from 'vitest';
 import Home from './page';
 
 describe('Home', () => {
-  it('renders the blog positioning heading', () => {
-    render(<Home />);
+  it('renders the blog positioning heading', async () => {
+    render(await Home());
 
     expect(
       screen.getByRole('heading', {
