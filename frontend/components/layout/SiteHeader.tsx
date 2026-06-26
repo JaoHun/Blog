@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { navConfig } from '@/config/nav';
 import { siteConfig } from '@/config/site';
+import { ThemeToggle } from '@/components/theme/ThemeToggle';
 
 export function SiteHeader() {
   return (
@@ -10,13 +11,16 @@ export function SiteHeader() {
         <Link className="text-base font-semibold text-foreground" href="/">
           {siteConfig.name}
         </Link>
-        <nav aria-label="主导航" className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
-          {navConfig.map((item) => (
-            <Link className="transition hover:text-foreground" href={item.href} key={item.href}>
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+          <nav aria-label="主导航" className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
+            {navConfig.map((item) => (
+              <Link className="transition hover:text-foreground" href={item.href} key={item.href}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

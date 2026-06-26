@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { siteConfig } from '@/config/site';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SiteHeader } from '@/components/layout/SiteHeader';
+import { ThemeProvider } from '@/components/theme/ThemeProvider';
 
 import './globals.css';
 
@@ -51,9 +52,11 @@ export default function RootLayout({
               "(()=>{try{const t=localStorage.getItem('theme')||'system';const d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.dataset.theme=t==='system'?(d?'dark':'light'):t}catch{}})();",
           }}
         />
-        <SiteHeader />
-        <main className="mx-auto w-full max-w-5xl flex-1 px-5 py-10">{children}</main>
-        <SiteFooter />
+        <ThemeProvider>
+          <SiteHeader />
+          <main className="mx-auto w-full max-w-5xl flex-1 px-5 py-10">{children}</main>
+          <SiteFooter />
+        </ThemeProvider>
       </body>
     </html>
   );
