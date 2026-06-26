@@ -35,6 +35,16 @@ corepack pnpm build
 
 The static export output is generated in `frontend/out`.
 
+## Local Static Preview
+
+After `corepack pnpm build`, run from `frontend`:
+
+```powershell
+corepack pnpm preview
+```
+
+Then open `http://localhost:4173`.
+
 ## Preview Deployment
 
 Recommended preview target: Vercel.

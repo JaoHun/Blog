@@ -7,6 +7,7 @@
     "prebuild": "tsx scripts/generate-static-assets.ts",
     "build": "next build",
     "start": "serve out",
+    "preview": "serve out -l 4173",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",

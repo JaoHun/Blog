@@ -54,6 +54,17 @@ Remove-Item Env:\GITHUB_PAGES_REPO
 
 Use GitHub Pages only after confirming the repository name matches `GITHUB_PAGES_REPO`.
 
+## Local Static Preview
+
+Run from `frontend`:
+
+```powershell
+corepack pnpm build
+corepack pnpm preview
+```
+
+Open `http://localhost:4173` and verify the same checklist below before deploying.
+
 ## Preview Acceptance Checklist
 
 - Home page renders without console-visible broken layout.
