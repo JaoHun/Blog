@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://blog.example.com/</loc></url>
+  <url><loc>https://blog.example.com/posts</loc></url>
+  <url><loc>https://blog.example.com/categories</loc></url>
+  <url><loc>https://blog.example.com/tags</loc></url>
+  <url><loc>https://blog.example.com/about</loc></url>
+  <url><loc>https://blog.example.com/projects</loc></url>
+  <url><loc>https://blog.example.com/posts/hello-next-mdx</loc></url>
+  <url><loc>https://blog.example.com/categories/Next.js</loc></url>
+  <url><loc>https://blog.example.com/tags/nextjs</loc></url>
+  <url><loc>https://blog.example.com/tags/mdx</loc></url>
+</urlset>

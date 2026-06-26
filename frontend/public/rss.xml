@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Blog MVP</title>
+    <link>https://blog.example.com</link>
+    <description>A focused personal publishing site for technical notes and essays.</description>
+    <item>
+      <title>Hello Next MDX</title>
+      <link>https://blog.example.com/posts/hello-next-mdx</link>
+      <guid>https://blog.example.com/posts/hello-next-mdx</guid>
+      <description>用一篇示例文章验证 MDX 内容管线、分类、标签和生产构建过滤。</description>
+      <pubDate>Fri, 26 Jun 2026 00:00:00 GMT</pubDate>
+      <lastBuildDate>Fri, 26 Jun 2026 00:00:00 GMT</lastBuildDate>
+    </item>
+  </channel>
+</rss>
