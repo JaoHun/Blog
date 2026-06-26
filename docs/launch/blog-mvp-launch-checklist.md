@@ -1,5 +1,9 @@
 # Blog MVP Launch Checklist
 
+The current project can be deployed as a preview with placeholder information. Do not treat the preview as a public launch until the site URL, author links, projects, and first real posts are replaced.
+
+For preview deployment steps, see `docs/launch/preview-deployment.md`.
+
 ## 1. Replace Real Site Configuration
 
 - Update `frontend/config/site.ts`
