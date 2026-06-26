@@ -71,6 +71,49 @@ pre {
   max-width: 100%;
 }
 
+.code-highlight .shiki {
+  margin: 0;
+  overflow: visible;
+  background: transparent !important;
+  color: var(--shiki-light);
+}
+
+[data-theme="dark"] .code-highlight .shiki {
+  color: var(--shiki-dark);
+}
+
+.code-highlight .shiki span {
+  color: var(--shiki-light);
+}
+
+[data-theme="dark"] .code-highlight .shiki span {
+  color: var(--shiki-dark);
+}
+
+.code-highlight code {
+  counter-reset: code-line;
+  display: block;
+  min-width: max-content;
+}
+
+.code-highlight .line {
+  display: block;
+  min-height: 1.5rem;
+  padding-left: 3.25rem;
+  position: relative;
+}
+
+.code-highlight .line::before {
+  color: var(--muted);
+  content: counter(code-line);
+  counter-increment: code-line;
+  left: 0;
+  position: absolute;
+  text-align: right;
+  user-select: none;
+  width: 2rem;
+}
+
 mark {
   border-radius: 0.25rem;
   background: color-mix(in srgb, var(--accent) 22%, transparent);
