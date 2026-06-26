@@ -3,12 +3,12 @@ import { describe, expect, it } from 'vitest';
 import Home from './page';
 
 describe('Home', () => {
-  it('renders the frontend baseline heading', () => {
+  it('renders the blog positioning heading', () => {
     render(<Home />);
 
     expect(
       screen.getByRole('heading', {
-        name: 'Static blog frontend baseline',
+        name: '个人技术笔记与项目记录',
       }),
     ).toBeTruthy();
   });

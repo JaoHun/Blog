@@ -2,12 +2,33 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #18181b;
+  --foreground: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --link: #2563eb;
+  --code-bg: #f8fafc;
+  --code-fg: #0f172a;
+  --accent: #2563eb;
+}
+
+[data-theme="dark"] {
+  --background: #0b1120;
+  --foreground: #e5e7eb;
+  --muted: #9ca3af;
+  --border: #1f2937;
+  --link: #60a5fa;
+  --code-bg: #111827;
+  --code-fg: #f8fafc;
+  --accent: #60a5fa;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-link: var(--link);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -24,5 +45,15 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
 }
