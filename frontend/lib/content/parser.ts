@@ -7,6 +7,26 @@ import { postFrontmatterSchema } from './schema';
 import { normalizeCategory, normalizeSlug, normalizeTags, slugFromFilePath } from './normalize';
 import type { Post } from './posts';
 
+function headingId(value: string) {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s-]/gu, '')
+    .replace(/\s+/g, '-');
+}
+
+function extractHeadings(content: string) {
+  return content
+    .split('\n')
+    .map((line) => /^(#{2,3})\s+(.+)$/.exec(line))
+    .filter((match): match is RegExpExecArray => Boolean(match))
+    .map((match) => ({
+      id: headingId(match[2]),
+      text: match[2].trim(),
+      level: match[1].length,
+    }));
+}
+
 export async function parsePostFile(filePath: string): Promise<Post> {
   const source = await readFile(filePath, 'utf8');
   const parsed = matter(source);
@@ -28,5 +48,6 @@ export async function parsePostFile(filePath: string): Promise<Post> {
     type: frontmatter.type,
     body: parsed.content.trim(),
     readingTimeMinutes: Math.max(1, Math.ceil(readingTime(parsed.content).minutes)),
+    headings: extractHeadings(parsed.content),
   };
 }

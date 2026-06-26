@@ -19,6 +19,7 @@ export type Post = {
   type: 'tech' | 'essay';
   body: string;
   readingTimeMinutes: number;
+  headings: Array<{ id: string; text: string; level: number }>;
 };
 
 function sortPosts(posts: Post[]) {
@@ -57,6 +58,12 @@ export async function getAllPosts(options: { includeDrafts?: boolean } = {}) {
 
 export async function getPublishedPosts() {
   return getAllPosts({ includeDrafts: false });
+}
+
+export async function getPostBySlug(slug: string) {
+  const posts = await getPublishedPosts();
+
+  return posts.find((post) => post.slug === slug);
 }
 
 export async function getFeaturedPosts() {
