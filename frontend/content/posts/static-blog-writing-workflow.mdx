@@ -1,0 +1,76 @@
+---
+title: "Static Blog Writing Workflow"
+date: "2026-07-01"
+updated: "2026-07-01"
+excerpt: "A draft example showing how to structure a technical note in this static MDX blog system."
+category: "Writing"
+tags:
+  - writing
+  - mdx
+  - workflow
+featured: false
+sticky: false
+draft: true
+type: "tech"
+---
+
+# Static Blog Writing Workflow
+
+This draft shows the expected shape of a practical technical note. It is a reference example and should remain unpublished until copied into a real article.
+
+## Background
+
+The blog uses MDX files as the only article source. Each post should be understandable as a standalone technical note and safe to publish through static generation.
+
+## Correct Frontmatter
+
+```yaml
+title: "Static Blog Writing Workflow"
+date: "2026-07-01"
+updated: "2026-07-01"
+excerpt: "A concise summary of what the article teaches."
+category: "Writing"
+tags:
+  - writing
+  - mdx
+draft: true
+type: "tech"
+```
+
+## Common Mistake
+
+Do not leave required fields empty:
+
+```yaml
+title: ""
+date: 2026-07-01
+excerpt: ""
+tags: []
+```
+
+The date above is also wrong because it is not quoted.
+
+## Image Syntax
+
+Use meaningful alt text:
+
+```mdx
+![Build output showing generated static routes](/images/posts/static-blog-writing-workflow/build-output.png)
+```
+
+## Code Syntax
+
+Add a language tag to every code block:
+
+```ts
+export const writingStatus = 'draft';
+```
+
+## Checklist
+
+- [ ] Frontmatter is valid.
+- [ ] The article has a clear context section.
+- [ ] Code blocks include language tags.
+- [ ] Images include alt text.
+- [ ] `corepack pnpm content:check` passes.
+- [ ] `draft` remains `true` until publication.

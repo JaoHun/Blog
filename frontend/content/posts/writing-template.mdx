@@ -2,7 +2,7 @@
 title: "Writing Template"
 date: "2026-06-26"
 updated: "2026-06-26"
-excerpt: "Use this draft article as the reference structure for writing future MDX posts with valid metadata."
+excerpt: "Use this draft article as a copyable structure for writing future MDX posts with valid metadata."
 category: "Writing"
 tags:
   - template
@@ -15,15 +15,23 @@ type: "tech"
 
 # Writing Template
 
-Use this draft as the starting structure for a new article. Keep it as a draft until the content is ready.
+Use this draft as the starting structure for a new article. Keep `draft: true` until the content is ready.
 
-## Context
+## Background
 
-Explain the problem, background, and why this note matters.
+Explain the context: what problem you are solving, what triggered the note, and who the note is for.
 
-## Implementation
+## Problem
 
-Use short sections and focused examples.
+Describe the specific technical problem or decision.
+
+## Solution
+
+Explain the final approach and why it fits.
+
+## Implementation Notes
+
+Use short sections and focused examples. Add a language tag to every code block.
 
 ```ts
 export function example() {
@@ -31,6 +39,23 @@ export function example() {
 }
 ```
 
+## Image Example
+
+Use descriptive alt text:
+
+```mdx
+![Screenshot of the generated static output](/images/posts/article-slug/static-output.png)
+```
+
 ## Summary
 
 Record the final decision, tradeoffs, and follow-up items.
+
+## Pre-Publish Checklist
+
+- [ ] Frontmatter is complete.
+- [ ] `date` and `updated` are quoted `YYYY-MM-DD` strings.
+- [ ] Code blocks include language tags.
+- [ ] Images have meaningful alt text.
+- [ ] `corepack pnpm content:check` passes.
+- [ ] `draft` is changed to `false` only when ready to publish.
