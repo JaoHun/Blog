@@ -49,10 +49,17 @@ Then open `http://localhost:4173`.
 
 Recommended preview target: Vercel.
 
-Vercel settings:
+This repository includes a root-level `vercel.json` for preview deployment. Import `JaoHun/Blog` in Vercel and keep the project root as the repository root.
 
-- Root Directory: `frontend`
-- Install Command: `corepack pnpm install`
+The included Vercel settings are:
+
+- Install Command: `cd frontend && corepack pnpm install --frozen-lockfile`
+- Build Command: `cd frontend && corepack pnpm build`
+- Output Directory: `frontend/out`
+
+Manual fallback settings, if you choose Root Directory `frontend` in the Vercel UI:
+
+- Install Command: `corepack pnpm install --frozen-lockfile`
 - Build Command: `corepack pnpm build`
 - Output Directory: `out`
 

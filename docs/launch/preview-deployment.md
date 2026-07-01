@@ -19,26 +19,30 @@ This guide is for deploying the current MVP as a preview site while keeping plac
 ## Vercel Preview Steps
 
 1. Import the repository into Vercel.
-2. Set Root Directory to `frontend`.
-3. Set Install Command to:
-
-```powershell
-corepack pnpm install
-```
-
-4. Set Build Command to:
-
-```powershell
-corepack pnpm build
-```
-
-5. Set Output Directory to:
+2. Keep Root Directory as the repository root.
+3. Vercel should read the root-level `vercel.json`.
+4. Confirm the detected settings:
 
 ```text
-out
+Install Command: cd frontend && corepack pnpm install --frozen-lockfile
+Build Command: cd frontend && corepack pnpm build
+Output Directory: frontend/out
 ```
 
-6. Deploy and open the generated preview URL.
+5. Deploy and open the generated preview URL.
+
+Manual fallback settings, if you choose Root Directory `frontend` in the Vercel UI:
+
+```powershell
+Install Command:
+corepack pnpm install
+
+Build Command:
+corepack pnpm build
+
+Output Directory:
+out
+```
 
 ## GitHub Pages Preview Check
 
