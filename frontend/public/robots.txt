@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://blog.example.com/sitemap.xml
+Sitemap: https://blog-nu-wine-76.vercel.app/sitemap.xml

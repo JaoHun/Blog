@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
+import { siteConfig } from '@/config/site';
 import { buildRobotsTxt } from '@/lib/content/robots';
 import { buildRssXml } from '@/lib/content/rss';
 import { buildSearchIndex } from '@/lib/content/search';
@@ -38,6 +39,6 @@ describe('static asset generation', () => {
 
     expect(robots).toContain('User-agent: *');
     expect(robots).toContain('Allow: /');
-    expect(robots).toContain('Sitemap: https://blog.example.com/sitemap.xml');
+    expect(robots).toContain(`Sitemap: ${siteConfig.url}/sitemap.xml`);
   });
 });

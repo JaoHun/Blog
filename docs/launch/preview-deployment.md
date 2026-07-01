@@ -10,9 +10,19 @@ This guide is for deploying the current MVP as a preview site while keeping plac
 - RSS, Sitemap, robots.txt, and search index are generated.
 - Theme switching, search, code highlighting, TOC, and copy-code work in a hosted environment.
 
+## Current Preview URL
+
+The current Vercel preview domain is:
+
+```text
+https://blog-nu-wine-76.vercel.app
+```
+
+`frontend/config/site.ts` uses this URL so RSS, Sitemap, Canonical, and Open Graph links point at the deployed preview site.
+
 ## What This Preview Does Not Prove
 
-- Final SEO quality, because `siteConfig.url` is still `https://blog.example.com`.
+- Final production SEO quality, because a stable custom domain has not been configured yet.
 - Final author branding, because author links are placeholders.
 - Final content quality, because sample posts are still present.
 
@@ -82,7 +92,7 @@ Open `http://localhost:4173` and verify the same checklist below before deployin
 
 Replace placeholder config and content before indexing or sharing the site publicly:
 
-- `frontend/config/site.ts`
+- `frontend/config/site.ts` if you add a custom domain later
 - `frontend/config/author.ts`
 - `frontend/config/projects.ts`
 - `frontend/content/posts/*.mdx`
