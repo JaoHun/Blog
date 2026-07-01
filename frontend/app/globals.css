@@ -53,6 +53,20 @@ a {
   text-decoration: none;
 }
 
+.post-content {
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+.post-content > :first-child {
+  margin-top: 0;
+}
+
+.post-content h2,
+.post-content h3 {
+  scroll-margin-top: 5rem;
+}
+
 ::selection {
   background: var(--accent);
   color: #ffffff;

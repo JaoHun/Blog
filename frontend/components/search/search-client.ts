@@ -10,6 +10,15 @@ function normalize(value: string) {
   return value.trim().toLowerCase();
 }
 
+function escapeHtml(value: string) {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
 export function searchPosts(index: SearchIndexItem[], filters: SearchFilters) {
   const query = normalize(filters.query ?? '');
   const category = normalize(filters.category ?? '');
@@ -38,10 +47,10 @@ export function highlightMatch(text: string, query: string) {
   const index = text.toLowerCase().indexOf(normalizedQuery.toLowerCase());
 
   if (index === -1) {
-    return text;
+    return escapeHtml(text);
   }
 
-  return `${text.slice(0, index)}<mark>${text.slice(index, index + normalizedQuery.length)}</mark>${text.slice(
-    index + normalizedQuery.length,
-  )}`;
+  return `${escapeHtml(text.slice(0, index))}<mark>${escapeHtml(
+    text.slice(index, index + normalizedQuery.length),
+  )}</mark>${escapeHtml(text.slice(index + normalizedQuery.length))}`;
 }

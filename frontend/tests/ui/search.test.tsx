@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { searchPosts } from '@/components/search/search-client';
+import { highlightMatch, searchPosts } from '@/components/search/search-client';
 
 const index = [
   {
@@ -26,5 +26,12 @@ describe('searchPosts', () => {
     expect(searchPosts(index, { category: 'Next.js' })).toHaveLength(1);
     expect(searchPosts(index, { tag: 'mdx' })).toHaveLength(1);
     expect(searchPosts(index, { tag: 'react' })).toHaveLength(0);
+  });
+
+  it('highlights matches and escapes unsafe HTML', () => {
+    expect(highlightMatch('Hello Next MDX', 'next')).toBe('Hello <mark>Next</mark> MDX');
+    expect(highlightMatch('<script>alert(1)</script> MDX', 'mdx')).toBe(
+      '&lt;script&gt;alert(1)&lt;/script&gt; <mark>MDX</mark>',
+    );
   });
 });

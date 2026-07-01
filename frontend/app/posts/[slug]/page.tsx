@@ -67,7 +67,7 @@ export default async function PostPage({ params }: PostPageProps) {
         <h1 className="mt-6 text-4xl font-semibold tracking-tight">{post.title}</h1>
         <p className="mt-4 text-lg leading-8 text-muted">{post.excerpt}</p>
         <PostMeta post={post} />
-        <div className="mt-10">
+        <div className="post-content mt-10">
           <MDXRemote components={mdxComponents} source={post.body} />
         </div>
         <nav className="mt-12 grid gap-4 border-t border-border pt-6 sm:grid-cols-2">

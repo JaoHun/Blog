@@ -10,7 +10,7 @@ export function PostToc({ headings }: PostTocProps) {
   }
 
   return (
-    <nav aria-label="文章目录" className="rounded-lg border border-border p-4 text-sm">
+    <nav aria-label="文章目录" className="hidden rounded-lg border border-border p-4 text-sm lg:block">
       <p className="font-medium text-foreground">目录</p>
       <ul className="mt-3 space-y-2 text-muted">
         {headings.map((heading) => (

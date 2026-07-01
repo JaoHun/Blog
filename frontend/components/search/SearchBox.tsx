@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 
-import { searchPosts } from '@/components/search/search-client';
+import { highlightMatch, searchPosts } from '@/components/search/search-client';
 import type { SearchIndexItem } from '@/lib/content/search';
 
 export function SearchBox() {
@@ -88,8 +88,14 @@ export function SearchBox() {
                   href={`/posts/${item.slug}`}
                   key={item.slug}
                 >
-                  <span className="font-medium">{item.title}</span>
-                  <span className="mt-2 block text-sm text-muted">{item.excerpt}</span>
+                  <span
+                    className="font-medium"
+                    dangerouslySetInnerHTML={{ __html: highlightMatch(item.title, query) }}
+                  />
+                  <span
+                    className="mt-2 block text-sm text-muted"
+                    dangerouslySetInnerHTML={{ __html: highlightMatch(item.excerpt, query) }}
+                  />
                 </Link>
               ))}
             </div>
