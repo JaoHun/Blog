@@ -65,9 +65,23 @@ Manual fallback settings, if you choose Root Directory `frontend` in the Vercel 
 
 Use the preview URL only for technical validation until real site configuration and real content are added.
 
+## Domestic Temporary Deployment
+
+For domestic access testing without a domain, build with `SITE_URL` set to the server IP and deploy `frontend/out` behind Nginx:
+
+```powershell
+cd frontend
+$env:SITE_URL='http://SERVER_PUBLIC_IP'
+corepack pnpm build
+Remove-Item Env:\SITE_URL
+```
+
+See `docs/launch/domestic-server-deployment.md`.
+
 ## Documentation
 
 - Requirements: `docs/requirements/blog-mvp-requirements.md`
 - Overall design: `docs/designs/blog-overall-design.md`
 - Technical architecture: `docs/designs/blog-technical-architecture.md`
 - Launch checklist: `docs/launch/blog-mvp-launch-checklist.md`
+- Domestic server deployment: `docs/launch/domestic-server-deployment.md`
