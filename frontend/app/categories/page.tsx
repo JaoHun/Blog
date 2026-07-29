@@ -5,8 +5,8 @@ import { getPublishedPosts } from '@/lib/content/posts';
 import { routeSegment } from '@/lib/content/route';
 
 export const metadata: Metadata = {
-  title: '分类',
-  description: '浏览全部文章分类。',
+  title: 'Categories',
+  description: 'Browse all post categories.',
 };
 
 export default async function CategoriesPage() {
@@ -17,7 +17,7 @@ export default async function CategoriesPage() {
 
   return (
     <section>
-      <h1 className="text-3xl font-semibold tracking-tight">分类</h1>
+      <h1 className="text-3xl font-semibold tracking-tight">Categories</h1>
       <div className="mt-8 grid gap-3 sm:grid-cols-2">
         {Array.from(counts.entries()).map(([category, count]) => (
           <Link
@@ -26,7 +26,9 @@ export default async function CategoriesPage() {
             key={category}
           >
             <span className="font-medium">{category}</span>
-            <span className="ml-3 text-sm text-muted">{count} 篇</span>
+            <span className="ml-3 text-sm text-muted">
+              {count} {count === 1 ? 'post' : 'posts'}
+            </span>
           </Link>
         ))}
       </div>

@@ -7,8 +7,8 @@ import { mdxComponents } from '@/components/post/MdxComponents';
 import { PostMeta } from '@/components/post/PostMeta';
 import { PostToc } from '@/components/post/PostToc';
 import { siteConfig } from '@/config/site';
-import { getAdjacentPosts } from '@/lib/content/relations';
 import { getPostBySlug, getPublishedPosts } from '@/lib/content/posts';
+import { getAdjacentPosts } from '@/lib/content/relations';
 
 type PostPageProps = {
   params: Promise<{ slug: string }>;
@@ -62,7 +62,7 @@ export default async function PostPage({ params }: PostPageProps) {
     <article className="grid gap-8 lg:grid-cols-[1fr_220px]">
       <div className="min-w-0">
         <Link className="text-sm text-link" href="/posts">
-          ← 返回文章
+          Back to posts
         </Link>
         <h1 className="mt-6 text-4xl font-semibold tracking-tight">{post.title}</h1>
         <p className="mt-4 text-lg leading-8 text-muted">{post.excerpt}</p>
@@ -73,14 +73,14 @@ export default async function PostPage({ params }: PostPageProps) {
         <nav className="mt-12 grid gap-4 border-t border-border pt-6 sm:grid-cols-2">
           {adjacent.previous ? (
             <Link className="text-link" href={`/posts/${adjacent.previous.slug}`}>
-              上一篇：{adjacent.previous.title}
+              Previous: {adjacent.previous.title}
             </Link>
           ) : (
             <span />
           )}
           {adjacent.next ? (
             <Link className="text-link sm:text-right" href={`/posts/${adjacent.next.slug}`}>
-              下一篇：{adjacent.next.title}
+              Next: {adjacent.next.title}
             </Link>
           ) : null}
         </nav>

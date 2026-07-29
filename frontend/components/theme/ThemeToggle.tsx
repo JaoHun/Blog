@@ -8,6 +8,12 @@ type ThemePreference = 'system' | 'dark' | 'light';
 
 const cycle: ThemePreference[] = ['system', 'dark', 'light'];
 
+const labelByPreference: Record<ThemePreference, string> = {
+  system: 'System',
+  dark: 'Dark',
+  light: 'Light',
+};
+
 function nextPreference(current: ThemePreference) {
   const index = cycle.indexOf(current);
   return cycle[(index + 1) % cycle.length];
@@ -33,12 +39,12 @@ export function ThemeToggle() {
 
   return (
     <button
-      aria-label={`theme preference: ${preference}`}
+      aria-label={`Theme preference: ${labelByPreference[preference]}`}
       className="rounded-full border border-border px-3 py-1 text-xs text-muted transition hover:text-foreground"
       onClick={toggleTheme}
       type="button"
     >
-      {preference === 'system' ? '系统主题' : preference === 'dark' ? '深色' : '浅色'}
+      {labelByPreference[preference]}
     </button>
   );
 }

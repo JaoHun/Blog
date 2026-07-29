@@ -29,7 +29,9 @@ export default async function TagPage({ params }: TagPageParams) {
     <section>
       <div className="mb-8">
         <h1 className="text-3xl font-semibold tracking-tight">#{decodedTag}</h1>
-        <p className="mt-3 text-muted">该标签下共有 {posts.length} 篇文章。</p>
+        <p className="mt-3 text-muted">
+          {posts.length} {posts.length === 1 ? 'post' : 'posts'} with this tag.
+        </p>
       </div>
       <PostList posts={page.items} />
       <Pagination basePath={basePath} currentPage={page.currentPage} totalPages={page.totalPages} />

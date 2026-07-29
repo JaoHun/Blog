@@ -35,8 +35,8 @@ export default async function PaginatedPostsPage({ params }: PostsPageParams) {
   return (
     <section>
       <div className="mb-8">
-        <h1 className="text-3xl font-semibold tracking-tight">文章</h1>
-        <p className="mt-3 text-muted">第 {page.currentPage} 页</p>
+        <h1 className="text-3xl font-semibold tracking-tight">Posts</h1>
+        <p className="mt-3 text-muted">Page {page.currentPage}</p>
       </div>
       <PostList posts={page.items} />
       <Pagination basePath="/posts" currentPage={page.currentPage} totalPages={page.totalPages} />

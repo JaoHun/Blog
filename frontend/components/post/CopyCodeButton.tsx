@@ -11,7 +11,7 @@ export function CopyCodeButton({ code }: CopyCodeButtonProps) {
       onClick={() => void navigator.clipboard.writeText(code)}
       type="button"
     >
-      复制
+      Copy
     </button>
   );
 }

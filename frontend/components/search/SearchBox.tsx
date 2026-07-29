@@ -47,7 +47,7 @@ export function SearchBox() {
         <input
           className="rounded border border-border bg-background px-3 py-2 text-sm"
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="搜索标题、摘要、分类或标签"
+          placeholder="Search title, excerpt, category, or tag"
           type="search"
           value={query}
         />
@@ -56,7 +56,7 @@ export function SearchBox() {
           onChange={(event) => setCategory(event.target.value)}
           value={category}
         >
-          <option value="">全部分类</option>
+          <option value="">All categories</option>
           {categories.map((item) => (
             <option key={item} value={item}>
               {item}
@@ -68,7 +68,7 @@ export function SearchBox() {
           onChange={(event) => setTag(event.target.value)}
           value={tag}
         >
-          <option value="">全部标签</option>
+          <option value="">All tags</option>
           {tags.map((item) => (
             <option key={item} value={item}>
               #{item}
@@ -79,7 +79,9 @@ export function SearchBox() {
 
       {hasFilters ? (
         <div className="mt-5">
-          <p className="text-sm text-muted">搜索结果：{results.length} 篇</p>
+          <p className="text-sm text-muted">
+            Search results: {results.length} {results.length === 1 ? 'post' : 'posts'}
+          </p>
           {results.length > 0 ? (
             <div className="mt-3 space-y-3">
               {results.map((item) => (
@@ -100,7 +102,7 @@ export function SearchBox() {
               ))}
             </div>
           ) : (
-            <p className="mt-3 text-sm text-muted">没有找到匹配的文章。</p>
+            <p className="mt-3 text-sm text-muted">No matching posts found.</p>
           )}
         </div>
       ) : null}

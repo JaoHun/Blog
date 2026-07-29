@@ -47,7 +47,7 @@ export default async function PaginatedTagPage({ params }: TagPageParams) {
     <section>
       <div className="mb-8">
         <h1 className="text-3xl font-semibold tracking-tight">#{decodedTag}</h1>
-        <p className="mt-3 text-muted">第 {page.currentPage} 页</p>
+        <p className="mt-3 text-muted">Page {page.currentPage}</p>
       </div>
       <PostList posts={page.items} />
       <Pagination basePath={basePath} currentPage={page.currentPage} totalPages={page.totalPages} />

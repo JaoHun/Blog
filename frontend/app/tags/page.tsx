@@ -5,8 +5,8 @@ import { getPublishedPosts } from '@/lib/content/posts';
 import { routeSegment } from '@/lib/content/route';
 
 export const metadata: Metadata = {
-  title: '标签',
-  description: '浏览全部文章标签。',
+  title: 'Tags',
+  description: 'Browse all post tags.',
 };
 
 export default async function TagsPage() {
@@ -17,7 +17,7 @@ export default async function TagsPage() {
 
   return (
     <section>
-      <h1 className="text-3xl font-semibold tracking-tight">标签</h1>
+      <h1 className="text-3xl font-semibold tracking-tight">Tags</h1>
       <div className="mt-8 flex flex-wrap gap-3">
         {Array.from(counts.entries()).map(([tag, count]) => (
           <Link
