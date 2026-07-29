@@ -104,7 +104,7 @@ frontend/
 - 分类、标签路由需要做 URL 安全转换。中文分类和标签可以保留展示名，但路由应使用稳定 slug 或编码后的安全路径。
 - 分页在构建阶段生成，默认每页数量可配置，如 `pageSize: 10`。
 - 当前实现使用 Next.js catch-all 分页目录 `app/posts/[...pagination]`、`app/categories/[category]/[...pagination]`、`app/tags/[tag]/[...pagination]`，对外 URL 仍保持 `/posts/page/[page]`、`/categories/[category]/page/[page]`、`/tags/[tag]/page/[page]`。
-- `/posts` 等价于第一页；当前静态构建会生成 `/posts/page/1` 作为兼容分页入口。后续如需进一步优化 SEO，可增加 canonical 或避免生成第 1 页重复路径。
+- `/posts`、`/categories/[category]`、`/tags/[tag]` 等价于第一页。由于 `output: "export"` 下动态 catch-all 路由不能返回空静态参数集合，当前实现会生成 `/page/1` 兼容入口，以保证只有 1 页内容时仍可完成静态导出。
 - `/categories` 和 `/tags` 为总览页，展示全部分类/标签及文章数量。
 - 分类详情页、标签详情页无内容时不生成。
 - 草稿文章不参与生产环境路由生成。

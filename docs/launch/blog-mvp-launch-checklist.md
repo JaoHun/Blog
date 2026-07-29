@@ -71,6 +71,7 @@ Manual fallback settings, if the Vercel project root is set to `frontend`:
 
 - Home page opens and shows `JaoHun Blog`.
 - `/posts/` lists the published post.
+- `/posts/page/1/` may exist as a static export compatibility route; the canonical first page remains `/posts/`.
 - `/posts/static-blog-mvp/` renders MDX and highlighted code.
 - `/categories/` and `/tags/` render overview pages.
 - `/rss.xml`, `/sitemap.xml`, `/robots.txt`, and `/search-index.json` are reachable.
