@@ -1,0 +1,80 @@
+---
+title: "构建一个轻量静态博客 MVP"
+date: "2026-07-29"
+updated: "2026-07-29"
+excerpt: "记录这个个人静态博客第一版的范围控制、内容工作流、部署选择、双语支持和后续完善方向。"
+category: "博客"
+tags:
+  - nextjs
+  - mdx
+  - static-site
+slug: "static-blog-mvp"
+lang: "zh"
+featured: true
+sticky: true
+draft: false
+type: "tech"
+---
+
+# 构建一个轻量静态博客 MVP
+
+这个博客的起点很明确：做一个稳定写技术笔记和记录个人项目的地方，而不是一开始就做复杂的内容平台。
+
+第一版刻意保持克制。它只覆盖写作、浏览、搜索、主题切换、SEO 资源、RSS 和静态部署。评论、统计、媒体管理、CMS、Mermaid、数学公式、多语言扩展等能力都放到后续阶段。
+
+## 范围控制
+
+MVP 只保留公开博客必须具备的能力：
+
+- 文章使用 MDX 文件管理。
+- Frontmatter 在构建阶段校验。
+- 生产环境自动过滤草稿。
+- 支持文章、分类、标签和详情页。
+- 使用静态搜索索引完成客户端搜索。
+- 代码块支持高亮、行号和复制。
+- 构建阶段生成 RSS、Sitemap 和 robots.txt。
+
+这样可以让站点保持静态部署能力，同时保留后续扩展空间。
+
+## 内容工作流
+
+每篇文章都是 `content/posts` 目录下的一个 MDX 文件。元数据写在 Frontmatter 中，并在构建前完成校验。
+
+```yaml
+title: "构建一个轻量静态博客 MVP"
+date: "2026-07-29"
+updated: "2026-07-29"
+excerpt: "用于列表、RSS 和 SEO 的简短摘要。"
+category: "博客"
+tags:
+  - nextjs
+  - mdx
+slug: "static-blog-mvp"
+lang: "zh"
+draft: false
+type: "tech"
+```
+
+规则很简单：元数据不正确，就让构建尽早失败。这样比发布一个异常页面更可靠。
+
+## 部署策略
+
+当前项目支持静态导出，所以不需要后端服务。Vercel 继续作为海外预览和 GitHub 自动部署通道。后续如果要改善国内访问，可以把同一份静态产物部署到国内静态托管平台，或放到轻量服务器的 Nginx 后面。
+
+站点公开地址通过 `SITE_URL` 配置。RSS、Sitemap、Canonical 和 Open Graph 都会使用这个地址。
+
+```powershell
+$env:SITE_URL='https://example.com'
+corepack pnpm build
+```
+
+## 后续计划
+
+接下来最有价值的是继续补真实内容：
+
+- 补充更多真实技术笔记。
+- 完善项目列表和状态。
+- 添加真实 Open Graph 图片。
+- 在内容值得公开传播后，再确定稳定域名和国内访问方案。
+
+工程基础已经接近可持续写作状态。现在最重要的差距是内容积累。

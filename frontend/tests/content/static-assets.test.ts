@@ -13,13 +13,23 @@ describe('static asset generation', () => {
     expect(index).toEqual([
       expect.objectContaining({
         slug: 'static-blog-mvp',
-        title: 'Building a Lightweight Static Blog MVP',
-        category: 'Blog',
+        title: '构建一个轻量静态博客 MVP',
+        category: '博客',
+        lang: 'zh',
         tags: ['nextjs', 'mdx', 'static-site'],
       }),
     ]);
     expect(index.every((item) => !('body' in item))).toBe(true);
     expect(index.some((item) => item.slug === 'draft-example')).toBe(false);
+
+    await expect(buildSearchIndex('en')).resolves.toEqual([
+      expect.objectContaining({
+        slug: 'static-blog-mvp',
+        title: 'Building a Lightweight Static Blog MVP',
+        category: 'Blog',
+        lang: 'en',
+      }),
+    ]);
   });
 
   it('generates RSS, Sitemap, and robots text from published content', async () => {
@@ -28,11 +38,12 @@ describe('static asset generation', () => {
     const robots = buildRobotsTxt();
 
     expect(rss).toContain('<rss');
-    expect(rss).toContain('Building a Lightweight Static Blog MVP');
+    expect(rss).toContain('构建一个轻量静态博客 MVP');
     expect(rss).not.toContain('Draft Example');
 
     expect(sitemap).toContain('<urlset');
     expect(sitemap).toContain('/posts/static-blog-mvp');
+    expect(sitemap).toContain('/en/posts/static-blog-mvp');
     expect(sitemap).toContain('/categories');
     expect(sitemap).toContain('/tags');
     expect(sitemap).not.toContain('/posts/draft-example');

@@ -18,6 +18,11 @@ async function main() {
     JSON.stringify(await buildSearchIndex()),
     'utf8',
   );
+  await writeFile(
+    path.join(publicDir, 'search-index.en.json'),
+    JSON.stringify(await buildSearchIndex('en')),
+    'utf8',
+  );
 
   console.log('static assets generated');
 }

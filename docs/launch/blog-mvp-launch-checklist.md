@@ -70,9 +70,13 @@ Manual fallback settings, if the Vercel project root is set to `frontend`:
 ## 5. Acceptance Checks
 
 - Home page opens and shows `JaoHun Blog`.
+- Chinese is the default language at `/`; English is available at `/en/`.
+- Header language switch works between `/` and `/en/`.
 - `/posts/` lists the published post.
+- `/en/posts/` lists the English version of the published post.
 - `/posts/page/1/` may exist as a static export compatibility route; the canonical first page remains `/posts/`.
 - `/posts/static-blog-mvp/` renders MDX and highlighted code.
+- `/en/posts/static-blog-mvp/` renders the English MDX article.
 - `/categories/` and `/tags/` render overview pages.
 - `/rss.xml`, `/sitemap.xml`, `/robots.txt`, and `/search-index.json` are reachable.
 - Draft route `/posts/draft-example/` is not available in production.

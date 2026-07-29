@@ -8,7 +8,7 @@ describe('Home', () => {
 
     expect(
       screen.getByRole('heading', {
-        name: 'Technical notes and project records',
+        name: '技术笔记与项目记录',
       }),
     ).toBeTruthy();
   });

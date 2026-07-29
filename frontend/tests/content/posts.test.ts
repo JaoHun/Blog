@@ -20,7 +20,7 @@ describe('post content pipeline', () => {
 
   it('generates unique slugs and normalized tags', async () => {
     const posts = await getAllPosts({ includeDrafts: true });
-    const slugs = posts.map((post) => post.slug);
+    const slugs = posts.map((post) => `${post.lang}:${post.slug}`);
     const uniqueSlugs = new Set(slugs);
 
     expect(uniqueSlugs.size).toBe(slugs.length);
@@ -40,7 +40,7 @@ describe('post content pipeline', () => {
     await expect(getFeaturedPosts()).resolves.toEqual([
       expect.objectContaining({ slug: 'static-blog-mvp', featured: true }),
     ]);
-    await expect(getPostsByCategory('Blog')).resolves.toEqual([
+    await expect(getPostsByCategory('博客')).resolves.toEqual([
       expect.objectContaining({ slug: 'static-blog-mvp' }),
     ]);
     await expect(getPostsByTag('MDX')).resolves.toEqual([

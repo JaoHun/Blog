@@ -1,0 +1,121 @@
+import type { Lang } from '@/lib/content/posts';
+
+export const defaultLang: Lang = 'zh';
+
+export const messages = {
+  zh: {
+    about: {
+      title: '关于',
+      contact: '联系方式',
+      skills: '技能栈',
+    },
+    common: {
+      allPosts: '全部文章',
+      browsePosts: '浏览文章',
+      viewProjects: '查看项目',
+      featuredPosts: '精选文章',
+      featuredProjects: '精选项目',
+      page: '第 {page} 页',
+      posts: '文章',
+      postCount: (count: number) => `${count} 篇文章`,
+    },
+    home: {
+      heading: '技术笔记与项目记录',
+    },
+    nav: {
+      home: '首页',
+      posts: '文章',
+      categories: '分类',
+      tags: '标签',
+      projects: '项目',
+      about: '关于',
+    },
+    posts: {
+      title: '文章',
+      description: '按时间倒序浏览技术笔记，支持本地搜索和筛选。',
+      back: '返回文章',
+      previous: '上一篇',
+      next: '下一篇',
+      published: '发布于',
+      updated: '更新于',
+      minRead: '分钟阅读',
+    },
+    projects: {
+      title: '项目',
+      description: '记录项目范围、技术选择、源码链接和相关文章。',
+      source: '源码',
+      demo: '演示',
+      relatedPost: '相关文章',
+      emptyTitle: '暂无项目',
+      emptyDescription: '后续会在这里展示项目记录。',
+    },
+    search: {
+      placeholder: '搜索标题、摘要、分类或标签',
+      allCategories: '全部分类',
+      allTags: '全部标签',
+      results: (count: number) => `搜索结果：${count} 篇`,
+      empty: '没有找到匹配的文章。',
+    },
+    toc: '目录',
+  },
+  en: {
+    about: {
+      title: 'About',
+      contact: 'Contact',
+      skills: 'Skills',
+    },
+    common: {
+      allPosts: 'All posts',
+      browsePosts: 'Browse posts',
+      viewProjects: 'View projects',
+      featuredPosts: 'Featured posts',
+      featuredProjects: 'Featured projects',
+      page: 'Page {page}',
+      posts: 'posts',
+      postCount: (count: number) => `${count} ${count === 1 ? 'post' : 'posts'}`,
+    },
+    home: {
+      heading: 'Technical notes and project records',
+    },
+    nav: {
+      home: 'Home',
+      posts: 'Posts',
+      categories: 'Categories',
+      tags: 'Tags',
+      projects: 'Projects',
+      about: 'About',
+    },
+    posts: {
+      title: 'Posts',
+      description:
+        'Browse technical notes in reverse chronological order, with local search and filtering support.',
+      back: 'Back to posts',
+      previous: 'Previous',
+      next: 'Next',
+      published: 'Published',
+      updated: 'Updated',
+      minRead: 'min read',
+    },
+    projects: {
+      title: 'Projects',
+      description: 'Project records with scope, technology choices, source links, and related writing.',
+      source: 'Source',
+      demo: 'Demo',
+      relatedPost: 'Related post',
+      emptyTitle: 'No projects yet',
+      emptyDescription: 'Project records will be listed here later.',
+    },
+    search: {
+      placeholder: 'Search title, excerpt, category, or tag',
+      allCategories: 'All categories',
+      allTags: 'All tags',
+      results: (count: number) => `Search results: ${count} ${count === 1 ? 'post' : 'posts'}`,
+      empty: 'No matching posts found.',
+    },
+    toc: 'Contents',
+  },
+} as const;
+
+export function localizedPath(pathname: string, lang: Lang) {
+  return lang === defaultLang ? pathname : `/en${pathname === '/' ? '' : pathname}`;
+}

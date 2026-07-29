@@ -1,4 +1,6 @@
 import { ExternalLink } from '@/components/common/ExternalLink';
+import type { Lang } from '@/lib/content/posts';
+import { localizedPath, messages } from '@/lib/i18n';
 
 type Project = {
   name: string;
@@ -11,6 +13,7 @@ type Project = {
 };
 
 type ProjectCardProps = {
+  lang?: Lang;
   project: Project;
 };
 
@@ -21,7 +24,9 @@ const statusLabel: Record<Project['status'], string> = {
   planned: 'Planned',
 };
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ lang = 'zh', project }: ProjectCardProps) {
+  const t = messages[lang].projects;
+
   return (
     <article className="rounded-lg border border-border p-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
@@ -39,9 +44,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
         ))}
       </div>
       <div className="mt-5 flex flex-wrap gap-4 text-sm text-link">
-        {project.sourceUrl ? <ExternalLink href={project.sourceUrl}>Source</ExternalLink> : null}
-        {project.demoUrl ? <ExternalLink href={project.demoUrl}>Demo</ExternalLink> : null}
-        {project.articleUrl ? <a href={project.articleUrl}>Related post</a> : null}
+        {project.sourceUrl ? <ExternalLink href={project.sourceUrl}>{t.source}</ExternalLink> : null}
+        {project.demoUrl ? <ExternalLink href={project.demoUrl}>{t.demo}</ExternalLink> : null}
+        {project.articleUrl ? (
+          <a href={project.articleUrl.startsWith('/') ? localizedPath(project.articleUrl, lang) : project.articleUrl}>
+            {t.relatedPost}
+          </a>
+        ) : null}
       </div>
     </article>
   );

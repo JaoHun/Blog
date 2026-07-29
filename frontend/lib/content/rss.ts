@@ -1,6 +1,7 @@
 import { siteConfig } from '@/config/site';
 
 import { getPublishedPosts } from './posts';
+import type { Lang } from './posts';
 import { joinSiteUrl } from './route';
 
 function xmlEscape(value: string) {
@@ -12,10 +13,14 @@ function xmlEscape(value: string) {
     .replaceAll("'", '&apos;');
 }
 
-export async function buildRssXml() {
-  const posts = await getPublishedPosts();
+function localizedPath(pathname: string, lang: Lang) {
+  return lang === 'zh' ? pathname : `/en${pathname}`;
+}
+
+export async function buildRssXml(lang: Lang = 'zh') {
+  const posts = await getPublishedPosts(lang);
   const items = posts.map((post) => {
-    const link = joinSiteUrl(siteConfig.url, `/posts/${post.slug}`);
+    const link = joinSiteUrl(siteConfig.url, localizedPath(`/posts/${post.slug}`, lang));
 
     return [
       '    <item>',

@@ -73,6 +73,7 @@ export const postFrontmatterSchema = z
     draft: z.boolean().default(false),
     cover: imagePathSchema.optional(),
     slug: slugSchema.optional(),
+    lang: z.enum(['zh', 'en']).default('zh'),
     type: z.enum(['tech', 'essay']).default('tech'),
   })
   .refine(

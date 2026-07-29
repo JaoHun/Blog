@@ -6,6 +6,8 @@ Static-first personal technical blog built with Next.js, MDX, file-based content
 
 The project is ready for public preview as a lightweight personal blog base. It includes one real published article, validated draft templates, GitHub deployment flow, and static export output for Vercel or other static hosting platforms.
 
+The default language is Chinese. English pages are generated under `/en` without using Next.js built-in i18n, so static export remains supported.
+
 Remaining work before a formal launch:
 
 - Add 2-3 more real technical posts.
@@ -13,6 +15,7 @@ Remaining work before a formal launch:
 - Add a real default Open Graph image under `frontend/public/images`.
 - Add more real projects to `frontend/config/projects.ts` when available.
 - Update `frontend/config/footer.ts` when ICP filing or footer links are ready.
+- Add both Chinese and English versions when publishing important posts.
 
 ## Local Development
 

@@ -35,6 +35,7 @@ export async function parsePostFile(filePath: string): Promise<Post> {
 
   return {
     slug,
+    lang: frontmatter.lang,
     title: frontmatter.title,
     date: frontmatter.date,
     updated: frontmatter.updated,

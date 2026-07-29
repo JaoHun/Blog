@@ -5,10 +5,10 @@
     <link>https://blog-nu-wine-76.vercel.app</link>
     <description>A lightweight personal technical blog for engineering notes, project records, and practical web development writing.</description>
     <item>
-      <title>Building a Lightweight Static Blog MVP</title>
+      <title>构建一个轻量静态博客 MVP</title>
       <link>https://blog-nu-wine-76.vercel.app/posts/static-blog-mvp</link>
       <guid>https://blog-nu-wine-76.vercel.app/posts/static-blog-mvp</guid>
-      <description>A practical record of the first version of this personal static blog, including scope control, content workflow, deployment choices, and follow-up plans.</description>
+      <description>记录这个个人静态博客第一版的范围控制、内容工作流、部署选择、双语支持和后续完善方向。</description>
       <pubDate>Wed, 29 Jul 2026 00:00:00 GMT</pubDate>
       <lastBuildDate>Wed, 29 Jul 2026 00:00:00 GMT</lastBuildDate>
     </item>

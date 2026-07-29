@@ -1,39 +1,13 @@
 import type { Metadata } from 'next';
 
-import { ExternalLink } from '@/components/common/ExternalLink';
+import { AboutPage } from '../_localized-pages';
 import { authorConfig } from '@/config/author';
 
 export const metadata: Metadata = {
-  title: 'About',
+  title: '关于',
   description: authorConfig.bio,
 };
 
-export default function AboutPage() {
-  return (
-    <section className="max-w-3xl">
-      <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">About</p>
-      <h1 className="mt-4 text-3xl font-semibold tracking-tight">{authorConfig.name}</h1>
-      <p className="mt-5 leading-8 text-muted">{authorConfig.bio}</p>
-      <div className="mt-8">
-        <h2 className="text-lg font-semibold">Skills</h2>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {authorConfig.skills.map((skill) => (
-            <span className="rounded-full border border-border px-3 py-1 text-sm text-muted" key={skill}>
-              {skill}
-            </span>
-          ))}
-        </div>
-      </div>
-      <div className="mt-8">
-        <h2 className="text-lg font-semibold">Contact</h2>
-        <div className="mt-3 flex flex-wrap gap-4 text-link">
-          {authorConfig.links.map((link) => (
-            <ExternalLink href={link.href} key={link.href}>
-              {link.label}
-            </ExternalLink>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+export default function Page() {
+  return <AboutPage lang="zh" />;
 }
