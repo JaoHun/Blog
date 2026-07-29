@@ -39,9 +39,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
         ))}
       </div>
       <div className="mt-5 flex flex-wrap gap-4 text-sm text-link">
-        {project.sourceUrl ? <ExternalLink href={project.sourceUrl}>源码</ExternalLink> : null}
-        {project.demoUrl ? <ExternalLink href={project.demoUrl}>演示</ExternalLink> : null}
-        {project.articleUrl ? <a href={project.articleUrl}>相关文章</a> : null}
+        {project.sourceUrl ? <ExternalLink href={project.sourceUrl}>Source</ExternalLink> : null}
+        {project.demoUrl ? <ExternalLink href={project.demoUrl}>Demo</ExternalLink> : null}
+        {project.articleUrl ? <a href={project.articleUrl}>Related post</a> : null}
       </div>
     </article>
   );

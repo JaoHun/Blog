@@ -12,7 +12,7 @@ export function PostCard({ post }: PostCardProps) {
     <article className="border-b border-border py-6">
       <div className="flex flex-wrap gap-3 text-sm text-muted">
         <time dateTime={post.date}>{post.date}</time>
-        {post.updated ? <span>更新于 {post.updated}</span> : null}
+        {post.updated ? <span>Updated {post.updated}</span> : null}
         <Link className="text-link" href={`/categories/${routeSegment(post.category)}`}>
           {post.category}
         </Link>

@@ -16,20 +16,20 @@ export function Pagination({ basePath, currentPage, totalPages }: PaginationProp
   }
 
   return (
-    <nav aria-label="分页" className="mt-8 flex items-center justify-between text-sm">
+    <nav aria-label="Pagination" className="mt-8 flex items-center justify-between text-sm">
       {currentPage > 1 ? (
         <Link className="text-link" href={pageHref(basePath, currentPage - 1)}>
-          上一页
+          Previous
         </Link>
       ) : (
         <span />
       )}
       <span className="text-muted">
-        第 {currentPage} / {totalPages} 页
+        Page {currentPage} / {totalPages}
       </span>
       {currentPage < totalPages ? (
         <Link className="text-link" href={pageHref(basePath, currentPage + 1)}>
-          下一页
+          Next
         </Link>
       ) : (
         <span />

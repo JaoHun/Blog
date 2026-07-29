@@ -8,7 +8,7 @@ type PostListProps = {
 
 export function PostList({ posts }: PostListProps) {
   if (posts.length === 0) {
-    return <EmptyState title="暂无文章" description="还没有符合条件的文章。" />;
+    return <EmptyState title="No posts found" description="No posts match the current conditions." />;
   }
 
   return (
