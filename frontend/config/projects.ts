@@ -2,13 +2,14 @@ import { projectSchema } from '@/lib/content/schema';
 
 export const projectConfig = [
   projectSchema.parse({
-    name: 'Blog MVP',
-    description: 'A statically exported personal blog built with Next.js and validated content schemas.',
-    techStack: ['Next.js', 'TypeScript', 'Zod'],
+    name: 'JaoHun Blog',
+    description:
+      'A statically exported personal technical blog with MDX writing, content validation, search, theme switching, RSS, and sitemap support.',
+    techStack: ['Next.js', 'TypeScript', 'MDX', 'Zod'],
     status: 'active',
     featured: true,
-    sourceUrl: 'https://github.com/example/blog-mvp',
-    demoUrl: 'https://blog.example.com',
-    articleUrl: '/posts/blog-mvp',
+    sourceUrl: 'https://github.com/JaoHun/Blog',
+    demoUrl: 'https://blog-nu-wine-76.vercel.app',
+    articleUrl: '/posts/static-blog-mvp',
   }),
 ];

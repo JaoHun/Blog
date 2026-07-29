@@ -12,10 +12,10 @@ describe('static asset generation', () => {
 
     expect(index).toEqual([
       expect.objectContaining({
-        slug: 'hello-next-mdx',
-        title: 'Hello Next MDX',
-        category: 'Next.js',
-        tags: ['nextjs', 'mdx'],
+        slug: 'static-blog-mvp',
+        title: 'Building a Lightweight Static Blog MVP',
+        category: 'Blog',
+        tags: ['nextjs', 'mdx', 'static-site'],
       }),
     ]);
     expect(index.every((item) => !('body' in item))).toBe(true);
@@ -28,11 +28,11 @@ describe('static asset generation', () => {
     const robots = buildRobotsTxt();
 
     expect(rss).toContain('<rss');
-    expect(rss).toContain('Hello Next MDX');
+    expect(rss).toContain('Building a Lightweight Static Blog MVP');
     expect(rss).not.toContain('Draft Example');
 
     expect(sitemap).toContain('<urlset');
-    expect(sitemap).toContain('/posts/hello-next-mdx');
+    expect(sitemap).toContain('/posts/static-blog-mvp');
     expect(sitemap).toContain('/categories');
     expect(sitemap).toContain('/tags');
     expect(sitemap).not.toContain('/posts/draft-example');

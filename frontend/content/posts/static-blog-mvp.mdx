@@ -1,0 +1,76 @@
+---
+title: "Building a Lightweight Static Blog MVP"
+date: "2026-07-29"
+updated: "2026-07-29"
+excerpt: "A practical record of the first version of this personal static blog, including scope control, content workflow, deployment choices, and follow-up plans."
+category: "Blog"
+tags:
+  - nextjs
+  - mdx
+  - static-site
+featured: true
+sticky: true
+draft: false
+type: "tech"
+---
+
+# Building a Lightweight Static Blog MVP
+
+This blog started with a narrow goal: create a stable place for technical notes and personal project records without building a heavy publishing platform.
+
+The first version is intentionally small. It focuses on writing, browsing, search, theme switching, SEO output, RSS, and static deployment. Features such as comments, analytics, media management, CMS publishing, Mermaid, math formulas, and multilingual content are left for later iterations.
+
+## Scope
+
+The MVP keeps only the parts needed for a working public blog:
+
+- MDX posts stored in the repository.
+- Frontmatter validation at build time.
+- Draft filtering for production builds.
+- Category, tag, archive, and post detail pages.
+- Client-side search using a generated static index.
+- Code highlighting with readable dark and light themes.
+- RSS, sitemap, and robots files generated during build.
+
+This keeps the site simple enough to deploy as static files while still leaving room for future growth.
+
+## Content Workflow
+
+Each article is a single MDX file under `content/posts`. Metadata is written in frontmatter and validated before the static build starts.
+
+```yaml
+title: "Building a Lightweight Static Blog MVP"
+date: "2026-07-29"
+updated: "2026-07-29"
+excerpt: "A short summary for lists, RSS, and SEO."
+category: "Blog"
+tags:
+  - nextjs
+  - mdx
+draft: false
+type: "tech"
+```
+
+The rule is direct: if metadata is wrong, the build should fail early. This is better than publishing a broken article page.
+
+## Deployment Strategy
+
+The current project supports static export, so deployment does not require a backend service. Vercel is kept as the overseas preview and GitHub integration path. For domestic access, the same static output can later be deployed to a domestic static hosting platform or a lightweight server with Nginx.
+
+The important detail is that the public site URL is configurable through `SITE_URL`. This allows RSS, sitemap, canonical links, and robots output to match the real deployment target.
+
+```powershell
+$env:SITE_URL='https://example.com'
+corepack pnpm build
+```
+
+## Next Steps
+
+The next useful work is content completion:
+
+- Replace all remaining placeholder text.
+- Add several real technical notes.
+- Improve the project list with accurate status and links.
+- Decide on a stable domestic access path after the site content is worth sharing.
+
+The engineering work is already close to a usable base. The main gap is now real content and personal positioning.

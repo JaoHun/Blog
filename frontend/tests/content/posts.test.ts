@@ -32,25 +32,25 @@ describe('post content pipeline', () => {
   it('sorts sticky posts before regular posts and then by date descending', async () => {
     const posts = await getAllPosts({ includeDrafts: true });
 
-    expect(posts[0]?.slug).toBe('hello-next-mdx');
+    expect(posts[0]?.slug).toBe('static-blog-mvp');
     expect(posts[0]?.sticky).toBe(true);
   });
 
   it('filters featured, category, and tag collections from published posts', async () => {
     await expect(getFeaturedPosts()).resolves.toEqual([
-      expect.objectContaining({ slug: 'hello-next-mdx', featured: true }),
+      expect.objectContaining({ slug: 'static-blog-mvp', featured: true }),
     ]);
-    await expect(getPostsByCategory('Next.js')).resolves.toEqual([
-      expect.objectContaining({ slug: 'hello-next-mdx' }),
+    await expect(getPostsByCategory('Blog')).resolves.toEqual([
+      expect.objectContaining({ slug: 'static-blog-mvp' }),
     ]);
     await expect(getPostsByTag('MDX')).resolves.toEqual([
-      expect.objectContaining({ slug: 'hello-next-mdx' }),
+      expect.objectContaining({ slug: 'static-blog-mvp' }),
     ]);
   });
 
   it('computes adjacent posts against the published post order', async () => {
     const published = await getPublishedPosts();
-    const adjacent = getAdjacentPosts(published, 'hello-next-mdx');
+    const adjacent = getAdjacentPosts(published, 'static-blog-mvp');
 
     expect(adjacent.previous).toBeUndefined();
     expect(adjacent.next).toBeUndefined();

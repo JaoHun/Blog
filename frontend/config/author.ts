@@ -1,12 +1,12 @@
 import { authorSchema } from '@/lib/content/schema';
 
 export const authorConfig = authorSchema.parse({
-  name: 'MJH',
-  bio: 'Developer writing about product engineering, web systems, and practical software delivery.',
+  name: 'JaoHun',
+  bio: 'Developer focused on practical web engineering, static publishing workflows, and long-term technical note taking.',
   links: [
     {
       label: 'GitHub',
-      href: 'https://github.com/example',
+      href: 'https://github.com/JaoHun',
     },
   ],
 });

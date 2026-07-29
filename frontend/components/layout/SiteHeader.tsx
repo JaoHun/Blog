@@ -12,7 +12,7 @@ export function SiteHeader() {
           {siteConfig.name}
         </Link>
         <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
-          <nav aria-label="主导航" className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
+          <nav aria-label="Main navigation" className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
             {navConfig.map((item) => (
               <Link className="transition hover:text-foreground" href={item.href} key={item.href}>
                 {item.label}

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>Blog MVP</title>
+    <title>JaoHun Blog</title>
     <link>https://blog-nu-wine-76.vercel.app</link>
-    <description>A focused personal publishing site for technical notes and essays.</description>
+    <description>A lightweight personal technical blog for engineering notes, project records, and practical web development writing.</description>
     <item>
-      <title>Hello Next MDX</title>
-      <link>https://blog-nu-wine-76.vercel.app/posts/hello-next-mdx</link>
-      <guid>https://blog-nu-wine-76.vercel.app/posts/hello-next-mdx</guid>
-      <description>用一篇示例文章验证 MDX 内容管线、分类、标签和生产构建过滤。</description>
-      <pubDate>Fri, 26 Jun 2026 00:00:00 GMT</pubDate>
-      <lastBuildDate>Fri, 26 Jun 2026 00:00:00 GMT</lastBuildDate>
+      <title>Building a Lightweight Static Blog MVP</title>
+      <link>https://blog-nu-wine-76.vercel.app/posts/static-blog-mvp</link>
+      <guid>https://blog-nu-wine-76.vercel.app/posts/static-blog-mvp</guid>
+      <description>A practical record of the first version of this personal static blog, including scope control, content workflow, deployment choices, and follow-up plans.</description>
+      <pubDate>Wed, 29 Jul 2026 00:00:00 GMT</pubDate>
+      <lastBuildDate>Wed, 29 Jul 2026 00:00:00 GMT</lastBuildDate>
     </item>
   </channel>
 </rss>
