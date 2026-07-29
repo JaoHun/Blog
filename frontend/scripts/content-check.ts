@@ -1,10 +1,17 @@
 import { authorConfig } from '@/config/author';
+import { footerConfig } from '@/config/footer';
 import { navConfig } from '@/config/nav';
 import { projectConfig } from '@/config/projects';
 import { siteConfig } from '@/config/site';
 import { getAllPosts, getPublishedPosts } from '@/lib/content/posts';
 import type { Post } from '@/lib/content/posts';
-import { authorSchema, navItemSchema, projectSchema, siteSchema } from '@/lib/content/schema';
+import {
+  authorSchema,
+  footerSchema,
+  navItemSchema,
+  projectSchema,
+  siteSchema,
+} from '@/lib/content/schema';
 
 export function collectWritingWarnings(posts: Post[]) {
   return posts.flatMap((post) => {
@@ -31,6 +38,7 @@ export function collectWritingWarnings(posts: Post[]) {
 async function main() {
   siteSchema.parse(siteConfig);
   authorSchema.parse(authorConfig);
+  footerSchema.parse(footerConfig);
   navConfig.forEach((item) => navItemSchema.parse(item));
   projectConfig.forEach((project) => projectSchema.parse(project));
 

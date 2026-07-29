@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import {
   authorSchema,
+  footerSchema,
   navItemSchema,
   postFrontmatterSchema,
   projectSchema,
@@ -166,7 +167,21 @@ describe('content schemas', () => {
       authorSchema.parse({
         name: 'MJH',
         bio: 'Developer writing about product engineering and practical systems.',
+        skills: ['Next.js', 'TypeScript'],
         links: [{ label: 'GitHub', href: 'https://github.com/example' }],
+      }),
+    ).toEqual(
+      expect.objectContaining({
+        links: [{ label: 'GitHub', href: 'https://github.com/example' }],
+        skills: ['Next.js', 'TypeScript'],
+      }),
+    );
+
+    expect(
+      footerSchema.parse({
+        copyright: 'Built for notes and projects.',
+        icpText: '',
+        links: [{ label: 'RSS', href: '/rss.xml' }],
       }).links,
     ).toHaveLength(1);
 

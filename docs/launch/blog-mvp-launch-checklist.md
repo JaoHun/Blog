@@ -13,8 +13,12 @@ For preview deployment steps, see `docs/launch/preview-deployment.md`.
   - `defaultOgImage`: still uses the default path and should receive a real image later.
   - `pageSize`: keep between 5 and 12 for the first launch.
 - `frontend/config/author.ts`
-  - Author name and GitHub link are configured.
+  - Author name, GitHub link, and skills are configured.
   - Add email or more social links only when they are meant to be public.
+- `frontend/config/footer.ts`
+  - Copyright text is configured.
+  - ICP fields are intentionally empty until a formal domain and filing are ready.
+  - Add footer links only when they are useful for public navigation.
 - `frontend/config/projects.ts`
   - Current blog project is configured.
   - Add more projects only when there is useful context or a real link.

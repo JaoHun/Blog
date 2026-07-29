@@ -108,6 +108,7 @@ export const authorSchema = z
   .object({
     name: requiredStringSchema,
     bio: requiredStringSchema,
+    skills: z.array(z.string().trim().min(1)).default([]),
     email: z.string().trim().email().optional(),
     links: z.array(authorLinkSchema).default([]),
   })
@@ -119,6 +120,13 @@ export const authorSchema = z
 export const navItemSchema = z.object({
   label: requiredStringSchema,
   href: internalOrExternalHrefSchema,
+});
+
+export const footerSchema = z.object({
+  copyright: requiredStringSchema,
+  icpText: z.string().trim().optional(),
+  icpHref: internalOrExternalHrefSchema.optional(),
+  links: z.array(authorLinkSchema).default([]),
 });
 
 export const projectSchema = z.object({

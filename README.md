@@ -12,6 +12,7 @@ Remaining work before a formal launch:
 - Replace or add a stable custom domain when ready.
 - Add a real default Open Graph image under `frontend/public/images`.
 - Add more real projects to `frontend/config/projects.ts` when available.
+- Update `frontend/config/footer.ts` when ICP filing or footer links are ready.
 
 ## Local Development
 

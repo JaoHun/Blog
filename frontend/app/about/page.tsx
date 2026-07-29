@@ -15,6 +15,16 @@ export default function AboutPage() {
       <h1 className="mt-4 text-3xl font-semibold tracking-tight">{authorConfig.name}</h1>
       <p className="mt-5 leading-8 text-muted">{authorConfig.bio}</p>
       <div className="mt-8">
+        <h2 className="text-lg font-semibold">Skills</h2>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {authorConfig.skills.map((skill) => (
+            <span className="rounded-full border border-border px-3 py-1 text-sm text-muted" key={skill}>
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className="mt-8">
         <h2 className="text-lg font-semibold">Contact</h2>
         <div className="mt-3 flex flex-wrap gap-4 text-link">
           {authorConfig.links.map((link) => (

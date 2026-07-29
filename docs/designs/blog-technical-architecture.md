@@ -20,25 +20,22 @@ frontend/
     page.tsx
     posts/
       page.tsx
-      page/
-        [page]/
-          page.tsx
+      [...pagination]/
+        page.tsx
       [slug]/
         page.tsx
     categories/
       page.tsx
       [category]/
         page.tsx
-        page/
-          [page]/
-            page.tsx
+        [...pagination]/
+          page.tsx
     tags/
       page.tsx
       [tag]/
         page.tsx
-        page/
-          [page]/
-            page.tsx
+        [...pagination]/
+          page.tsx
     about/
       page.tsx
     projects/
@@ -49,6 +46,7 @@ frontend/
   config/
     site.ts
     author.ts
+    footer.ts
     nav.ts
     projects.ts
   lib/
@@ -105,7 +103,8 @@ frontend/
 - `slug` 必须唯一，重复时构建失败。
 - 分类、标签路由需要做 URL 安全转换。中文分类和标签可以保留展示名，但路由应使用稳定 slug 或编码后的安全路径。
 - 分页在构建阶段生成，默认每页数量可配置，如 `pageSize: 10`。
-- `/posts` 等价于第一页，`/posts/page/1` 可不生成，避免重复内容。
+- 当前实现使用 Next.js catch-all 分页目录 `app/posts/[...pagination]`、`app/categories/[category]/[...pagination]`、`app/tags/[tag]/[...pagination]`，对外 URL 仍保持 `/posts/page/[page]`、`/categories/[category]/page/[page]`、`/tags/[tag]/page/[page]`。
+- `/posts` 等价于第一页；当前静态构建会生成 `/posts/page/1` 作为兼容分页入口。后续如需进一步优化 SEO，可增加 canonical 或避免生成第 1 页重复路径。
 - `/categories` 和 `/tags` 为总览页，展示全部分类/标签及文章数量。
 - 分类详情页、标签详情页无内容时不生成。
 - 草稿文章不参与生产环境路由生成。
