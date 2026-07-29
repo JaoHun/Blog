@@ -1,17 +1,17 @@
-# Blog MVP
+# JaoHun Blog
 
-Static-first personal blog MVP built with Next.js, MDX, file-based content, Shiki code highlighting, static search assets, RSS, Sitemap, and robots.txt.
+Static-first personal technical blog built with Next.js, MDX, file-based content, Shiki code highlighting, static search assets, RSS, Sitemap, and robots.txt.
 
 ## Current Status
 
-This branch is ready for preview deployment and technical validation.
+The project is ready for public preview as a lightweight personal blog base. It includes one real published article, validated draft templates, GitHub deployment flow, and static export output for Vercel or other static hosting platforms.
 
-The following values are still placeholders and should be replaced before public launch:
+Remaining work before a formal launch:
 
-- `frontend/config/site.ts`: `url`, site name, description, default OG image
-- `frontend/config/author.ts`: author bio and social links
-- `frontend/config/projects.ts`: real featured projects
-- `frontend/content/posts/*.mdx`: first real published posts
+- Add 2-3 more real technical posts.
+- Replace or add a stable custom domain when ready.
+- Add a real default Open Graph image under `frontend/public/images`.
+- Add more real projects to `frontend/config/projects.ts` when available.
 
 ## Local Development
 
@@ -45,25 +45,21 @@ corepack pnpm preview
 
 Then open `http://localhost:4173`.
 
-## Preview Deployment
+## Vercel Preview Deployment
 
-Recommended preview target: Vercel.
+Current Vercel preview URL:
 
-This repository includes a root-level `vercel.json` for preview deployment. Import `JaoHun/Blog` in Vercel and keep the project root as the repository root.
+```text
+https://blog-nu-wine-76.vercel.app
+```
+
+This repository includes a root-level `vercel.json`. Import `JaoHun/Blog` in Vercel and keep the project root as the repository root.
 
 The included Vercel settings are:
 
 - Install Command: `cd frontend && corepack pnpm install --frozen-lockfile`
 - Build Command: `cd frontend && corepack pnpm build`
 - Output Directory: `frontend/out`
-
-Manual fallback settings, if you choose Root Directory `frontend` in the Vercel UI:
-
-- Install Command: `corepack pnpm install --frozen-lockfile`
-- Build Command: `corepack pnpm build`
-- Output Directory: `out`
-
-Use the preview URL only for technical validation until real site configuration and real content are added.
 
 ## Domestic Temporary Deployment
 
@@ -87,4 +83,5 @@ See `docs/launch/domestic-server-deployment.md`.
 - Writing rules: `docs/writing/post-rules.md`
 - Publishing checklist: `docs/writing/writing-checklist.md`
 - Launch checklist: `docs/launch/blog-mvp-launch-checklist.md`
+- Preview deployment: `docs/launch/preview-deployment.md`
 - Domestic server deployment: `docs/launch/domestic-server-deployment.md`

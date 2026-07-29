@@ -85,7 +85,7 @@ Open these from a domestic network:
 ```text
 http://SERVER_PUBLIC_IP/
 http://SERVER_PUBLIC_IP/posts/
-http://SERVER_PUBLIC_IP/posts/hello-next-mdx/
+http://SERVER_PUBLIC_IP/posts/static-blog-mvp/
 http://SERVER_PUBLIC_IP/rss.xml
 http://SERVER_PUBLIC_IP/sitemap.xml
 http://SERVER_PUBLIC_IP/robots.txt

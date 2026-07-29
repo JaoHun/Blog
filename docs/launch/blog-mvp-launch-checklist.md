@@ -1,34 +1,35 @@
 # Blog MVP Launch Checklist
 
-The current project can be deployed as a preview with placeholder information. Do not treat the preview as a public launch until the site URL, author links, projects, and first real posts are replaced.
+The current project is ready for public preview. Use this checklist before treating it as a formal personal-brand launch.
 
 For preview deployment steps, see `docs/launch/preview-deployment.md`.
 
-## 1. Replace Real Site Configuration
+## 1. Site Configuration
 
-- Update `frontend/config/site.ts`
-  - `name`: site name shown in title and header.
-  - `description`: one-sentence site description for SEO.
-  - `url`: production URL, for example `https://your-domain.com`.
-  - `defaultOgImage`: default social share image path under `frontend/public/images`.
+- `frontend/config/site.ts`
+  - `name`: `JaoHun Blog`
+  - `description`: public SEO description.
+  - `url`: currently resolved from `SITE_URL`, with Vercel fallback.
+  - `defaultOgImage`: still uses the default path and should receive a real image later.
   - `pageSize`: keep between 5 and 12 for the first launch.
-- Update `frontend/config/author.ts`
-  - `name`, `bio`, and at least one contact link or email.
-- Update `frontend/config/projects.ts`
-  - Keep 1-3 featured projects for the home page.
-  - Use `status: "active"`, `"maintained"`, `"archived"`, or `"planned"`.
-- Update `frontend/config/nav.ts` only when a page is actually ready.
+- `frontend/config/author.ts`
+  - Author name and GitHub link are configured.
+  - Add email or more social links only when they are meant to be public.
+- `frontend/config/projects.ts`
+  - Current blog project is configured.
+  - Add more projects only when there is useful context or a real link.
 
-## 2. Prepare First Content
+## 2. Content Readiness
 
-- Add 3-5 published posts under `frontend/content/posts`.
-- Use `frontend/content/posts/writing-template.mdx` as the writing reference.
-- Keep `date` and `updated` as quoted `YYYY-MM-DD` strings.
-- Use one category and multiple tags per article.
-- Set `draft: false` only after the article is ready to publish.
-- Add descriptive `alt` text to every MDX image.
+- Current published post: `frontend/content/posts/static-blog-mvp.mdx`.
+- Current post URL: `/posts/static-blog-mvp/`.
+- Draft templates remain unpublished:
+  - `frontend/content/posts/writing-template.mdx`
+  - `frontend/content/posts/static-blog-writing-workflow.mdx`
+  - `frontend/content/posts/draft-example.mdx`
+- Recommended before formal launch: publish at least 3 real posts.
 
-## 3. Verify Static Assets
+## 3. Verification
 
 Run from `frontend`:
 
@@ -46,28 +47,33 @@ Confirm these files exist after build:
 - `frontend/public/rss.xml`
 - `frontend/public/search-index.json`
 
-## 4. Deploy
+## 4. Deployment
 
-Recommended first deployment target: Vercel.
+Recommended preview target: Vercel.
 
-Build settings:
+Root-level `vercel.json` settings:
 
-- Root directory: `frontend`
-- Install command: `corepack pnpm install`
+- Install command: `cd frontend && corepack pnpm install --frozen-lockfile`
+- Build command: `cd frontend && corepack pnpm build`
+- Output directory: `frontend/out`
+
+Manual fallback settings, if the Vercel project root is set to `frontend`:
+
+- Install command: `corepack pnpm install --frozen-lockfile`
 - Build command: `corepack pnpm build`
 - Output directory: `out`
 
-GitHub Pages check:
+## 5. Acceptance Checks
 
-```powershell
-$env:DEPLOY_TARGET='github-pages'
-$env:GITHUB_PAGES_REPO='Blog'
-corepack pnpm build
-Remove-Item Env:\DEPLOY_TARGET
-Remove-Item Env:\GITHUB_PAGES_REPO
-```
+- Home page opens and shows `JaoHun Blog`.
+- `/posts/` lists the published post.
+- `/posts/static-blog-mvp/` renders MDX and highlighted code.
+- `/categories/` and `/tags/` render overview pages.
+- `/rss.xml`, `/sitemap.xml`, `/robots.txt`, and `/search-index.json` are reachable.
+- Draft route `/posts/draft-example/` is not available in production.
+- Mobile viewport has no horizontal page overflow except inside code blocks.
 
-## 5. Rollback
+## 6. Rollback
 
 - If deployment fails, keep the previous deployment active.
 - Fix locally, run the full verification commands, then redeploy.
