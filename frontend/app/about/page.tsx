@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 
 import { AboutPage } from '../_localized-pages';
-import { authorConfig } from '@/config/author';
+import { getAuthorBio } from '@/config/author';
 
 export const metadata: Metadata = {
   title: '关于',
-  description: authorConfig.bio,
+  description: getAuthorBio('zh'),
 };
 
 export default function Page() {

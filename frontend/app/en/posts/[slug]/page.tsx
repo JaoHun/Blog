@@ -39,6 +39,12 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
       publishedTime: post.date,
       modifiedTime: post.updated,
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [post.cover ?? siteConfig.defaultOgImage],
+    },
   };
 }
 

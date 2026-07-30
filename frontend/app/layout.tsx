@@ -5,7 +5,7 @@ import { BackToTop } from '@/components/common/BackToTop';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { ThemeProvider } from '@/components/theme/ThemeProvider';
-import { siteConfig } from '@/config/site';
+import { getSiteDescription, siteConfig } from '@/config/site';
 
 import './globals.css';
 
@@ -25,13 +25,19 @@ export const metadata: Metadata = {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
   },
-  description: siteConfig.description,
+  description: getSiteDescription('zh'),
   openGraph: {
     title: siteConfig.name,
-    description: siteConfig.description,
+    description: getSiteDescription('zh'),
     url: siteConfig.url,
     images: [siteConfig.defaultOgImage],
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.name,
+    description: getSiteDescription('zh'),
+    images: [siteConfig.defaultOgImage],
   },
 };
 
