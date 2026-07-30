@@ -4,8 +4,8 @@ import { highlightMatch, searchPosts } from '@/components/search/search-client';
 
 const index = [
   {
-    slug: 'hello-next-mdx',
-    title: 'Hello Next MDX',
+    slug: 'static-blog-mvp',
+    title: 'Static Blog MVP',
     excerpt: 'Build a static blog with MDX.',
     category: 'Next.js',
     tags: ['nextjs', 'mdx'],
@@ -29,7 +29,7 @@ describe('searchPosts', () => {
   });
 
   it('highlights matches and escapes unsafe HTML', () => {
-    expect(highlightMatch('Hello Next MDX', 'next')).toBe('Hello <mark>Next</mark> MDX');
+    expect(highlightMatch('Static Blog MVP', 'blog')).toBe('Static <mark>Blog</mark> MVP');
     expect(highlightMatch('<script>alert(1)</script> MDX', 'mdx')).toBe(
       '&lt;script&gt;alert(1)&lt;/script&gt; <mark>MDX</mark>',
     );

@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# JaoHun Blog Frontend
 
-## Getting Started
+This is the static frontend for JaoHun Blog. It uses Next.js static export, MDX content files, build-time content validation, Shiki code highlighting, local search assets, RSS, Sitemap, and robots.txt generation.
 
-First, run the development server:
+Chinese is the default language. English pages are generated under `/en` with explicit static routes so `output: 'export'` remains supported.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Development
+
+```powershell
+corepack pnpm install
+corepack pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Verification
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```powershell
+corepack pnpm content:check
+corepack pnpm test
+corepack pnpm lint
+corepack pnpm build
+```
 
-## Learn More
+The static output is generated in `out`.
 
-To learn more about Next.js, take a look at the following resources:
+## Static Preview
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```powershell
+corepack pnpm preview
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open `http://localhost:4173`.
 
-## Deploy on Vercel
+## Content
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Posts live in `content/posts`. Keep drafts with `draft: true`; production builds automatically filter them out.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Site, author, navigation, footer, and project data live in `config`.
