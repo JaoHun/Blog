@@ -34,12 +34,18 @@ describe('static asset generation', () => {
 
   it('generates RSS, Sitemap, and robots text from published content', async () => {
     const rss = await buildRssXml();
+    const englishRss = await buildRssXml('en');
     const sitemap = await buildSitemapXml();
     const robots = buildRobotsTxt();
 
     expect(rss).toContain('<rss');
     expect(rss).toContain('构建一个轻量静态博客 MVP');
+    expect(rss).toContain('一个轻量个人技术博客');
     expect(rss).not.toContain('Draft Example');
+
+    expect(englishRss).toContain('Building a Lightweight Static Blog MVP');
+    expect(englishRss).toContain(`${siteConfig.url}/en/`);
+    expect(englishRss).not.toContain('构建一个轻量静态博客 MVP');
 
     expect(sitemap).toContain('<urlset');
     expect(sitemap).toContain('/posts/static-blog-mvp');

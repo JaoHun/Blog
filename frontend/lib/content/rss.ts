@@ -1,4 +1,4 @@
-import { siteConfig } from '@/config/site';
+import { getSiteDescription, siteConfig } from '@/config/site';
 
 import { getPublishedPosts } from './posts';
 import type { Lang } from './posts';
@@ -19,6 +19,7 @@ function localizedPath(pathname: string, lang: Lang) {
 
 export async function buildRssXml(lang: Lang = 'zh') {
   const posts = await getPublishedPosts(lang);
+  const channelLink = joinSiteUrl(siteConfig.url, localizedPath('/', lang));
   const items = posts.map((post) => {
     const link = joinSiteUrl(siteConfig.url, localizedPath(`/posts/${post.slug}`, lang));
 
@@ -41,8 +42,8 @@ export async function buildRssXml(lang: Lang = 'zh') {
     '<rss version="2.0">',
     '  <channel>',
     `    <title>${xmlEscape(siteConfig.name)}</title>`,
-    `    <link>${xmlEscape(siteConfig.url)}</link>`,
-    `    <description>${xmlEscape(siteConfig.description)}</description>`,
+    `    <link>${xmlEscape(channelLink)}</link>`,
+    `    <description>${xmlEscape(getSiteDescription(lang))}</description>`,
     ...items,
     '  </channel>',
     '</rss>',

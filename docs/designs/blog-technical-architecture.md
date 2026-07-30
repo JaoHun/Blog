@@ -93,6 +93,7 @@ frontend/
 /about
 /projects
 /rss.xml
+/rss.en.xml
 /sitemap.xml
 /robots.txt
 ```
@@ -286,7 +287,7 @@ pnpm content:check
 RSS、Sitemap、robots 的静态生成方式：
 
 - 推荐使用 `prebuild` 构建脚本在 `next build` 前生成静态文件到 `public/`，再由 Next.js 静态构建流程复制到最终产物。
-- `rss.xml` 由生产文章集合生成，字段包含标题、链接、摘要、发布时间、更新时间。
+- `rss.xml` 由中文生产文章集合生成，`rss.en.xml` 由英文生产文章集合生成，字段包含标题、链接、摘要、发布时间、更新时间。
 - `sitemap.xml` 由站点固定页面、文章详情页、分类总览/详情页、标签总览/详情页生成。
 - `robots.txt` 由站点配置生成，至少包含 `User-agent`、`Allow` 和 `Sitemap`。
 - 三类文件必须读取同一份生产文章集合，确保草稿过滤规则一致。
@@ -376,6 +377,7 @@ SEO 规则：
 - `robots.txt`。
 - `sitemap.xml`。
 - `rss.xml`。
+- `rss.en.xml`。
 
 ## 13. 主题架构
 

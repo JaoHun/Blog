@@ -11,6 +11,7 @@ async function main() {
 
   await mkdir(publicDir, { recursive: true });
   await writeFile(path.join(publicDir, 'rss.xml'), await buildRssXml(), 'utf8');
+  await writeFile(path.join(publicDir, 'rss.en.xml'), await buildRssXml('en'), 'utf8');
   await writeFile(path.join(publicDir, 'sitemap.xml'), await buildSitemapXml(), 'utf8');
   await writeFile(path.join(publicDir, 'robots.txt'), buildRobotsTxt(), 'utf8');
   await writeFile(

@@ -49,6 +49,7 @@ Confirm these files exist after build:
 - `frontend/public/robots.txt`
 - `frontend/public/sitemap.xml`
 - `frontend/public/rss.xml`
+- `frontend/public/rss.en.xml`
 - `frontend/public/search-index.json`
 
 ## 4. Deployment
@@ -78,7 +79,7 @@ Manual fallback settings, if the Vercel project root is set to `frontend`:
 - `/posts/static-blog-mvp/` renders MDX and highlighted code.
 - `/en/posts/static-blog-mvp/` renders the English MDX article.
 - `/categories/` and `/tags/` render overview pages.
-- `/rss.xml`, `/sitemap.xml`, `/robots.txt`, and `/search-index.json` are reachable.
+- `/rss.xml`, `/rss.en.xml`, `/sitemap.xml`, `/robots.txt`, and `/search-index.json` are reachable.
 - Draft route `/posts/draft-example/` is not available in production.
 - Mobile viewport has no horizontal page overflow except inside code blocks.
 

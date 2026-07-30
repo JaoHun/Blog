@@ -66,7 +66,7 @@ Open `http://localhost:4173` and verify the checklist below before deploying.
 - `/posts/` lists published posts and search can find `MDX`.
 - `/posts/static-blog-mvp/` renders code with highlighted tokens, line numbers, and copy button.
 - `/categories/` and `/tags/` render overview pages.
-- `/rss.xml`, `/sitemap.xml`, `/robots.txt`, and `/search-index.json` are reachable.
+- `/rss.xml`, `/rss.en.xml`, `/sitemap.xml`, `/robots.txt`, and `/search-index.json` are reachable.
 - Mobile viewport has no horizontal page overflow except inside code blocks.
 
 ## Before Formal Launch
