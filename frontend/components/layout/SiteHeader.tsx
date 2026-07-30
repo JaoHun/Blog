@@ -8,9 +8,10 @@ import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import { localizedPath, messages } from '@/lib/i18n';
 import type { Lang } from '@/lib/content/posts';
 
-const navKeys = ['home', 'posts', 'categories', 'tags', 'projects', 'about'] as const;
+const navKeys = ['home', 'tech', 'posts', 'categories', 'tags', 'about'] as const;
 const navPaths = {
   home: '/',
+  tech: '/tech',
   posts: '/posts',
   categories: '/categories',
   tags: '/tags',

@@ -35,6 +35,7 @@ export const messages = {
     },
     nav: {
       home: '首页',
+      tech: '技术',
       posts: '文章',
       categories: '分类',
       tags: '标签',
@@ -107,6 +108,7 @@ export const messages = {
     },
     nav: {
       home: 'Home',
+      tech: 'Tech',
       posts: 'Posts',
       categories: 'Categories',
       tags: 'Tags',
