@@ -9,7 +9,7 @@ import { PostMeta } from '@/components/post/PostMeta';
 import { PostToc } from '@/components/post/PostToc';
 import { ProjectList } from '@/components/project/ProjectList';
 import { SearchBox } from '@/components/search/SearchBox';
-import { authorConfig } from '@/config/author';
+import { authorConfig, getAuthorBio } from '@/config/author';
 import { siteConfig } from '@/config/site';
 import { paginate } from '@/lib/content/pagination';
 import {
@@ -43,7 +43,7 @@ export async function HomePage({ lang }: { lang: Lang }) {
         <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
           {t.home.heading}
         </h1>
-        <p className="max-w-2xl text-base leading-7 text-muted">{authorConfig.bio}</p>
+        <p className="max-w-2xl text-base leading-7 text-muted">{getAuthorBio(lang)}</p>
         <div className="flex flex-wrap gap-4 text-sm text-link">
           <Link href={localizedPath('/posts', lang)}>{t.common.browsePosts}</Link>
           <Link href={localizedPath('/projects', lang)}>{t.common.viewProjects}</Link>
@@ -255,7 +255,7 @@ export function AboutPage({ lang }: { lang: Lang }) {
     <section className="max-w-3xl">
       <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{t.title}</p>
       <h1 className="mt-4 text-3xl font-semibold tracking-tight">{authorConfig.name}</h1>
-      <p className="mt-5 leading-8 text-muted">{authorConfig.bio}</p>
+      <p className="mt-5 leading-8 text-muted">{getAuthorBio(lang)}</p>
       <div className="mt-8">
         <h2 className="text-lg font-semibold">{t.skills}</h2>
         <div className="mt-3 flex flex-wrap gap-2">

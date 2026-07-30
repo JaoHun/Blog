@@ -1,23 +1,15 @@
 import { ExternalLink } from '@/components/common/ExternalLink';
+import { getProjectDescription } from '@/config/projects';
+import type { ProjectConfig } from '@/config/projects';
 import type { Lang } from '@/lib/content/posts';
 import { localizedPath, messages } from '@/lib/i18n';
 
-type Project = {
-  name: string;
-  description: string;
-  techStack: string[];
-  status: 'active' | 'maintained' | 'archived' | 'planned';
-  sourceUrl?: string;
-  demoUrl?: string;
-  articleUrl?: string;
-};
-
 type ProjectCardProps = {
   lang?: Lang;
-  project: Project;
+  project: ProjectConfig;
 };
 
-const statusLabel: Record<Project['status'], string> = {
+const statusLabel: Record<ProjectConfig['status'], string> = {
   active: 'Active',
   maintained: 'Maintained',
   archived: 'Archived',
@@ -26,16 +18,17 @@ const statusLabel: Record<Project['status'], string> = {
 
 export function ProjectCard({ lang = 'zh', project }: ProjectCardProps) {
   const t = messages[lang].projects;
+  const status = t.status[project.status] ?? statusLabel[project.status];
 
   return (
     <article className="rounded-lg border border-border p-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h2 className="text-xl font-semibold tracking-tight">{project.name}</h2>
         <span className="rounded-full border border-border px-3 py-1 text-xs text-muted">
-          {statusLabel[project.status]}
+          {status}
         </span>
       </div>
-      <p className="mt-3 leading-7 text-muted">{project.description}</p>
+      <p className="mt-3 leading-7 text-muted">{getProjectDescription(project, lang)}</p>
       <div className="mt-4 flex flex-wrap gap-2">
         {project.techStack.map((tech) => (
           <span className="rounded-full bg-code-bg px-3 py-1 text-xs text-muted" key={tech}>

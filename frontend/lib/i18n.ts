@@ -48,6 +48,12 @@ export const messages = {
       relatedPost: '相关文章',
       emptyTitle: '暂无项目',
       emptyDescription: '后续会在这里展示项目记录。',
+      status: {
+        active: '进行中',
+        maintained: '维护中',
+        archived: '已归档',
+        planned: '计划中',
+      },
     },
     search: {
       placeholder: '搜索标题、摘要、分类或标签',
@@ -104,6 +110,12 @@ export const messages = {
       relatedPost: 'Related post',
       emptyTitle: 'No projects yet',
       emptyDescription: 'Project records will be listed here later.',
+      status: {
+        active: 'Active',
+        maintained: 'Maintained',
+        archived: 'Archived',
+        planned: 'Planned',
+      },
     },
     search: {
       placeholder: 'Search title, excerpt, category, or tag',

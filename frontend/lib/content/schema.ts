@@ -3,6 +3,10 @@ import { z } from 'zod';
 const calendarDatePattern = /^(\d{4})-(\d{2})-(\d{2})$/;
 
 const requiredStringSchema = z.string().trim().min(1);
+const localizedTextSchema = z.object({
+  zh: requiredStringSchema,
+  en: requiredStringSchema,
+});
 
 const isStrictCalendarDate = (value: string) => {
   const match = calendarDatePattern.exec(value);
@@ -95,6 +99,7 @@ export type PostFrontmatter = z.infer<typeof postFrontmatterSchema>;
 export const siteSchema = z.object({
   name: requiredStringSchema,
   description: requiredStringSchema,
+  descriptionByLang: localizedTextSchema.optional(),
   url: z.string().trim().url(),
   defaultOgImage: imagePathSchema,
   pageSize: z.number().int().min(1).max(50).default(10),
@@ -109,6 +114,7 @@ export const authorSchema = z
   .object({
     name: requiredStringSchema,
     bio: requiredStringSchema,
+    bioByLang: localizedTextSchema.optional(),
     skills: z.array(z.string().trim().min(1)).default([]),
     email: z.string().trim().email().optional(),
     links: z.array(authorLinkSchema).default([]),
@@ -133,6 +139,7 @@ export const footerSchema = z.object({
 export const projectSchema = z.object({
   name: requiredStringSchema,
   description: requiredStringSchema,
+  descriptionByLang: localizedTextSchema.optional(),
   techStack: z.array(z.string().trim().min(1)).min(1),
   status: z.enum(['active', 'maintained', 'archived', 'planned']),
   featured: z.boolean().default(false),
