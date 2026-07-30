@@ -35,6 +35,7 @@ corepack pnpm content:check
 corepack pnpm test
 corepack pnpm lint
 corepack pnpm build
+corepack pnpm launch:check
 ```
 
 The static export output is generated in `frontend/out`.

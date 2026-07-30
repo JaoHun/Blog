@@ -70,6 +70,12 @@ Manual fallback settings, if the Vercel project root is set to `frontend`:
 
 ## 5. Acceptance Checks
 
+Run after `corepack pnpm build`:
+
+```powershell
+corepack pnpm launch:check
+```
+
 - Home page opens and shows `JaoHun Blog`.
 - Chinese is the default language at `/`; English is available at `/en/`.
 - Header language switch works between `/` and `/en/`.
