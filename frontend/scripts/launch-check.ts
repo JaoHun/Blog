@@ -38,6 +38,8 @@ async function main() {
   const requiredFiles = [
     'index.html',
     'en/index.html',
+    'tech/index.html',
+    'en/tech/index.html',
     'posts/index.html',
     'en/posts/index.html',
     'posts/static-blog-mvp/index.html',
@@ -59,6 +61,8 @@ async function main() {
 
   const home = await readOutFile('index.html');
   const englishHome = await readOutFile('en/index.html');
+  const tech = await readOutFile('tech/index.html');
+  const englishTech = await readOutFile('en/tech/index.html');
   const post = await readOutFile('posts/static-blog-mvp/index.html');
   const sitemap = await readOutFile('sitemap.xml');
   const rss = await readOutFile('rss.xml');
@@ -67,13 +71,18 @@ async function main() {
   const englishSearchIndex = await readOutFile('search-index.en.json');
 
   assertContains(home, 'JaoHun Blog', 'home page');
+  assertContains(home, '个人杂谈与分享', 'home page');
   assertContains(home, '技术笔记与项目记录', 'home page');
-  assertContains(englishHome, 'Technical notes and project records', 'English home page');
+  assertContains(englishHome, 'Personal notes and essays', 'English home page');
+  assertContains(tech, '技术笔记与项目记录', 'tech page');
+  assertContains(englishTech, 'Technical notes and project records', 'English tech page');
   assertContains(post, '构建一个轻量静态博客 MVP', 'post page');
   assertContains(post, 'twitter:card', 'post page metadata');
   assertContains(post, 'default.png', 'post page metadata');
 
   assertContains(sitemap, '/posts/static-blog-mvp', 'sitemap');
+  assertContains(sitemap, '/tech', 'sitemap');
+  assertContains(sitemap, '/en/tech', 'sitemap');
   assertContains(sitemap, '/en/posts/static-blog-mvp', 'sitemap');
   assertNotContains(sitemap, 'draft-example', 'sitemap');
 

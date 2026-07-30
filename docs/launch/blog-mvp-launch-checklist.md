@@ -76,7 +76,10 @@ Run after `corepack pnpm build`:
 corepack pnpm launch:check
 ```
 
-- Home page opens and shows `JaoHun Blog`.
+- Home page opens and shows the personal notes/sharing positioning.
+- Home page links to the technical notes and project records section.
+- `/tech/` renders the technical notes and project records section.
+- `/en/tech/` renders the English technical section.
 - Chinese is the default language at `/`; English is available at `/en/`.
 - Header language switch works between `/` and `/en/`.
 - `/posts/` lists the published post.

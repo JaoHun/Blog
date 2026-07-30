@@ -11,6 +11,7 @@ export const messages = {
     },
     common: {
       allPosts: '全部文章',
+      allProjects: '全部项目',
       browsePosts: '浏览文章',
       viewProjects: '查看项目',
       featuredPosts: '精选文章',
@@ -20,7 +21,17 @@ export const messages = {
       postCount: (count: number) => `${count} 篇文章`,
     },
     home: {
-      heading: '技术笔记与项目记录',
+      heading: '个人杂谈与分享',
+      description: '这里会逐步记录日常思考、生活片段、阅读感受和一些不一定成体系的分享。',
+      emptyTitle: '杂谈内容后续添加',
+      emptyDescription: '当前先保留主页入口，后续有真实内容后再逐步补充。',
+      techTitle: '技术笔记与项目记录',
+      techDescription: '整理工程实践、技术笔记、项目过程和相关复盘。',
+      techAction: '进入技术板块',
+    },
+    tech: {
+      title: '技术笔记与项目记录',
+      description: '集中展示技术文章、项目记录和工程实践内容。',
     },
     nav: {
       home: '首页',
@@ -72,6 +83,7 @@ export const messages = {
     },
     common: {
       allPosts: 'All posts',
+      allProjects: 'All projects',
       browsePosts: 'Browse posts',
       viewProjects: 'View projects',
       featuredPosts: 'Featured posts',
@@ -81,7 +93,17 @@ export const messages = {
       postCount: (count: number) => `${count} ${count === 1 ? 'post' : 'posts'}`,
     },
     home: {
-      heading: 'Technical notes and project records',
+      heading: 'Personal notes and essays',
+      description: 'A place for casual notes, daily thoughts, reading reflections, and lightweight personal sharing.',
+      emptyTitle: 'Personal notes will be added later',
+      emptyDescription: 'The home page keeps this space ready while real content is added over time.',
+      techTitle: 'Technical notes and project records',
+      techDescription: 'Engineering notes, project records, implementation details, and practical retrospectives.',
+      techAction: 'Open technical section',
+    },
+    tech: {
+      title: 'Technical notes and project records',
+      description: 'A focused section for technical articles, project records, and engineering practice.',
     },
     nav: {
       home: 'Home',

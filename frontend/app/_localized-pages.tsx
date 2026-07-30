@@ -32,18 +32,50 @@ type PaginationParams = {
 };
 
 export async function HomePage({ lang }: { lang: Lang }) {
+  const t = messages[lang];
+
+  return (
+    <div className="space-y-12">
+      <section className="flex min-h-[45vh] flex-col justify-center gap-5">
+        <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{siteConfig.name}</p>
+        <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+          {t.home.heading}
+        </h1>
+        <p className="max-w-2xl text-base leading-7 text-muted">{t.home.description}</p>
+      </section>
+
+      <section className="grid gap-5 md:grid-cols-[1.2fr_0.8fr]">
+        <div className="rounded-lg border border-border p-6">
+          <h2 className="text-2xl font-semibold tracking-tight">{t.home.emptyTitle}</h2>
+          <p className="mt-3 leading-7 text-muted">{t.home.emptyDescription}</p>
+        </div>
+        <Link
+          className="rounded-lg border border-border p-6 transition hover:border-accent"
+          href={localizedPath('/tech', lang)}
+        >
+          <span className="text-sm font-medium uppercase tracking-[0.16em] text-muted">{siteConfig.name}</span>
+          <h2 className="mt-4 text-2xl font-semibold tracking-tight">{t.home.techTitle}</h2>
+          <p className="mt-3 leading-7 text-muted">{t.home.techDescription}</p>
+          <span className="mt-5 inline-block text-sm text-link">{t.home.techAction}</span>
+        </Link>
+      </section>
+    </div>
+  );
+}
+
+export async function TechPage({ lang }: { lang: Lang }) {
   const [featuredPosts, posts] = await Promise.all([getFeaturedPosts(lang), getPublishedPosts(lang)]);
   const latestPosts = posts.slice(0, 3);
   const t = messages[lang];
 
   return (
     <div className="space-y-14">
-      <section className="flex min-h-[45vh] flex-col justify-center gap-5">
+      <section className="flex min-h-[30vh] flex-col justify-center gap-5">
         <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{siteConfig.name}</p>
         <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-          {t.home.heading}
+          {t.tech.title}
         </h1>
-        <p className="max-w-2xl text-base leading-7 text-muted">{getAuthorBio(lang)}</p>
+        <p className="max-w-2xl text-base leading-7 text-muted">{t.tech.description}</p>
         <div className="flex flex-wrap gap-4 text-sm text-link">
           <Link href={localizedPath('/posts', lang)}>{t.common.browsePosts}</Link>
           <Link href={localizedPath('/projects', lang)}>{t.common.viewProjects}</Link>
@@ -64,7 +96,7 @@ export async function HomePage({ lang }: { lang: Lang }) {
         <div className="mb-4 flex items-center justify-between gap-4">
           <h2 className="text-2xl font-semibold tracking-tight">{t.common.featuredProjects}</h2>
           <Link className="text-sm text-link" href={localizedPath('/projects', lang)}>
-            {lang === 'zh' ? '全部项目' : 'All projects'}
+            {t.common.allProjects}
           </Link>
         </div>
         <ProjectList featuredOnly lang={lang} />

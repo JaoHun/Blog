@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://blog-nu-wine-76.vercel.app/</loc></url>
+  <url><loc>https://blog-nu-wine-76.vercel.app/tech</loc></url>
   <url><loc>https://blog-nu-wine-76.vercel.app/posts</loc></url>
   <url><loc>https://blog-nu-wine-76.vercel.app/categories</loc></url>
   <url><loc>https://blog-nu-wine-76.vercel.app/tags</loc></url>
@@ -12,6 +13,7 @@
   <url><loc>https://blog-nu-wine-76.vercel.app/tags/mdx</loc></url>
   <url><loc>https://blog-nu-wine-76.vercel.app/tags/static-site</loc></url>
   <url><loc>https://blog-nu-wine-76.vercel.app/en/</loc></url>
+  <url><loc>https://blog-nu-wine-76.vercel.app/en/tech</loc></url>
   <url><loc>https://blog-nu-wine-76.vercel.app/en/posts</loc></url>
   <url><loc>https://blog-nu-wine-76.vercel.app/en/categories</loc></url>
   <url><loc>https://blog-nu-wine-76.vercel.app/en/tags</loc></url>
