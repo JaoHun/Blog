@@ -38,3 +38,15 @@ Open `http://localhost:4173`.
 Posts live in `content/posts`. Keep drafts with `draft: true`; production builds automatically filter them out.
 
 Site, author, navigation, footer, and project data live in `config`.
+
+Create a Chinese draft:
+
+```powershell
+corepack pnpm new-post "文章标题"
+```
+
+Create an English draft with a custom slug:
+
+```powershell
+corepack pnpm new-post "Post Title" post-title en
+```

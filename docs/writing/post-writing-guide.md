@@ -1,5 +1,15 @@
 # Post Writing Guide
 
+## Create A Draft
+
+Run from `frontend`:
+
+```powershell
+corepack pnpm new-post "文章标题"
+```
+
+The command creates a Chinese draft in `content/posts` with valid Frontmatter. Keep `draft: true` until the article is ready to publish.
+
 This project is a static-first writing system. Articles are local MDX files, validated at build time, and published through Git.
 
 ## Writing Flow

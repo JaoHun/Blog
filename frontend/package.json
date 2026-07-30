@@ -10,6 +10,7 @@
     "preview": "serve out -l 4173",
     "lint": "eslint .",
     "launch:check": "tsx scripts/launch-check.ts",
+    "new-post": "tsx scripts/new-post.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "content:check": "tsx scripts/content-check.ts"

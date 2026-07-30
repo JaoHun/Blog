@@ -40,6 +40,16 @@ corepack pnpm launch:check
 
 The static export output is generated in `frontend/out`.
 
+## Create A Draft Post
+
+Run from `frontend`:
+
+```powershell
+corepack pnpm new-post "文章标题"
+```
+
+This creates a Chinese draft under `frontend/content/posts` with required Frontmatter filled in.
+
 ## Local Static Preview
 
 After `corepack pnpm build`, run from `frontend`:
