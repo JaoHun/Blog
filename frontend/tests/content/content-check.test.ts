@@ -39,4 +39,8 @@ describe('collectWritingWarnings', () => {
       ]),
     );
   });
+
+  it('does not warn about missing cover images for drafts', () => {
+    expect(collectWritingWarnings([post({ draft: true, cover: undefined })])).toEqual([]);
+  });
 });

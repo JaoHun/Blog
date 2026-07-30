@@ -27,7 +27,7 @@ export function collectWritingWarnings(posts: Post[]) {
       warnings.push(`WARN ${post.slug}: has ${post.tags.length} tags. FIX: keep tags focused.`);
     }
 
-    if (!post.cover) {
+    if (!post.draft && !post.cover) {
       warnings.push(`WARN ${post.slug}: has no cover. FIX: add cover when a visual preview is useful.`);
     }
 
