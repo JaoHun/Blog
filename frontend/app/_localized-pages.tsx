@@ -9,6 +9,8 @@ import { PostMeta } from '@/components/post/PostMeta';
 import { PostToc } from '@/components/post/PostToc';
 import { ProjectList } from '@/components/project/ProjectList';
 import { SearchBox } from '@/components/search/SearchBox';
+import { ContentSidebar } from '@/components/sidebar/ContentSidebar';
+import { ContentWithSidebar } from '@/components/sidebar/ContentWithSidebar';
 import { authorConfig, getAuthorBio } from '@/config/author';
 import { siteConfig } from '@/config/site';
 import { paginate } from '@/lib/content/pagination';
@@ -69,39 +71,41 @@ export async function TechPage({ lang }: { lang: Lang }) {
   const t = messages[lang];
 
   return (
-    <div className="space-y-14">
-      <section className="flex min-h-[30vh] flex-col justify-center gap-5">
-        <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{siteConfig.name}</p>
-        <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-          {t.tech.title}
-        </h1>
-        <p className="max-w-2xl text-base leading-7 text-muted">{t.tech.description}</p>
-        <div className="flex flex-wrap gap-4 text-sm text-link">
-          <Link href={localizedPath('/posts', lang)}>{t.common.browsePosts}</Link>
-          <Link href={localizedPath('/projects', lang)}>{t.common.viewProjects}</Link>
-        </div>
-      </section>
+    <ContentWithSidebar sidebar={<ContentSidebar lang={lang} />}>
+      <div className="space-y-14">
+        <section className="flex min-h-[30vh] flex-col justify-center gap-5">
+          <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{siteConfig.name}</p>
+          <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            {t.tech.title}
+          </h1>
+          <p className="max-w-2xl text-base leading-7 text-muted">{t.tech.description}</p>
+          <div className="flex flex-wrap gap-4 text-sm text-link">
+            <Link href={localizedPath('/posts', lang)}>{t.common.browsePosts}</Link>
+            <Link href={localizedPath('/projects', lang)}>{t.common.viewProjects}</Link>
+          </div>
+        </section>
 
-      <section>
-        <div className="mb-4 flex items-center justify-between gap-4">
-          <h2 className="text-2xl font-semibold tracking-tight">{t.common.featuredPosts}</h2>
-          <Link className="text-sm text-link" href={localizedPath('/posts', lang)}>
-            {t.common.allPosts}
-          </Link>
-        </div>
-        <PostList lang={lang} posts={featuredPosts.length > 0 ? featuredPosts : latestPosts} />
-      </section>
+        <section>
+          <div className="mb-4 flex items-center justify-between gap-4">
+            <h2 className="text-2xl font-semibold tracking-tight">{t.common.featuredPosts}</h2>
+            <Link className="text-sm text-link" href={localizedPath('/posts', lang)}>
+              {t.common.allPosts}
+            </Link>
+          </div>
+          <PostList lang={lang} posts={featuredPosts.length > 0 ? featuredPosts : latestPosts} />
+        </section>
 
-      <section>
-        <div className="mb-4 flex items-center justify-between gap-4">
-          <h2 className="text-2xl font-semibold tracking-tight">{t.common.featuredProjects}</h2>
-          <Link className="text-sm text-link" href={localizedPath('/projects', lang)}>
-            {t.common.allProjects}
-          </Link>
-        </div>
-        <ProjectList featuredOnly lang={lang} />
-      </section>
-    </div>
+        <section>
+          <div className="mb-4 flex items-center justify-between gap-4">
+            <h2 className="text-2xl font-semibold tracking-tight">{t.common.featuredProjects}</h2>
+            <Link className="text-sm text-link" href={localizedPath('/projects', lang)}>
+              {t.common.allProjects}
+            </Link>
+          </div>
+          <ProjectList featuredOnly lang={lang} />
+        </section>
+      </div>
+    </ContentWithSidebar>
   );
 }
 
@@ -111,15 +115,17 @@ export async function PostsPage({ lang }: { lang: Lang }) {
   const t = messages[lang].posts;
 
   return (
-    <section>
-      <div className="mb-8">
-        <h1 className="text-3xl font-semibold tracking-tight">{t.title}</h1>
-        <p className="mt-3 text-muted">{t.description}</p>
-      </div>
-      <SearchBox lang={lang} />
-      <PostList lang={lang} posts={page.items} />
-      <Pagination basePath={localizedPath('/posts', lang)} currentPage={page.currentPage} totalPages={page.totalPages} />
-    </section>
+    <ContentWithSidebar sidebar={<ContentSidebar lang={lang} />}>
+      <section>
+        <div className="mb-8">
+          <h1 className="text-3xl font-semibold tracking-tight">{t.title}</h1>
+          <p className="mt-3 text-muted">{t.description}</p>
+        </div>
+        <SearchBox lang={lang} />
+        <PostList lang={lang} posts={page.items} />
+        <Pagination basePath={localizedPath('/posts', lang)} currentPage={page.currentPage} totalPages={page.totalPages} />
+      </section>
+    </ContentWithSidebar>
   );
 }
 
@@ -132,14 +138,16 @@ export async function PaginatedPostsPage({ lang, pagination }: { lang: Lang } & 
   const page = paginate(posts, Number(pagination[1]), siteConfig.pageSize);
 
   return (
-    <section>
-      <div className="mb-8">
-        <h1 className="text-3xl font-semibold tracking-tight">{messages[lang].posts.title}</h1>
-        <p className="mt-3 text-muted">{messages[lang].common.page.replace('{page}', String(page.currentPage))}</p>
-      </div>
-      <PostList lang={lang} posts={page.items} />
-      <Pagination basePath={localizedPath('/posts', lang)} currentPage={page.currentPage} totalPages={page.totalPages} />
-    </section>
+    <ContentWithSidebar sidebar={<ContentSidebar lang={lang} />}>
+      <section>
+        <div className="mb-8">
+          <h1 className="text-3xl font-semibold tracking-tight">{messages[lang].posts.title}</h1>
+          <p className="mt-3 text-muted">{messages[lang].common.page.replace('{page}', String(page.currentPage))}</p>
+        </div>
+        <PostList lang={lang} posts={page.items} />
+        <Pagination basePath={localizedPath('/posts', lang)} currentPage={page.currentPage} totalPages={page.totalPages} />
+      </section>
+    </ContentWithSidebar>
   );
 }
 

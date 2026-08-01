@@ -63,6 +63,7 @@ async function main() {
   const englishHome = await readOutFile('en/index.html');
   const tech = await readOutFile('tech/index.html');
   const englishTech = await readOutFile('en/tech/index.html');
+  const posts = await readOutFile('posts/index.html');
   const post = await readOutFile('posts/static-blog-mvp/index.html');
   const sitemap = await readOutFile('sitemap.xml');
   const rss = await readOutFile('rss.xml');
@@ -75,7 +76,13 @@ async function main() {
   assertContains(home, '技术笔记与项目记录', 'home page');
   assertContains(englishHome, 'Personal notes and essays', 'English home page');
   assertContains(tech, '技术笔记与项目记录', 'tech page');
+  assertContains(tech, '内容统计', 'tech page sidebar');
+  assertContains(tech, '最新文章', 'tech page sidebar');
+  assertContains(posts, '内容统计', 'posts page sidebar');
+  assertContains(posts, '最新文章', 'posts page sidebar');
   assertContains(englishTech, 'Technical notes and project records', 'English tech page');
+  assertContains(englishTech, 'Content stats', 'English tech page sidebar');
+  assertContains(englishTech, 'Latest posts', 'English tech page sidebar');
   assertContains(post, '构建一个轻量静态博客 MVP', 'post page');
   assertContains(post, 'twitter:card', 'post page metadata');
   assertContains(post, 'default.png', 'post page metadata');
