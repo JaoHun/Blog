@@ -79,6 +79,7 @@ corepack pnpm launch:check
 - Home page opens and shows the personal notes/sharing positioning.
 - Home page links to the technical notes and project records section.
 - `/tech/` renders the technical notes and project records section.
+- `/tech/` and `/posts/` show the technical content sidebar on desktop.
 - `/en/tech/` renders the English technical section.
 - Chinese is the default language at `/`; English is available at `/en/`.
 - Header language switch works between `/` and `/en/`.
@@ -86,11 +87,13 @@ corepack pnpm launch:check
 - `/en/posts/` lists the English version of the published post.
 - `/posts/page/1/` may exist as a static export compatibility route; the canonical first page remains `/posts/`.
 - `/posts/static-blog-mvp/` renders MDX and highlighted code.
+- `/posts/static-blog-mvp/` shows author context, TOC, and latest posts in one right sidebar.
 - `/en/posts/static-blog-mvp/` renders the English MDX article.
 - `/categories/` and `/tags/` render overview pages.
 - `/rss.xml`, `/rss.en.xml`, `/sitemap.xml`, `/robots.txt`, and `/search-index.json` are reachable.
 - Draft route `/posts/draft-example/` is not available in production.
 - Mobile viewport has no horizontal page overflow except inside code blocks.
+- Mobile layout stacks the sidebar below the main content.
 
 ## 6. Rollback
 

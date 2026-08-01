@@ -82,3 +82,13 @@ Do not implement these in the first version:
 - Mobile layout remains readable with no horizontal overflow.
 - Existing tests, build, and `launch:check` pass.
 - Home page remains focused on personal notes and sharing.
+
+## Implementation Status
+
+Implementation exists for:
+
+- `/tech/`
+- `/posts/`
+- `/posts/[slug]/`
+
+Article detail pages use a single right sidebar containing author context, table of contents, and latest posts.
