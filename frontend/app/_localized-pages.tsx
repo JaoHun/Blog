@@ -11,6 +11,7 @@ import { ProjectList } from '@/components/project/ProjectList';
 import { SearchBox } from '@/components/search/SearchBox';
 import { ContentSidebar } from '@/components/sidebar/ContentSidebar';
 import { ContentWithSidebar } from '@/components/sidebar/ContentWithSidebar';
+import { HomeSidebar } from '@/components/sidebar/HomeSidebar';
 import { authorConfig, getAuthorBio } from '@/config/author';
 import { siteConfig } from '@/config/site';
 import { paginate } from '@/lib/content/pagination';
@@ -37,31 +38,33 @@ export async function HomePage({ lang }: { lang: Lang }) {
   const t = messages[lang];
 
   return (
-    <div className="space-y-12">
-      <section className="flex min-h-[45vh] flex-col justify-center gap-5">
-        <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{siteConfig.name}</p>
-        <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-          {t.home.heading}
-        </h1>
-        <p className="max-w-2xl text-base leading-7 text-muted">{t.home.description}</p>
-      </section>
+    <ContentWithSidebar sidebar={<HomeSidebar lang={lang} />}>
+      <div className="space-y-12">
+        <section className="flex min-h-[45vh] flex-col justify-center gap-5">
+          <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{siteConfig.name}</p>
+          <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            {t.home.heading}
+          </h1>
+          <p className="max-w-2xl text-base leading-7 text-muted">{t.home.description}</p>
+        </section>
 
-      <section className="grid gap-5 md:grid-cols-[1.2fr_0.8fr]">
-        <div className="rounded-lg border border-border p-6">
-          <h2 className="text-2xl font-semibold tracking-tight">{t.home.emptyTitle}</h2>
-          <p className="mt-3 leading-7 text-muted">{t.home.emptyDescription}</p>
-        </div>
-        <Link
-          className="rounded-lg border border-border p-6 transition hover:border-accent"
-          href={localizedPath('/tech', lang)}
-        >
-          <span className="text-sm font-medium uppercase tracking-[0.16em] text-muted">{siteConfig.name}</span>
-          <h2 className="mt-4 text-2xl font-semibold tracking-tight">{t.home.techTitle}</h2>
-          <p className="mt-3 leading-7 text-muted">{t.home.techDescription}</p>
-          <span className="mt-5 inline-block text-sm text-link">{t.home.techAction}</span>
-        </Link>
-      </section>
-    </div>
+        <section className="grid gap-5 md:grid-cols-[1.2fr_0.8fr]">
+          <div className="rounded-lg border border-border p-6">
+            <h2 className="text-2xl font-semibold tracking-tight">{t.home.emptyTitle}</h2>
+            <p className="mt-3 leading-7 text-muted">{t.home.emptyDescription}</p>
+          </div>
+          <Link
+            className="rounded-lg border border-border p-6 transition hover:border-accent"
+            href={localizedPath('/tech', lang)}
+          >
+            <span className="text-sm font-medium uppercase tracking-[0.16em] text-muted">{siteConfig.name}</span>
+            <h2 className="mt-4 text-2xl font-semibold tracking-tight">{t.home.techTitle}</h2>
+            <p className="mt-3 leading-7 text-muted">{t.home.techDescription}</p>
+            <span className="mt-5 inline-block text-sm text-link">{t.home.techAction}</span>
+          </Link>
+        </section>
+      </div>
+    </ContentWithSidebar>
   );
 }
 

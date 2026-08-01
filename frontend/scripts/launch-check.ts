@@ -60,7 +60,7 @@ async function main() {
   await Promise.all(requiredFiles.map(assertFile));
 
   const home = await readOutFile('index.html');
-  const englishHome = await readOutFile('en/index.html');
+  const enHome = await readOutFile('en/index.html');
   const tech = await readOutFile('tech/index.html');
   const englishTech = await readOutFile('en/tech/index.html');
   const posts = await readOutFile('posts/index.html');
@@ -74,7 +74,11 @@ async function main() {
   assertContains(home, 'JaoHun Blog', 'home page');
   assertContains(home, '个人杂谈与分享', 'home page');
   assertContains(home, '技术笔记与项目记录', 'home page');
-  assertContains(englishHome, 'Personal notes and essays', 'English home page');
+  assertContains(enHome, 'Personal notes and essays', 'English home page');
+  assertContains(home, '个人侧栏', 'home sidebar');
+  assertContains(home, '当前关注', 'home sidebar');
+  assertContains(enHome, 'Personal sidebar', 'English home sidebar');
+  assertContains(enHome, 'Current focus', 'English home sidebar');
   assertContains(tech, '技术笔记与项目记录', 'tech page');
   assertContains(tech, '内容统计', 'tech page sidebar');
   assertContains(tech, '最新文章', 'tech page sidebar');
