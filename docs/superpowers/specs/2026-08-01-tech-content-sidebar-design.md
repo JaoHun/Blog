@@ -26,7 +26,7 @@ First version modules:
 
 - Author card: name, short bio, GitHub link.
 - Content stats: published article count, category count, tag count.
-- Notice: short personal statement, for example `慢慢记录，保持清醒。`.
+- Notice: personal statement `慢慢记录，保持清醒。`.
 - Latest posts: latest 3 published posts for the current language.
 - Table of contents: only on article detail pages.
 
