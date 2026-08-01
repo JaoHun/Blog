@@ -1,32 +1,30 @@
 # Post Writing Guide
 
+This project is a static-first writing system. Articles are local MDX files, validated at build time, and published through Git.
+
+`frontend/lib/content/schema.ts` is the machine source of truth. This guide is the human-readable writing rulebook.
+
 ## Create A Draft
 
-Run from `frontend`:
+Recommended manual flow:
+
+1. Copy `frontend/content/posts/writing-template.mdx`.
+2. Rename the copy with a lowercase kebab-case file name, for example `nextjs-static-export-notes.zh.mdx`.
+3. Fill in Frontmatter.
+4. Keep `draft: true` while writing.
+5. Change `draft` to `false` only when ready to publish.
+
+Optional helper command, run from `frontend`:
 
 ```powershell
 corepack pnpm new-post "文章标题"
 ```
 
-The command creates a Chinese draft in `content/posts` with valid Frontmatter. Keep `draft: true` until the article is ready to publish.
-
-This project is a static-first writing system. Articles are local MDX files, validated at build time, and published through Git.
-
-## Writing Flow
-
-1. Copy `frontend/content/posts/writing-template.mdx`.
-2. Rename the copy with a lowercase kebab-case file name, for example `nextjs-static-export-notes.mdx`.
-3. Fill in Frontmatter.
-4. Keep `draft: true` while writing.
-5. Write the article body in MDX.
-6. Run checks from `frontend`:
+Create an English draft with a custom slug:
 
 ```powershell
-corepack pnpm content:check
-corepack pnpm build
+corepack pnpm new-post "Post Title" post-title en
 ```
-
-7. Change `draft` to `false` only when the article is ready to publish.
 
 ## Frontmatter
 
@@ -34,22 +32,23 @@ Required fields:
 
 ```yaml
 title: "Article title"
-date: "2026-07-01"
+date: "2026-08-01"
 excerpt: "A concise summary between 20 and 220 characters."
 category: "Next.js"
 tags:
   - nextjs
-draft: true
 ```
 
 Optional fields:
 
 ```yaml
-updated: "2026-07-01"
+updated: "2026-08-01"
 featured: false
 sticky: false
+draft: true
 cover: "/images/posts/article-slug/cover.png"
 slug: "custom-slug"
+lang: "zh"
 type: "tech"
 ```
 
@@ -57,28 +56,24 @@ Rules:
 
 - Dates must be quoted `YYYY-MM-DD` strings.
 - Use `updated`, not `updateDate`.
-- Use one category and one or more tags.
-- Tags should be lowercase where practical.
-- `draft: true` is excluded from production pages, RSS, Sitemap, and search index.
+- `updated`, when present, must not be earlier than `date`.
+- Use exactly one category and one or more tags.
+- Tags are normalized and deduplicated by the content pipeline.
+- `featured`, `sticky`, and `draft` default to `false`.
+- `draft: true` is excluded from production pages, RSS, Sitemap, search index, and static post routes.
 - `cover`, when present, must start with `/images/`.
+- `slug`, when present, must use lowercase letters, numbers, and hyphens.
+- `type` defaults to `tech`; use `essay` only for future personal essays.
 
-## Images
+## Body
 
-Use normal MDX image syntax and always provide meaningful alt text:
+- Start with context: what problem, note, or experience is being recorded.
+- Use scannable headings.
+- Keep paragraphs short enough to read comfortably.
+- Use descriptive link text.
+- Add a language tag to every code block.
 
-```mdx
-![Screenshot of the build output](/images/posts/static-blog/build-output.png)
-```
-
-Place article images under:
-
-```text
-frontend/public/images/posts/<article-slug>/
-```
-
-## Code Blocks
-
-Always add a language tag so Shiki can highlight the code:
+Example code block:
 
 ````mdx
 ```ts
@@ -86,7 +81,51 @@ export const message = 'hello';
 ```
 ````
 
-Long code blocks can scroll horizontally on small screens.
+## Images
+
+Place article images under:
+
+```text
+frontend/public/images/posts/<article-slug>/
+```
+
+Use normal MDX image syntax and always provide meaningful alt text:
+
+```mdx
+![Screenshot of the build output](/images/posts/static-blog/build-output.png)
+```
+
+## Pre-Publish Checklist
+
+- [ ] `title` is complete and specific.
+- [ ] `date` is a quoted `YYYY-MM-DD` string.
+- [ ] `updated` is present when the article changed after publication.
+- [ ] `excerpt` clearly summarizes the article.
+- [ ] `category` is a single clear category.
+- [ ] `tags` has at least one tag.
+- [ ] `draft` is `false` only when ready to publish.
+- [ ] Code blocks include language tags.
+- [ ] Images have meaningful alt text.
+- [ ] Links are still valid.
+
+## Verification
+
+Run from `frontend`:
+
+```powershell
+corepack pnpm content:check
+corepack pnpm test
+corepack pnpm lint
+corepack pnpm build
+```
+
+After build:
+
+- [ ] The article appears in `/posts`.
+- [ ] The category page includes the article.
+- [ ] The tag pages include the article.
+- [ ] RSS and Sitemap include the article.
+- [ ] Search can find the article by title, category, or tag.
 
 ## Common Errors
 

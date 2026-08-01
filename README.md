@@ -94,9 +94,7 @@ See `docs/launch/domestic-server-deployment.md`.
 - Requirements: `docs/requirements/blog-mvp-requirements.md`
 - Overall design: `docs/designs/blog-overall-design.md`
 - Technical architecture: `docs/designs/blog-technical-architecture.md`
-- Writing guide: `docs/writing/post-writing-guide.md`
-- Writing rules: `docs/writing/post-rules.md`
-- Publishing checklist: `docs/writing/writing-checklist.md`
+- Writing guide and checklist: `docs/writing/post-writing-guide.md`
 - Launch checklist: `docs/launch/blog-mvp-launch-checklist.md`
 - Preview deployment: `docs/launch/preview-deployment.md`
 - Domestic server deployment: `docs/launch/domestic-server-deployment.md`

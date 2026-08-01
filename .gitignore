@@ -1,5 +1,6 @@
 .worktrees/
 worktrees/
+backend/
 node_modules/
 .next/
 out/

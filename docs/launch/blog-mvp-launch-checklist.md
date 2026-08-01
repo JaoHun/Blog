@@ -29,7 +29,6 @@ For preview deployment steps, see `docs/launch/preview-deployment.md`.
 - Current post URL: `/posts/static-blog-mvp/`.
 - Draft templates remain unpublished:
   - `frontend/content/posts/writing-template.mdx`
-  - `frontend/content/posts/static-blog-writing-workflow.mdx`
   - `frontend/content/posts/draft-example.mdx`
 - Recommended before formal launch: publish at least 3 real posts.
 
