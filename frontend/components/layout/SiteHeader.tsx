@@ -60,8 +60,11 @@ export function SiteHeader() {
               </Link>
             ))}
           </nav>
-          <Link className="text-xs text-muted transition hover:text-foreground" href={toggleLanguagePath(pathname, lang)}>
-            {lang === 'zh' ? 'English' : '中文'}
+          <Link
+            className="rounded-full border border-border px-3 py-1 text-xs text-muted transition hover:text-foreground"
+            href={toggleLanguagePath(pathname, lang)}
+          >
+            {lang === 'zh' ? 'EN' : '中'}
           </Link>
           <ThemeToggle />
         </div>
