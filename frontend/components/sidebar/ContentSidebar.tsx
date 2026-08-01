@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 import Link from 'next/link';
 
 import { ExternalLink } from '@/components/common/ExternalLink';
@@ -12,7 +12,7 @@ type ContentSidebarProps = {
   children?: ReactNode;
 };
 
-export async function ContentSidebar({ lang, children }: ContentSidebarProps): Promise<JSX.Element> {
+export async function ContentSidebar({ lang, children }: ContentSidebarProps): Promise<ReactElement> {
   const posts = await getPublishedPosts(lang);
   const t = messages[lang];
   const categories = new Set(posts.map((post) => post.category));
