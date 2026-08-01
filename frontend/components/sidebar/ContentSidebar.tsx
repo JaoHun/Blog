@@ -5,7 +5,6 @@ import { ExternalLink } from '@/components/common/ExternalLink';
 import { authorConfig, getAuthorBio } from '@/config/author';
 import type { Lang } from '@/lib/content/posts';
 import { getPublishedPosts } from '@/lib/content/posts';
-import { routeSegment } from '@/lib/content/route';
 import { localizedPath, messages } from '@/lib/i18n';
 
 type ContentSidebarProps = {
@@ -54,7 +53,6 @@ export async function ContentSidebar({ lang, children }: ContentSidebarProps): P
           {posts.slice(0, 3).map((post) => (
             <li key={post.slug}>
               <Link
-                aria-label={post.slug === 'static-blog-mvp' && lang === 'zh' ? '鏋勫缓涓€涓交閲忛潤鎬佸崥瀹?MVP' : post.title}
                 className="leading-6 transition hover:text-link"
                 href={localizedPath(`/posts/${post.slug}`, lang)}
               >
@@ -65,21 +63,7 @@ export async function ContentSidebar({ lang, children }: ContentSidebarProps): P
         </ul>
       </section>
 
-      {children}
-
-      {posts.length > 0 ? (
-        <nav aria-label={t.sidebar.categories}>
-          <ul className="flex flex-wrap gap-2">
-            {[...categories].map((category) => (
-              <li key={category}>
-                <Link className="text-muted hover:text-foreground" href={localizedPath(`/categories/${routeSegment(category)}`, lang)}>
-                  {category}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      ) : null}
+      {children ? <section className="rounded-lg border border-border p-5">{children}</section> : null}
     </div>
   );
 }

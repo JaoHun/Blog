@@ -10,11 +10,11 @@ describe('ContentSidebar', () => {
     render(await ContentSidebar({ lang: 'zh' }));
 
     expect(screen.getByText('JaoHun')).toBeInTheDocument();
-    expect(screen.getByText('鎱㈡參璁板綍锛屼繚鎸佹竻閱掋€俙')).toBeInTheDocument();
-    expect(screen.getByText('鍐呭缁熻')).toBeInTheDocument();
-    expect(screen.getByText('鏈€鏂版枃绔燻')).toBeInTheDocument();
+    expect(screen.getByText('慢慢记录，保持清醒。')).toBeInTheDocument();
+    expect(screen.getByText('内容统计')).toBeInTheDocument();
+    expect(screen.getByText('最新文章')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'GitHub' })).toHaveAttribute('href', 'https://github.com/JaoHun');
-    expect(screen.getByRole('link', { name: '鏋勫缓涓€涓交閲忛潤鎬佸崥瀹?MVP' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: '构建一个轻量静态博客 MVP' })).toHaveAttribute(
       'href',
       '/posts/static-blog-mvp',
     );
