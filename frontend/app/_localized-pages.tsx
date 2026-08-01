@@ -34,11 +34,21 @@ type PaginationParams = {
   pagination: string[];
 };
 
+function getPostStats(posts: Awaited<ReturnType<typeof getPublishedPosts>>) {
+  return {
+    categories: new Set(posts.map((post) => post.category)).size,
+    posts: posts.length,
+    tags: new Set(posts.flatMap((post) => post.tags)).size,
+  };
+}
+
 export async function HomePage({ lang }: { lang: Lang }) {
+  const posts = await getPublishedPosts(lang);
+  const stats = getPostStats(posts);
   const t = messages[lang];
 
   return (
-    <ContentWithSidebar sidebar={<HomeSidebar lang={lang} />}>
+    <ContentWithSidebar sidebar={<HomeSidebar lang={lang} stats={stats} />}>
       <div className="space-y-12">
         <section className="flex min-h-[45vh] flex-col justify-center gap-5">
           <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{siteConfig.name}</p>
