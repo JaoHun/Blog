@@ -29,6 +29,15 @@ export const messages = {
       techDescription: '整理工程实践、技术笔记、项目过程和相关复盘。',
       techAction: '进入技术板块',
     },
+    homeSidebar: {
+      label: '个人侧栏',
+      focusTitle: '当前关注',
+      focusDescription: '慢慢记录日常、技术笔记和项目过程。',
+      linksTitle: '快速入口',
+      tech: '技术笔记与项目记录',
+      about: '关于我',
+      github: 'GitHub',
+    },
     tech: {
       title: '技术笔记与项目记录',
       description: '集中展示技术文章、项目记录和工程实践内容。',
@@ -112,6 +121,15 @@ export const messages = {
       techTitle: 'Technical notes and project records',
       techDescription: 'Engineering notes, project records, implementation details, and practical retrospectives.',
       techAction: 'Open technical section',
+    },
+    homeSidebar: {
+      label: 'Personal sidebar',
+      focusTitle: 'Current focus',
+      focusDescription: 'Slowly recording daily notes, technical writing, and project process.',
+      linksTitle: 'Quick links',
+      tech: 'Technical notes and project records',
+      about: 'About',
+      github: 'GitHub',
     },
     tech: {
       title: 'Technical notes and project records',
