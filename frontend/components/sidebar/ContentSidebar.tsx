@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { ExternalLink } from '@/components/common/ExternalLink';
 import { authorConfig, getAuthorBio } from '@/config/author';
-import type { Lang } from '@/lib/content/posts';
+import type { Lang, Post } from '@/lib/content/posts';
 import { getPublishedPosts } from '@/lib/content/posts';
 import { localizedPath, messages } from '@/lib/i18n';
 
@@ -12,8 +12,13 @@ type ContentSidebarProps = {
   children?: ReactNode;
 };
 
+export function getLatestPosts(posts: Post[]) {
+  return [...posts].sort((first, second) => Date.parse(second.date) - Date.parse(first.date)).slice(0, 3);
+}
+
 export async function ContentSidebar({ lang, children }: ContentSidebarProps): Promise<ReactElement> {
   const posts = await getPublishedPosts(lang);
+  const latestPosts = getLatestPosts(posts);
   const t = messages[lang];
   const categories = new Set(posts.map((post) => post.category));
   const tags = new Set(posts.flatMap((post) => post.tags));
@@ -50,7 +55,7 @@ export async function ContentSidebar({ lang, children }: ContentSidebarProps): P
       <section className="rounded-lg border border-border p-5">
         <h2 className="text-base font-semibold">{t.sidebar.latestPosts}</h2>
         <ul className="mt-3 space-y-3">
-          {posts.slice(0, 3).map((post) => (
+          {latestPosts.map((post) => (
             <li key={post.slug}>
               <Link
                 className="leading-6 transition hover:text-link"

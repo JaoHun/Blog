@@ -348,7 +348,7 @@ export async function PostPage({ lang, slug }: { lang: Lang; slug: string }) {
     <ContentWithSidebar
       sidebar={
         <ContentSidebar lang={lang}>
-          <PostToc headings={post.headings} lang={lang} />
+          <PostToc headings={post.headings} lang={lang} variant="embedded" />
         </ContentSidebar>
       }
     >
