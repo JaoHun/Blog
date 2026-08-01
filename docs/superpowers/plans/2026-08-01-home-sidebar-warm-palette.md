@@ -347,7 +347,7 @@ it('defines the warm global palette tokens', () => {
 expect(css).toContain('--background: #faf7f2');
 expect(css).toContain('--foreground: #2f2a25');
 expect(css).toContain('--muted: #6f665d');
-expect(css).toContain('--border: #e6ded4');
+expect(css).toContain('--border: #9a8876');
 expect(css).toContain('--link: #2f6f9f');
 expect(css).toContain('--code-bg: #f3eee7');
 expect(css).toContain('--code-fg: #1f2933');
@@ -355,7 +355,7 @@ expect(css).toContain('--accent: #2f6f9f');
 expect(css).toContain('--background: #181715');
 expect(css).toContain('--foreground: #eee9e2');
 expect(css).toContain('--muted: #b8afa4');
-expect(css).toContain('--border: #34302b');
+expect(css).toContain('--border: #75695e');
 expect(css).toContain('--link: #8ab6d6');
 expect(css).toContain('--code-bg: #211f1c');
 expect(css).toContain('--code-fg: #f8f4ee');
@@ -385,7 +385,7 @@ Modify `frontend/app/globals.css`:
   --background: #faf7f2;
   --foreground: #2f2a25;
   --muted: #6f665d;
-  --border: #e6ded4;
+  --border: #9a8876;
   --link: #2f6f9f;
   --code-bg: #f3eee7;
   --code-fg: #1f2933;
@@ -396,7 +396,7 @@ Modify `frontend/app/globals.css`:
   --background: #181715;
   --foreground: #eee9e2;
   --muted: #b8afa4;
-  --border: #34302b;
+  --border: #75695e;
   --link: #8ab6d6;
   --code-bg: #211f1c;
   --code-fg: #f8f4ee;

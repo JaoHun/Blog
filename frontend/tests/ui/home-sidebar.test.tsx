@@ -20,6 +20,7 @@ describe('HomeSidebar', () => {
   it('renders localized English internal links', () => {
     render(<HomeSidebar lang="en" />);
 
+    expect(screen.getByLabelText('Personal sidebar').tagName).toBe('DIV');
     expect(screen.getByText('Current focus')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Technical notes and project records' })).toHaveAttribute(
       'href',

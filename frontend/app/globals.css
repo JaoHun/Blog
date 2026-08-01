@@ -4,7 +4,7 @@
   --background: #faf7f2;
   --foreground: #2f2a25;
   --muted: #6f665d;
-  --border: #e6ded4;
+  --border: #9a8876;
   --link: #2f6f9f;
   --code-bg: #f3eee7;
   --code-fg: #1f2933;
@@ -15,7 +15,7 @@
   --background: #181715;
   --foreground: #eee9e2;
   --muted: #b8afa4;
-  --border: #34302b;
+  --border: #75695e;
   --link: #8ab6d6;
   --code-bg: #211f1c;
   --code-fg: #f8f4ee;
@@ -28,6 +28,8 @@
   --color-muted: var(--muted);
   --color-border: var(--border);
   --color-link: var(--link);
+  --color-code-bg: var(--code-bg);
+  --color-code-fg: var(--code-fg);
   --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -69,7 +71,7 @@ a {
 
 ::selection {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--background);
 }
 
 .post-image {

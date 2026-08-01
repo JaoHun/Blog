@@ -34,7 +34,7 @@ describe('global theme palette', () => {
       '--background: #faf7f2',
       '--foreground: #2f2a25',
       '--muted: #6f665d',
-      '--border: #e6ded4',
+      '--border: #9a8876',
       '--link: #2f6f9f',
       '--code-bg: #f3eee7',
       '--code-fg: #1f2933',
@@ -42,7 +42,7 @@ describe('global theme palette', () => {
       '--background: #181715',
       '--foreground: #eee9e2',
       '--muted: #b8afa4',
-      '--border: #34302b',
+      '--border: #75695e',
       '--link: #8ab6d6',
       '--code-bg: #211f1c',
       '--code-fg: #f8f4ee',
@@ -52,5 +52,12 @@ describe('global theme palette', () => {
     for (const token of requiredTokens) {
       expect(globalsCss).toContain(token);
     }
+  });
+
+  it('maps code-surface tokens to Tailwind color utilities', () => {
+    const globalsCss = readFileSync(join(process.cwd(), 'app/globals.css'), 'utf8');
+
+    expect(globalsCss).toContain('--color-code-bg: var(--code-bg)');
+    expect(globalsCss).toContain('--color-code-fg: var(--code-fg)');
   });
 });

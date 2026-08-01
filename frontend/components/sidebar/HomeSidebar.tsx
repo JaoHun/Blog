@@ -15,7 +15,7 @@ export function HomeSidebar({ lang }: HomeSidebarProps): ReactElement {
   const githubLink = authorConfig.links.find((link) => link.label === 'GitHub');
 
   return (
-    <aside aria-label={t.label} className="space-y-5 text-sm">
+    <div aria-label={t.label} className="space-y-5 text-sm">
       <section className="rounded-lg border border-border bg-background/70 p-5">
         <h2 className="text-base font-semibold">{authorConfig.name}</h2>
         <p className="mt-3 leading-6 text-muted">{getAuthorBio(lang)}</p>
@@ -48,6 +48,6 @@ export function HomeSidebar({ lang }: HomeSidebarProps): ReactElement {
           ) : null}
         </ul>
       </nav>
-    </aside>
+    </div>
   );
 }
