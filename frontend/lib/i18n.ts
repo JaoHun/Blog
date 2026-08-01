@@ -33,6 +33,17 @@ export const messages = {
       title: '技术笔记与项目记录',
       description: '集中展示技术文章、项目记录和工程实践内容。',
     },
+    sidebar: {
+      author: '浣滆€?',
+      stats: '鍐呭缁熻',
+      posts: '鏂囩珷',
+      categories: '鍒嗙被',
+      tags: '鏍囩',
+      notice: '鍏憡',
+      latestPosts: '鏈€鏂版枃绔燻',
+      github: 'GitHub',
+      note: '鎱㈡參璁板綍锛屼繚鎸佹竻閱掋€俙',
+    },
     nav: {
       home: '首页',
       tech: '技术',
@@ -105,6 +116,17 @@ export const messages = {
     tech: {
       title: 'Technical notes and project records',
       description: 'A focused section for technical articles, project records, and engineering practice.',
+    },
+    sidebar: {
+      author: 'Author',
+      stats: 'Content stats',
+      posts: 'Posts',
+      categories: 'Categories',
+      tags: 'Tags',
+      notice: 'Notice',
+      latestPosts: 'Latest posts',
+      github: 'GitHub',
+      note: 'Keep writing slowly and clearly.',
     },
     nav: {
       home: 'Home',
