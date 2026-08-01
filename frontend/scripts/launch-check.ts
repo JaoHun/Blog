@@ -84,6 +84,9 @@ async function main() {
   assertContains(englishTech, 'Content stats', 'English tech page sidebar');
   assertContains(englishTech, 'Latest posts', 'English tech page sidebar');
   assertContains(post, '构建一个轻量静态博客 MVP', 'post page');
+  assertContains(post, '内容统计', 'post page sidebar');
+  assertContains(post, '目录', 'post page table of contents');
+  assertContains(post, '最新文章', 'post page sidebar');
   assertContains(post, 'twitter:card', 'post page metadata');
   assertContains(post, 'default.png', 'post page metadata');
 

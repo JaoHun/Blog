@@ -345,7 +345,14 @@ export async function PostPage({ lang, slug }: { lang: Lang; slug: string }) {
   const t = messages[lang].posts;
 
   return (
-    <article className="grid gap-8 lg:grid-cols-[1fr_220px]">
+    <ContentWithSidebar
+      sidebar={
+        <ContentSidebar lang={lang}>
+          <PostToc headings={post.headings} lang={lang} />
+        </ContentSidebar>
+      }
+    >
+      <article>
       <div className="min-w-0">
         <Link className="text-sm text-link" href={localizedPath('/posts', lang)}>
           {t.back}
@@ -371,9 +378,7 @@ export async function PostPage({ lang, slug }: { lang: Lang; slug: string }) {
           ) : null}
         </nav>
       </div>
-      <aside className="lg:sticky lg:top-8 lg:self-start">
-        <PostToc headings={post.headings} lang={lang} />
-      </aside>
-    </article>
+      </article>
+    </ContentWithSidebar>
   );
 }
