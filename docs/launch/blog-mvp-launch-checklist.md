@@ -94,6 +94,10 @@ corepack pnpm launch:check
 - Draft route `/posts/draft-example/` is not available in production.
 - Mobile viewport has no horizontal page overflow except inside code blocks.
 - Mobile layout stacks the sidebar below the main content.
+- `/` and `/en/` show the lightweight personal sidebar on desktop.
+- Home sidebar stacks below the main home content on mobile.
+- Global light and dark themes use the warmer palette.
+- Code blocks remain readable in both themes.
 
 ## 6. Rollback
 

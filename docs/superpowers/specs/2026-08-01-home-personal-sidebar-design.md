@@ -77,3 +77,12 @@ Do not hardcode reusable personal data directly inside page components.
 - Existing technical sidebar behavior remains unchanged.
 - Existing `content:check`, `test`, `lint`, `build`, and `launch:check` pass.
 
+## Implementation Status
+
+Implemented for:
+
+- `/`
+- `/en/`
+
+The home sidebar is intentionally lightweight and contains personal context plus quick navigation links. Richer personal content can be added later without changing the layout.
+

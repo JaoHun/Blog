@@ -69,3 +69,9 @@ Do not implement these in the first version:
 - Existing theme switching behavior still works.
 - Existing `content:check`, `test`, `lint`, `build`, and `launch:check` pass.
 
+## Implementation Status
+
+Implemented as global CSS variable updates in `frontend/app/globals.css`.
+
+The first version does not use a background image. It keeps the existing theme switch behavior and preserves readable code block colors.
+
