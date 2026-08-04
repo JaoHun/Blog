@@ -40,7 +40,7 @@ describe('static asset generation', () => {
 
     expect(rss).toContain('<rss');
     expect(rss).toContain('构建一个轻量静态博客 MVP');
-    expect(rss).toContain('一个轻量个人技术博客');
+    expect(rss).toContain('一个轻量个人博客');
     expect(rss).not.toContain('Draft Example');
 
     expect(englishRss).toContain('Building a Lightweight Static Blog MVP');

@@ -22,17 +22,17 @@ export const messages = {
     },
     home: {
       heading: '个人杂谈与分享',
-      description: '这里会逐步记录日常思考、生活片段、阅读感受和一些不一定成体系的分享。',
-      emptyTitle: '杂谈内容后续添加',
-      emptyDescription: '当前先保留主页入口，后续有真实内容后再逐步补充。',
+      description: '记录各种随笔和想记的东西，也会放一些学习新技术时留下的观察、理解和阶段性想法。',
+      emptyTitle: '慢慢记录一些想留下的内容',
+      emptyDescription: '这里会逐步放日常随笔、阅读感受、学习片段和不一定成体系的个人记录。',
       techTitle: '技术笔记与项目记录',
-      techDescription: '整理工程实践、技术笔记、项目过程和相关复盘。',
+      techDescription: '整理 Agent 智能体、大模型开发、技术笔记、项目过程和相关复盘。',
       techAction: '进入技术板块',
     },
     homeSidebar: {
       label: '个人侧栏',
       focusTitle: '当前关注',
-      focusDescription: '慢慢记录日常、技术笔记和项目过程。',
+      focusDescription: '不断学习了解新技术，关注 Agent 智能体、大模型开发、技术笔记和项目复盘。',
       linksTitle: '快速入口',
       tech: '技术笔记与项目记录',
       about: '关于我',
@@ -40,7 +40,7 @@ export const messages = {
     },
     tech: {
       title: '技术笔记与项目记录',
-      description: '集中展示技术文章、项目记录和工程实践内容。',
+      description: '集中展示 Agent 智能体、大模型开发学习、技术文章、项目记录和工程实践复盘。',
     },
     sidebar: {
       author: '作者',
@@ -51,7 +51,7 @@ export const messages = {
       notice: '公告',
       latestPosts: '最新文章',
       github: 'GitHub',
-      note: '慢慢记录，保持清醒。',
+      note: '记录想记的东西，也记录学习新技术时的理解和复盘。',
     },
     nav: {
       home: '首页',
@@ -64,7 +64,7 @@ export const messages = {
     },
     posts: {
       title: '文章',
-      description: '按时间倒序浏览技术笔记，支持本地搜索和筛选。',
+      description: '按时间倒序浏览随笔、技术笔记和项目复盘，支持本地搜索和筛选。',
       back: '返回文章',
       previous: '上一篇',
       next: '下一篇',
@@ -74,12 +74,12 @@ export const messages = {
     },
     projects: {
       title: '项目',
-      description: '记录项目范围、技术选择、源码链接和相关文章。',
+      description: '记录项目范围、技术选择、源码链接、实现过程和相关复盘。',
       source: '源码',
       demo: '演示',
       relatedPost: '相关文章',
       emptyTitle: '暂无项目',
-      emptyDescription: '后续会在这里展示项目记录。',
+      emptyDescription: '后续会在这里展示真实项目记录和复盘。',
       status: {
         active: '进行中',
         maintained: '维护中',
@@ -115,17 +115,17 @@ export const messages = {
     },
     home: {
       heading: 'Personal notes and essays',
-      description: 'A place for casual notes, daily thoughts, reading reflections, and lightweight personal sharing.',
-      emptyTitle: 'Personal notes will be added later',
-      emptyDescription: 'The home page keeps this space ready while real content is added over time.',
+      description: 'A place for notes, things worth remembering, technology learning, and personal thoughts that do not always need to be fully structured.',
+      emptyTitle: 'Notes will grow over time',
+      emptyDescription: 'This space will collect essays, reading notes, learning fragments, and lightweight personal records.',
       techTitle: 'Technical notes and project records',
-      techDescription: 'Engineering notes, project records, implementation details, and practical retrospectives.',
+      techDescription: 'Agent systems, LLM development, technical notes, project process, and practical retrospectives.',
       techAction: 'Open technical section',
     },
     homeSidebar: {
       label: 'Personal sidebar',
       focusTitle: 'Current focus',
-      focusDescription: 'Slowly recording daily notes, technical writing, and project process.',
+      focusDescription: 'Learning new technologies with a focus on Agent systems, LLM development, technical notes, and project retrospectives.',
       linksTitle: 'Quick links',
       tech: 'Technical notes and project records',
       about: 'About',
@@ -133,7 +133,7 @@ export const messages = {
     },
     tech: {
       title: 'Technical notes and project records',
-      description: 'A focused section for technical articles, project records, and engineering practice.',
+      description: 'A focused section for Agent systems, LLM development learning, technical writing, project records, and engineering retrospectives.',
     },
     sidebar: {
       author: 'Author',
@@ -144,7 +144,7 @@ export const messages = {
       notice: 'Notice',
       latestPosts: 'Latest posts',
       github: 'GitHub',
-      note: 'Keep writing slowly and clearly.',
+      note: 'Recording things worth remembering and the learning process behind new technologies.',
     },
     nav: {
       home: 'Home',
@@ -158,7 +158,7 @@ export const messages = {
     posts: {
       title: 'Posts',
       description:
-        'Browse technical notes in reverse chronological order, with local search and filtering support.',
+        'Browse essays, technical notes, and project retrospectives in reverse chronological order, with local search and filtering support.',
       back: 'Back to posts',
       previous: 'Previous',
       next: 'Next',
@@ -168,12 +168,12 @@ export const messages = {
     },
     projects: {
       title: 'Projects',
-      description: 'Project records with scope, technology choices, source links, and related writing.',
+      description: 'Project records with scope, technology choices, source links, implementation notes, and retrospectives.',
       source: 'Source',
       demo: 'Demo',
       relatedPost: 'Related post',
       emptyTitle: 'No projects yet',
-      emptyDescription: 'Project records will be listed here later.',
+      emptyDescription: 'Real project records and retrospectives will be listed here later.',
       status: {
         active: 'Active',
         maintained: 'Maintained',

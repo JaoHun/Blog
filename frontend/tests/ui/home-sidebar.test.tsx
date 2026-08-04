@@ -14,7 +14,7 @@ describe('HomeSidebar', () => {
     );
     expect(screen.getByRole('heading', { name: 'JaoHun' })).toBeInTheDocument();
     expect(screen.getByText('当前关注')).toBeInTheDocument();
-    expect(screen.getByText('慢慢记录日常、技术笔记和项目过程。')).toBeInTheDocument();
+    expect(screen.getByText('不断学习了解新技术，关注 Agent 智能体、大模型开发、技术笔记和项目复盘。')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: '技术笔记与项目记录' })).toHaveAttribute('href', '/tech');
     expect(screen.getByRole('link', { name: '关于我' })).toHaveAttribute('href', '/about');
     expect(screen.getByRole('link', { name: 'GitHub' })).toHaveAttribute('href', 'https://github.com/JaoHun');

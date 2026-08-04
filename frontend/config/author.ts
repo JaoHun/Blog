@@ -3,12 +3,12 @@ import type { Lang } from '@/lib/content/posts';
 
 export const authorConfig = authorSchema.parse({
   name: 'JaoHun',
-  bio: 'Developer focused on practical web engineering, static publishing workflows, and long-term technical note taking.',
+  bio: 'A personal space for notes, things worth remembering, new technology learning, Agent systems, LLM development, technical writing, and project retrospectives.',
   bioByLang: {
-    zh: '关注实用 Web 工程、静态发布流程和长期技术笔记沉淀，持续记录项目实践与工程取舍。',
-    en: 'Developer focused on practical web engineering, static publishing workflows, and long-term technical note taking.',
+    zh: '记录各种随笔和想记的东西，不断学习了解新技术，关注 Agent 智能体、大模型开发、技术笔记和项目复盘。',
+    en: 'A personal space for notes, things worth remembering, new technology learning, Agent systems, LLM development, technical writing, and project retrospectives.',
   },
-  skills: ['Next.js', 'TypeScript', 'MDX', 'Static Sites', 'Content Workflow', 'Frontend Engineering'],
+  skills: ['Agent', 'LLM Development', 'Next.js', 'TypeScript', 'MDX', 'Project Review'],
   links: [
     {
       label: 'GitHub',

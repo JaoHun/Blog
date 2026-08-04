@@ -5,12 +5,12 @@ export const projectConfig = [
   projectSchema.parse({
     name: 'JaoHun Blog',
     description:
-      'A statically exported personal technical blog with MDX writing, content validation, search, theme switching, RSS, and sitemap support.',
+      'A statically exported personal blog used to organize notes, technical writing, learning records, and project retrospectives.',
     descriptionByLang: {
-      zh: '一个静态导出的个人技术博客，支持 MDX 写作、内容校验、搜索、主题切换、RSS 和站点地图。',
-      en: 'A statically exported personal technical blog with MDX writing, content validation, search, theme switching, RSS, and sitemap support.',
+      zh: '一个静态导出的个人博客，用来整理随笔、技术笔记、学习记录和项目复盘，支持 MDX 写作、搜索、主题切换、RSS 和站点地图。',
+      en: 'A statically exported personal blog used to organize notes, technical writing, learning records, and project retrospectives.',
     },
-    techStack: ['Next.js', 'TypeScript', 'MDX', 'Zod'],
+    techStack: ['Next.js', 'TypeScript', 'MDX', 'Static Export'],
     status: 'active',
     featured: true,
     sourceUrl: 'https://github.com/JaoHun/Blog',

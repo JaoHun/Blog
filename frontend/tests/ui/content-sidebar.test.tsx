@@ -40,7 +40,7 @@ describe('ContentSidebar', () => {
     render(await ContentSidebar({ lang: 'zh' }));
 
     expect(screen.getByText('JaoHun')).toBeInTheDocument();
-    expect(screen.getByText('慢慢记录，保持清醒。')).toBeInTheDocument();
+    expect(screen.getByText('记录想记的东西，也记录学习新技术时的理解和复盘。')).toBeInTheDocument();
     expect(screen.getByText('内容统计')).toBeInTheDocument();
     expect(screen.getByText('最新文章')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'GitHub' })).toHaveAttribute('href', 'https://github.com/JaoHun');
