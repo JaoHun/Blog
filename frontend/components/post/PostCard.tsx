@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { PostImage } from '@/components/post/PostImage';
 import type { Post } from '@/lib/content/posts';
 import { routeSegment } from '@/lib/content/route';
 import { localizedPath, messages } from '@/lib/i18n';
@@ -12,9 +13,22 @@ type PostCardProps = {
 
 export function PostCard({ lang = 'zh', post }: PostCardProps) {
   const t = messages[lang];
+  const articleHref = localizedPath(`/posts/${post.slug}`, lang);
 
   return (
     <article className="border-b border-border py-6">
+      {post.cover ? (
+        <Link
+          className="mb-5 block aspect-[16/9] overflow-hidden rounded-lg border border-border"
+          href={articleHref}
+        >
+          <PostImage
+            alt={post.title}
+            className="!m-0 !h-full !w-full !rounded-none !border-0 object-cover transition duration-300 hover:scale-[1.01]"
+            src={post.cover}
+          />
+        </Link>
+      ) : null}
       <div className="flex flex-wrap gap-3 text-sm text-muted">
         <time dateTime={post.date}>{post.date}</time>
         {post.updated ? <span>{t.posts.updated} {post.updated}</span> : null}
@@ -23,7 +37,7 @@ export function PostCard({ lang = 'zh', post }: PostCardProps) {
         </Link>
       </div>
       <h2 className="mt-3 text-2xl font-semibold tracking-tight">
-        <Link className="transition hover:text-link" href={localizedPath(`/posts/${post.slug}`, lang)}>
+        <Link className="transition hover:text-link" href={articleHref}>
           {post.title}
         </Link>
       </h2>
