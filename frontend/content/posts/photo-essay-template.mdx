@@ -42,4 +42,7 @@ type: "essay"
 - [ ] 每张图片都有准确的替代文本。
 - [ ] 封面存在时已启用 `cover`。
 - [ ] `corepack pnpm content:check` 可以通过。
-- [ ] 准备发布时才将 `draft` 改为 `false`。
+- [ ] 发布前在本地暂时将 `draft` 设置为 `false`，运行 `corepack pnpm dev`。
+- [ ] 查看 `/moments` 卡片和 `/posts/<slug>` 文章路由，确认封面裁剪正确、每张正文图片都已加载。
+- [ ] 准备发布时保留 `draft: false`；未完成的文章在提交前恢复 `draft: true`。
+- [ ] 准备发布时才保留 `draft: false`。

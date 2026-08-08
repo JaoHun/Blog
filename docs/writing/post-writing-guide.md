@@ -140,6 +140,15 @@ corepack pnpm lint
 corepack pnpm build
 ```
 
+### Preview Images Locally
+
+`content:check` and the production build validate an image path's `/images/` prefix, but they do not prove that the referenced file exists. Before publishing a photo essay or any post with images:
+
+1. When the draft and image files are final, temporarily set `draft: false` locally.
+2. Run `corepack pnpm dev`.
+3. Check the `/moments` card and `/posts/<slug>` article route. Confirm the cover crop looks correct and every body image loads.
+4. Keep `draft: false` when the post is ready to publish, or restore `draft: true` before committing unfinished work.
+
 After build:
 
 - [ ] The article appears in `/posts`.

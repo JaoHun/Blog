@@ -37,6 +37,11 @@ describe('PostCard', () => {
 
     expect(image).toHaveAttribute('src', '/images/posts/covered-post/cover.jpg');
     expect(image).toHaveAttribute('loading', 'lazy');
+    expect(image).toHaveClass(
+      'transition-transform',
+      'motion-reduce:transition-none',
+      'motion-reduce:hover:scale-100',
+    );
     expect(image.closest('a')).toHaveAttribute('href', '/en/posts/covered-post');
   });
 

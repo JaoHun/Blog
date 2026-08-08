@@ -24,7 +24,7 @@ export function PostCard({ lang = 'zh', post }: PostCardProps) {
         >
           <PostImage
             alt={post.title}
-            className="!m-0 !h-full !w-full !rounded-none !border-0 object-cover transition duration-300 hover:scale-[1.01]"
+            className="!m-0 !h-full !w-full !rounded-none !border-0 object-cover transition-transform duration-300 hover:scale-[1.01] motion-reduce:transition-none motion-reduce:hover:scale-100"
             src={post.cover}
           />
         </Link>
