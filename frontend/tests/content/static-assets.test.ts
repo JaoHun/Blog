@@ -50,6 +50,8 @@ describe('static asset generation', () => {
     expect(sitemap).toContain('<urlset');
     expect(sitemap).toContain('/posts/static-blog-mvp');
     expect(sitemap).toContain('/en/posts/static-blog-mvp');
+    expect(sitemap).toContain('/moments');
+    expect(sitemap).toContain('/en/moments');
     expect(sitemap).toContain('/categories');
     expect(sitemap).toContain('/tags');
     expect(sitemap).not.toContain('/posts/draft-example');

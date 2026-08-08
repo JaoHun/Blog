@@ -64,6 +64,7 @@ Rules:
 - `cover`, when present, must start with `/images/`.
 - `slug`, when present, must use lowercase letters, numbers, and hyphens.
 - `type` defaults to `tech`; use `essay` only for future personal essays.
+- Use `type: "essay"` for travel photos, life notes, reading fragments, and personal records that should appear in `/moments`.
 
 ## Body
 
@@ -88,6 +89,24 @@ Place article images under:
 ```text
 frontend/public/images/posts/<article-slug>/
 ```
+
+For travel photos or life records, keep one folder per article:
+
+```text
+frontend/public/images/posts/chongqing-trip-2026/
+  cover.jpg
+  street-01.jpg
+  food-01.jpg
+  night-view.jpg
+```
+
+Recommended image rules:
+
+- Use lowercase English file names with hyphens or numbers.
+- Avoid raw names such as `IMG_1234.JPG` or Chinese file names.
+- Compress photos before committing; `1200px` to `1600px` wide is usually enough.
+- Keep most web images around `300KB` to `800KB` when practical.
+- Remove private location, people, or document details before publishing.
 
 Use normal MDX image syntax and always provide meaningful alt text:
 

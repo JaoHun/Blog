@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { Pagination } from '@/components/common/Pagination';
+import { EmptyState } from '@/components/common/EmptyState';
 import { mdxComponents } from '@/components/post/MdxComponents';
 import { PostList } from '@/components/post/PostList';
 import { PostMeta } from '@/components/post/PostMeta';
@@ -23,6 +24,7 @@ import {
   getPostBySlug,
   getPostsByCategory,
   getPostsByTag,
+  getPostsByType,
   getPublishedPosts,
 } from '@/lib/content/posts';
 import type { Lang } from '@/lib/content/posts';
@@ -58,11 +60,16 @@ export async function HomePage({ lang }: { lang: Lang }) {
           <p className="max-w-2xl text-base leading-7 text-muted">{t.home.description}</p>
         </section>
 
-        <section className="grid gap-5 md:grid-cols-[1.2fr_0.8fr]">
-          <div className="rounded-lg border border-border p-6">
-            <h2 className="text-2xl font-semibold tracking-tight">{t.home.emptyTitle}</h2>
-            <p className="mt-3 leading-7 text-muted">{t.home.emptyDescription}</p>
-          </div>
+        <section className="grid gap-5 md:grid-cols-2">
+          <Link
+            className="rounded-lg border border-border p-6 transition hover:border-accent"
+            href={localizedPath('/moments', lang)}
+          >
+            <span className="text-sm font-medium uppercase tracking-[0.16em] text-muted">{siteConfig.name}</span>
+            <h2 className="mt-4 text-2xl font-semibold tracking-tight">{t.home.momentsTitle}</h2>
+            <p className="mt-3 leading-7 text-muted">{t.home.momentsDescription}</p>
+            <span className="mt-5 inline-block text-sm text-link">{t.home.momentsAction}</span>
+          </Link>
           <Link
             className="rounded-lg border border-border p-6 transition hover:border-accent"
             href={localizedPath('/tech', lang)}
@@ -75,6 +82,30 @@ export async function HomePage({ lang }: { lang: Lang }) {
         </section>
       </div>
     </ContentWithSidebar>
+  );
+}
+
+export async function MomentsPage({ lang }: { lang: Lang }) {
+  const posts = await getPostsByType('essay', lang);
+  const t = messages[lang].moments;
+
+  return (
+    <section>
+      <div className="mb-8">
+        <h1 className="text-3xl font-semibold tracking-tight">{t.title}</h1>
+        <p className="mt-3 max-w-2xl leading-7 text-muted">{t.description}</p>
+      </div>
+      {posts.length > 0 ? (
+        <PostList lang={lang} posts={posts} />
+      ) : (
+        <div className="space-y-5">
+          <EmptyState title={t.emptyTitle} description={t.emptyDescription} />
+          <Link className="inline-block text-sm text-link" href={localizedPath('/posts', lang)}>
+            {messages[lang].common.browseAllPosts}
+          </Link>
+        </div>
+      )}
+    </section>
   );
 }
 

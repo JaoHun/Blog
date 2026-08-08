@@ -38,6 +38,8 @@ async function main() {
   const requiredFiles = [
     'index.html',
     'en/index.html',
+    'moments/index.html',
+    'en/moments/index.html',
     'tech/index.html',
     'en/tech/index.html',
     'posts/index.html',
@@ -73,8 +75,10 @@ async function main() {
 
   assertContains(home, 'JaoHun Blog', 'home page');
   assertContains(home, '个人杂谈与分享', 'home page');
+  assertContains(home, '生活随笔与影像记录', 'home page');
   assertContains(home, '技术笔记与项目记录', 'home page');
   assertContains(enHome, 'Personal notes and essays', 'English home page');
+  assertContains(enHome, 'Life notes and photo records', 'English home page');
   assertContains(home, '个人侧栏', 'home sidebar');
   assertContains(home, '当前关注', 'home sidebar');
   assertContains(enHome, 'Personal sidebar', 'English home sidebar');
@@ -97,6 +101,8 @@ async function main() {
   assertContains(sitemap, '/posts/static-blog-mvp', 'sitemap');
   assertContains(sitemap, '/tech', 'sitemap');
   assertContains(sitemap, '/en/tech', 'sitemap');
+  assertContains(sitemap, '/moments', 'sitemap');
+  assertContains(sitemap, '/en/moments', 'sitemap');
   assertContains(sitemap, '/en/posts/static-blog-mvp', 'sitemap');
   assertNotContains(sitemap, 'draft-example', 'sitemap');
 

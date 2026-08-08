@@ -80,6 +80,12 @@ export async function getFeaturedPosts(lang: Lang = 'zh') {
   return posts.filter((post) => post.featured);
 }
 
+export async function getPostsByType(type: Post['type'], lang: Lang = 'zh') {
+  const posts = await getPublishedPosts(lang);
+
+  return posts.filter((post) => post.type === type);
+}
+
 export async function getPostsByCategory(category: string, lang: Lang = 'zh') {
   const posts = await getPublishedPosts(lang);
 

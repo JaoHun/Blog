@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 import Home from './page';
 
 describe('Home', () => {
-  it('renders the personal sharing heading and technical section link', async () => {
+  it('renders the personal sharing heading and section links', async () => {
     render(await Home());
 
     expect(
@@ -12,6 +12,7 @@ describe('Home', () => {
         name: '个人杂谈与分享',
       }),
     ).toBeTruthy();
+    expect(screen.getByRole('link', { name: /进入生活记录/ })).toHaveAttribute('href', '/moments');
     expect(screen.getByRole('link', { name: /进入技术板块/ })).toBeTruthy();
     expect(screen.getByLabelText('个人侧栏')).toBeTruthy();
     expect(screen.getByText('当前关注')).toBeTruthy();

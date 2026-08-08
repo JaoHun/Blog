@@ -69,6 +69,11 @@ export function HomeSidebar({ lang, stats }: HomeSidebarProps): ReactElement {
         <h2 className="text-base font-semibold">{t.linksTitle}</h2>
         <ul className="mt-3 space-y-3">
           <li>
+            <Link className="transition hover:text-link" href={localizedPath('/moments', lang)}>
+              {t.moments}
+            </Link>
+          </li>
+          <li>
             <Link className="transition hover:text-link" href={localizedPath('/tech', lang)}>
               {t.tech}
             </Link>
