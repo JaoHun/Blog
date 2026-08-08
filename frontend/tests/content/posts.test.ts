@@ -18,6 +18,20 @@ describe('post content pipeline', () => {
     expect(published.every((post) => !post.draft)).toBe(true);
   });
 
+  it('provides a valid unpublished photo essay template', async () => {
+    const posts = await getAllPosts({ includeDrafts: true });
+
+    expect(posts).toContainEqual(
+      expect.objectContaining({
+        cover: undefined,
+        draft: true,
+        lang: 'zh',
+        slug: 'photo-essay-template',
+        type: 'essay',
+      }),
+    );
+  });
+
   it('generates unique slugs and normalized tags', async () => {
     const posts = await getAllPosts({ includeDrafts: true });
     const slugs = posts.map((post) => `${post.lang}:${post.slug}`);

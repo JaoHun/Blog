@@ -14,6 +14,8 @@ Recommended manual flow:
 4. Keep `draft: true` while writing.
 5. Change `draft` to `false` only when ready to publish.
 
+For travel notes, life records, and photo essays, copy `frontend/content/posts/photo-essay-template.mdx` instead. Keep `type: "essay"`; add the real images under `frontend/public/images/posts/<slug>/`, then enable `cover` only after the cover file exists.
+
 Optional helper command, run from `frontend`:
 
 ```powershell
@@ -63,7 +65,7 @@ Rules:
 - `draft: true` is excluded from production pages, RSS, Sitemap, search index, and static post routes.
 - `cover`, when present, must start with `/images/`.
 - `slug`, when present, must use lowercase letters, numbers, and hyphens.
-- `type` defaults to `tech`; use `essay` only for future personal essays.
+- `type` defaults to `tech`; use `essay` for content that belongs in `/moments`.
 - Use `type: "essay"` for travel photos, life notes, reading fragments, and personal records that should appear in `/moments`.
 
 ## Body
