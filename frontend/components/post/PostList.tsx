@@ -17,7 +17,7 @@ export function PostList({ lang = 'zh', posts }: PostListProps) {
   }
 
   return (
-    <div>
+    <div className="space-y-4" data-testid="post-list">
       {posts.map((post) => (
         <PostCard key={post.slug} lang={lang} post={post} />
       ))}

@@ -63,6 +63,13 @@ export function HomeSidebar({ lang, stats }: HomeSidebarProps): ReactElement {
       <section className="rounded-lg border border-border bg-background/70 p-5">
         <h2 className="text-base font-semibold">{t.focusTitle}</h2>
         <p className="mt-3 leading-6 text-muted">{t.focusDescription}</p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {t.focusTags.map((tag) => (
+            <span className="rounded-full border border-border px-3 py-1 text-xs text-muted" key={tag}>
+              {tag}
+            </span>
+          ))}
+        </div>
       </section>
 
       <nav aria-label={t.linksTitle} className="rounded-lg border border-border bg-background/70 p-5">

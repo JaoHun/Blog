@@ -6,7 +6,7 @@ import { siteConfig } from '@/config/site';
 export function SiteFooter() {
   return (
     <footer className="border-t border-border">
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 px-5 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-5 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
         <p>
           (c) {new Date().getFullYear()} {siteConfig.name}. {footerConfig.copyright}
         </p>

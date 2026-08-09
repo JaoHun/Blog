@@ -83,5 +83,6 @@ describe('ContentSidebar', () => {
 
     expect(container.querySelector('aside')).not.toHaveClass('sticky');
     expect(container.querySelector('aside')).not.toHaveClass('lg:sticky');
+    expect(container.firstElementChild).toHaveClass('gap-6', 'lg:gap-8');
   });
 });

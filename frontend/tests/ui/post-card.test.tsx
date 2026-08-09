@@ -43,6 +43,7 @@ describe('PostCard', () => {
       'motion-reduce:hover:scale-100',
     );
     expect(image.closest('a')).toHaveAttribute('href', '/en/posts/covered-post');
+    expect(image.closest('article')).toHaveClass('rounded-lg', 'bg-background/72', 'shadow-sm');
   });
 
   it('keeps the text-only card when the post has no cover', () => {
@@ -50,5 +51,6 @@ describe('PostCard', () => {
 
     expect(screen.queryByRole('img')).not.toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Covered Post' })).toBeInTheDocument();
+    expect(screen.getByRole('article')).toHaveClass('rounded-lg', 'p-5');
   });
 });

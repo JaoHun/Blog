@@ -6,5 +6,5 @@ export function joinSiteUrl(siteUrl: string, pathname: string) {
 }
 
 export function routeSegment(value: string) {
-  return encodeURIComponent(value.trim());
+  return value.trim();
 }

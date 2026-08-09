@@ -49,12 +49,12 @@ export function SiteHeader() {
 
   return (
     <header className="border-b border-border bg-background/95">
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-4 px-5 py-5 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5 sm:py-5">
         <Link className="text-base font-semibold text-foreground" href={localizedPath('/', lang)}>
           {siteConfig.name}
         </Link>
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
-          <nav aria-label={lang === 'zh' ? '主导航' : 'Main navigation'} className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-3 sm:gap-x-5">
+          <nav aria-label={lang === 'zh' ? '主导航' : 'Main navigation'} className="flex max-w-full gap-x-4 overflow-x-auto whitespace-nowrap pb-1 text-sm text-muted sm:flex-wrap sm:gap-x-5 sm:gap-y-2 sm:pb-0">
             {navKeys.map((key) => (
               <Link className="transition hover:text-foreground" href={localizedPath(navPaths[key], lang)} key={key}>
                 {t.nav[key]}

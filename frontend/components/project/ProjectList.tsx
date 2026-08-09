@@ -19,7 +19,7 @@ export function ProjectList({ featuredOnly = false, lang = 'zh' }: ProjectListPr
   }
 
   return (
-    <div className="grid gap-5">
+    <div className="grid gap-5" data-testid="project-list">
       {projects.map((project) => (
         <ProjectCard key={project.name} lang={lang} project={project} />
       ))}

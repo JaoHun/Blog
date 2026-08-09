@@ -24,6 +24,8 @@ export const messages = {
     home: {
       heading: '个人杂谈与分享',
       description: '记录各种随笔和想记的东西，也会放一些学习新技术时留下的观察、理解和阶段性想法。',
+      recentTitle: '最近记录',
+      recentDescription: '先放最近更新的内容，后续随笔、照片和技术笔记都会慢慢补进来。',
       emptyTitle: '慢慢记录一些想留下的内容',
       emptyDescription: '这里会逐步放日常随笔、阅读感受、学习片段和不一定成体系的个人记录。',
       momentsTitle: '生活随笔与影像记录',
@@ -37,6 +39,7 @@ export const messages = {
       label: '个人侧栏',
       focusTitle: '当前关注',
       focusDescription: '不断学习了解新技术，关注 Agent 智能体、大模型开发、技术笔记和项目复盘。',
+      focusTags: ['Agent', '大模型开发', '项目复盘'],
       linksTitle: '快速入口',
       moments: '生活随笔与影像记录',
       tech: '技术笔记与项目记录',
@@ -81,6 +84,9 @@ export const messages = {
     moments: {
       title: '生活随笔与影像记录',
       description: '记录游玩照片、日常片段、阅读感受和一些想留下来的生活内容。',
+      photoBadge: '影像记录',
+      noteBadge: '生活随笔',
+      viewRecord: '查看记录',
       emptyTitle: '还没有发布生活随笔',
       emptyDescription: '可以先在文章里使用 type: "essay" 创建生活随笔或游玩照片记录。',
     },
@@ -129,6 +135,8 @@ export const messages = {
     home: {
       heading: 'Personal notes and essays',
       description: 'A place for notes, things worth remembering, technology learning, and personal thoughts that do not always need to be fully structured.',
+      recentTitle: 'Recent records',
+      recentDescription: 'Recent updates first; essays, photos, and technical notes can keep growing over time.',
       emptyTitle: 'Notes will grow over time',
       emptyDescription: 'This space will collect essays, reading notes, learning fragments, and lightweight personal records.',
       momentsTitle: 'Life notes and photo records',
@@ -142,6 +150,7 @@ export const messages = {
       label: 'Personal sidebar',
       focusTitle: 'Current focus',
       focusDescription: 'Learning new technologies with a focus on Agent systems, LLM development, technical notes, and project retrospectives.',
+      focusTags: ['Agent', 'LLM development', 'Project reviews'],
       linksTitle: 'Quick links',
       moments: 'Life notes and photo records',
       tech: 'Technical notes and project records',
@@ -187,6 +196,9 @@ export const messages = {
     moments: {
       title: 'Life notes and photo records',
       description: 'Travel photos, daily fragments, reading notes, and lightweight personal records.',
+      photoBadge: 'Photo record',
+      noteBadge: 'Life note',
+      viewRecord: 'View record',
       emptyTitle: 'No life notes published yet',
       emptyDescription: 'Create an essay post with type: "essay" when a travel or photo record is ready.',
     },

@@ -31,7 +31,7 @@ describe('global theme palette', () => {
     const globalsCss = readFileSync(join(process.cwd(), 'app/globals.css'), 'utf8');
 
     const requiredTokens = [
-      '--background: #faf7f2',
+      '--background: #fffaf3',
       '--foreground: #2f2a25',
       '--muted: #6f665d',
       '--border: #9a8876',

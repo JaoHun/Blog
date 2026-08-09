@@ -21,17 +21,17 @@ export function ProjectCard({ lang = 'zh', project }: ProjectCardProps) {
   const status = t.status[project.status] ?? statusLabel[project.status];
 
   return (
-    <article className="rounded-lg border border-border p-5">
+    <article className="rounded-lg border border-border bg-background/72 p-5 shadow-sm transition hover:border-accent hover:shadow-md">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h2 className="text-xl font-semibold tracking-tight">{project.name}</h2>
-        <span className="rounded-full border border-border px-3 py-1 text-xs text-muted">
+        <span className="rounded-full border border-border bg-background/70 px-3 py-1 text-xs text-muted">
           {status}
         </span>
       </div>
       <p className="mt-3 leading-7 text-muted">{getProjectDescription(project, lang)}</p>
       <div className="mt-4 flex flex-wrap gap-2">
         {project.techStack.map((tech) => (
-          <span className="rounded-full bg-code-bg px-3 py-1 text-xs text-muted" key={tech}>
+          <span className="rounded-full border border-border bg-code-bg px-3 py-1 text-xs text-muted" key={tech}>
             {tech}
           </span>
         ))}

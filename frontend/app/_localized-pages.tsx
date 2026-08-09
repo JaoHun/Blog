@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { Pagination } from '@/components/common/Pagination';
 import { EmptyState } from '@/components/common/EmptyState';
 import { mdxComponents } from '@/components/post/MdxComponents';
+import { MomentCard } from '@/components/post/MomentCard';
 import { PostList } from '@/components/post/PostList';
 import { PostMeta } from '@/components/post/PostMeta';
 import { PostToc } from '@/components/post/PostToc';
@@ -47,12 +48,13 @@ function getPostStats(posts: Awaited<ReturnType<typeof getPublishedPosts>>) {
 export async function HomePage({ lang }: { lang: Lang }) {
   const posts = await getPublishedPosts(lang);
   const stats = getPostStats(posts);
+  const recentPosts = posts.slice(0, 2);
   const t = messages[lang];
 
   return (
     <ContentWithSidebar sidebar={<HomeSidebar lang={lang} stats={stats} />}>
-      <div className="space-y-12">
-        <section className="flex min-h-[45vh] flex-col justify-center gap-5">
+      <div className="space-y-8 sm:space-y-10">
+        <section className="flex min-h-[34vh] flex-col justify-center gap-5 rounded-lg border border-border bg-background/55 p-6 shadow-sm sm:min-h-[38vh] sm:p-8">
           <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{siteConfig.name}</p>
           <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
             {t.home.heading}
@@ -60,9 +62,34 @@ export async function HomePage({ lang }: { lang: Lang }) {
           <p className="max-w-2xl text-base leading-7 text-muted">{t.home.description}</p>
         </section>
 
+        <section className="rounded-lg border border-border bg-background/70 p-5 shadow-sm sm:p-6">
+          <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h2 className="text-2xl font-semibold tracking-tight">{t.home.recentTitle}</h2>
+              <p className="mt-2 leading-7 text-muted">{t.home.recentDescription}</p>
+            </div>
+            <Link className="text-sm text-link" href={localizedPath('/posts', lang)}>
+              {t.common.allPosts}
+            </Link>
+          </div>
+          <div className="grid gap-3">
+            {recentPosts.map((post) => (
+              <Link
+                className="rounded-md border border-border bg-background/60 p-4 transition hover:border-accent hover:shadow-sm"
+                href={localizedPath(`/posts/${post.slug}`, lang)}
+                key={post.slug}
+              >
+                <p className="text-xs text-muted">{post.category}</p>
+                <h3 className="mt-2 font-semibold">{post.title}</h3>
+                <p className="mt-2 line-clamp-2 text-sm leading-6 text-muted">{post.excerpt}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         <section className="grid gap-5 md:grid-cols-2">
           <Link
-            className="rounded-lg border border-border p-6 transition hover:border-accent"
+            className="rounded-lg border border-border bg-background/70 p-6 shadow-sm transition hover:border-accent hover:shadow-md"
             href={localizedPath('/moments', lang)}
           >
             <span className="text-sm font-medium uppercase tracking-[0.16em] text-muted">{siteConfig.name}</span>
@@ -71,7 +98,7 @@ export async function HomePage({ lang }: { lang: Lang }) {
             <span className="mt-5 inline-block text-sm text-link">{t.home.momentsAction}</span>
           </Link>
           <Link
-            className="rounded-lg border border-border p-6 transition hover:border-accent"
+            className="rounded-lg border border-border bg-background/70 p-6 shadow-sm transition hover:border-accent hover:shadow-md"
             href={localizedPath('/tech', lang)}
           >
             <span className="text-sm font-medium uppercase tracking-[0.16em] text-muted">{siteConfig.name}</span>
@@ -91,12 +118,17 @@ export async function MomentsPage({ lang }: { lang: Lang }) {
 
   return (
     <section>
-      <div className="mb-8">
-        <h1 className="text-3xl font-semibold tracking-tight">{t.title}</h1>
+      <div className="mb-8 rounded-lg border border-border bg-background/60 p-6 shadow-sm sm:p-8">
+        <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{siteConfig.name}</p>
+        <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">{t.title}</h1>
         <p className="mt-3 max-w-2xl leading-7 text-muted">{t.description}</p>
       </div>
       {posts.length > 0 ? (
-        <PostList lang={lang} posts={posts} />
+        <div className="grid gap-5 sm:grid-cols-2">
+          {posts.map((post) => (
+            <MomentCard key={post.slug} lang={lang} post={post} />
+          ))}
+        </div>
       ) : (
         <div className="space-y-5">
           <EmptyState title={t.emptyTitle} description={t.emptyDescription} />
@@ -161,8 +193,9 @@ export async function PostsPage({ lang }: { lang: Lang }) {
   return (
     <ContentWithSidebar sidebar={<ContentSidebar lang={lang} />}>
       <section>
-        <div className="mb-8">
-          <h1 className="text-3xl font-semibold tracking-tight">{t.title}</h1>
+        <div className="mb-8 rounded-lg border border-border bg-background/60 p-6 shadow-sm sm:p-8">
+          <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{siteConfig.name}</p>
+          <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">{t.title}</h1>
           <p className="mt-3 text-muted">{t.description}</p>
         </div>
         <SearchBox lang={lang} />
@@ -203,16 +236,19 @@ export async function CategoriesPage({ lang }: { lang: Lang }) {
 
   return (
     <section>
-      <h1 className="text-3xl font-semibold tracking-tight">{messages[lang].nav.categories}</h1>
-      <div className="mt-8 grid gap-3 sm:grid-cols-2">
+      <div className="mb-8 rounded-lg border border-border bg-background/60 p-6 shadow-sm sm:p-8">
+        <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{siteConfig.name}</p>
+        <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">{messages[lang].nav.categories}</h1>
+      </div>
+      <div className="grid gap-4 sm:grid-cols-2" data-testid="category-list">
         {Array.from(counts.entries()).map(([category, count]) => (
           <Link
-            className="rounded-lg border border-border p-5 transition hover:border-accent"
+            className="rounded-lg border border-border bg-background/72 p-5 shadow-sm transition hover:border-accent hover:shadow-md"
             href={localizedPath(`/categories/${routeSegment(category)}`, lang)}
             key={category}
           >
-            <span className="font-medium">{category}</span>
-            <span className="ml-3 text-sm text-muted">{messages[lang].common.postCount(count)}</span>
+            <span className="text-lg font-semibold">{category}</span>
+            <span className="mt-2 block text-sm text-muted">{messages[lang].common.postCount(count)}</span>
           </Link>
         ))}
       </div>
@@ -228,8 +264,9 @@ export async function CategoryPage({ category, lang }: { category: string; lang:
 
   return (
     <section>
-      <div className="mb-8">
-        <h1 className="text-3xl font-semibold tracking-tight">{decodedCategory}</h1>
+      <div className="mb-8 rounded-lg border border-border bg-background/60 p-6 shadow-sm sm:p-8">
+        <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{messages[lang].nav.categories}</p>
+        <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">{decodedCategory}</h1>
         <p className="mt-3 text-muted">{messages[lang].common.postCount(posts.length)}</p>
       </div>
       <PostList lang={lang} posts={page.items} />
@@ -254,8 +291,9 @@ export async function PaginatedCategoryPage({
 
   return (
     <section>
-      <div className="mb-8">
-        <h1 className="text-3xl font-semibold tracking-tight">{decodedCategory}</h1>
+      <div className="mb-8 rounded-lg border border-border bg-background/60 p-6 shadow-sm sm:p-8">
+        <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{messages[lang].nav.categories}</p>
+        <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">{decodedCategory}</h1>
         <p className="mt-3 text-muted">{messages[lang].common.page.replace('{page}', String(page.currentPage))}</p>
       </div>
       <PostList lang={lang} posts={page.items} />
@@ -272,11 +310,14 @@ export async function TagsPage({ lang }: { lang: Lang }) {
 
   return (
     <section>
-      <h1 className="text-3xl font-semibold tracking-tight">{messages[lang].nav.tags}</h1>
-      <div className="mt-8 flex flex-wrap gap-3">
+      <div className="mb-8 rounded-lg border border-border bg-background/60 p-6 shadow-sm sm:p-8">
+        <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{siteConfig.name}</p>
+        <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">{messages[lang].nav.tags}</h1>
+      </div>
+      <div className="flex flex-wrap gap-3 rounded-lg border border-border bg-background/72 p-5 shadow-sm" data-testid="tag-list">
         {Array.from(counts.entries()).map(([tag, count]) => (
           <Link
-            className="rounded-full border border-border px-4 py-2 text-sm transition hover:border-accent"
+            className="rounded-full border border-border bg-background/70 px-4 py-2 text-sm transition hover:border-accent hover:shadow-sm"
             href={localizedPath(`/tags/${routeSegment(tag)}`, lang)}
             key={tag}
           >
@@ -296,8 +337,9 @@ export async function TagPage({ lang, tag }: { lang: Lang; tag: string }) {
 
   return (
     <section>
-      <div className="mb-8">
-        <h1 className="text-3xl font-semibold tracking-tight">#{decodedTag}</h1>
+      <div className="mb-8 rounded-lg border border-border bg-background/60 p-6 shadow-sm sm:p-8">
+        <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{messages[lang].nav.tags}</p>
+        <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">#{decodedTag}</h1>
         <p className="mt-3 text-muted">{messages[lang].common.postCount(posts.length)}</p>
       </div>
       <PostList lang={lang} posts={page.items} />
@@ -322,8 +364,9 @@ export async function PaginatedTagPage({
 
   return (
     <section>
-      <div className="mb-8">
-        <h1 className="text-3xl font-semibold tracking-tight">#{decodedTag}</h1>
+      <div className="mb-8 rounded-lg border border-border bg-background/60 p-6 shadow-sm sm:p-8">
+        <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{messages[lang].nav.tags}</p>
+        <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">#{decodedTag}</h1>
         <p className="mt-3 text-muted">{messages[lang].common.page.replace('{page}', String(page.currentPage))}</p>
       </div>
       <PostList lang={lang} posts={page.items} />
@@ -336,21 +379,23 @@ export function AboutPage({ lang }: { lang: Lang }) {
   const t = messages[lang].about;
 
   return (
-    <section className="max-w-3xl">
-      <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{t.title}</p>
-      <h1 className="mt-4 text-3xl font-semibold tracking-tight">{authorConfig.name}</h1>
-      <p className="mt-5 leading-8 text-muted">{getAuthorBio(lang)}</p>
-      <div className="mt-8">
+    <div className="grid max-w-4xl gap-5" data-testid="about-layout">
+      <section className="rounded-lg border border-border bg-background/60 p-6 shadow-sm sm:p-8">
+        <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{t.title}</p>
+        <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">{authorConfig.name}</h1>
+        <p className="mt-5 leading-8 text-muted">{getAuthorBio(lang)}</p>
+      </section>
+      <section className="rounded-lg border border-border bg-background/72 p-6 shadow-sm">
         <h2 className="text-lg font-semibold">{t.skills}</h2>
         <div className="mt-3 flex flex-wrap gap-2">
           {authorConfig.skills.map((skill) => (
-            <span className="rounded-full border border-border px-3 py-1 text-sm text-muted" key={skill}>
+            <span className="rounded-full border border-border bg-background/70 px-3 py-1 text-sm text-muted" key={skill}>
               {skill}
             </span>
           ))}
         </div>
-      </div>
-      <div className="mt-8">
+      </section>
+      <section className="rounded-lg border border-border bg-background/72 p-6 shadow-sm">
         <h2 className="text-lg font-semibold">{t.contact}</h2>
         <div className="mt-3 flex flex-wrap gap-4 text-link">
           {authorConfig.links.map((link) => (
@@ -359,8 +404,8 @@ export function AboutPage({ lang }: { lang: Lang }) {
             </ExternalLink>
           ))}
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
 
@@ -369,8 +414,9 @@ export function ProjectsPage({ lang }: { lang: Lang }) {
 
   return (
     <section>
-      <div className="mb-8">
-        <h1 className="text-3xl font-semibold tracking-tight">{t.title}</h1>
+      <div className="mb-8 rounded-lg border border-border bg-background/60 p-6 shadow-sm sm:p-8">
+        <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted">{siteConfig.name}</p>
+        <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">{t.title}</h1>
         <p className="mt-3 text-muted">{t.description}</p>
       </div>
       <ProjectList lang={lang} />
@@ -396,28 +442,30 @@ export async function PostPage({ lang, slug }: { lang: Lang; slug: string }) {
         </ContentSidebar>
       }
     >
-      <article>
+      <article className="mx-auto max-w-3xl rounded-lg border border-border bg-background/72 p-5 shadow-sm sm:p-8">
       <div className="min-w-0">
         <Link className="text-sm text-link" href={localizedPath('/posts', lang)}>
           {t.back}
         </Link>
-        <h1 className="mt-6 text-4xl font-semibold tracking-tight">{post.title}</h1>
-        <p className="mt-4 text-lg leading-8 text-muted">{post.excerpt}</p>
+        <h1 className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">{post.title}</h1>
+        <p className="mt-4 text-base leading-8 text-muted sm:text-lg">{post.excerpt}</p>
         <PostMeta lang={lang} post={post} />
-        <div className="post-content mt-10">
+        <div className="post-content mt-8 sm:mt-10">
           <MDXRemote components={mdxComponents} source={post.body} />
         </div>
-        <nav className="mt-12 grid gap-4 border-t border-border pt-6 sm:grid-cols-2">
+        <nav aria-label={lang === 'zh' ? '文章切换' : 'Post navigation'} className="mt-12 grid gap-3 border-t border-border pt-6 sm:grid-cols-2">
           {adjacent.previous ? (
-            <Link className="text-link" href={localizedPath(`/posts/${adjacent.previous.slug}`, lang)}>
-              {t.previous}: {adjacent.previous.title}
+            <Link className="rounded-md border border-border bg-background/60 p-4 transition hover:border-accent hover:shadow-sm" href={localizedPath(`/posts/${adjacent.previous.slug}`, lang)}>
+              <span className="text-sm text-muted">{t.previous}</span>
+              <span className="mt-2 block font-medium text-link">{adjacent.previous.title}</span>
             </Link>
           ) : (
             <span />
           )}
           {adjacent.next ? (
-            <Link className="text-link sm:text-right" href={localizedPath(`/posts/${adjacent.next.slug}`, lang)}>
-              {t.next}: {adjacent.next.title}
+            <Link className="rounded-md border border-border bg-background/60 p-4 transition hover:border-accent hover:shadow-sm sm:text-right" href={localizedPath(`/posts/${adjacent.next.slug}`, lang)}>
+              <span className="text-sm text-muted">{t.next}</span>
+              <span className="mt-2 block font-medium text-link">{adjacent.next.title}</span>
             </Link>
           ) : null}
         </nav>

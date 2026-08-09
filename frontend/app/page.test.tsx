@@ -16,6 +16,8 @@ describe('Home', () => {
     expect(screen.getByRole('link', { name: /进入技术板块/ })).toBeTruthy();
     expect(screen.getByLabelText('个人侧栏')).toBeTruthy();
     expect(screen.getByText('当前关注')).toBeTruthy();
+    expect(screen.getByRole('heading', { name: '最近记录' })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: '为什么搭建这个个人博客' }).closest('a')).toHaveAttribute('href', '/posts/static-blog-mvp');
     expect(screen.getByRole('link', { name: '关于我' })).toHaveAttribute('href', '/about');
   });
 });

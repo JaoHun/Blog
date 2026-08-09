@@ -16,10 +16,10 @@ export function PostCard({ lang = 'zh', post }: PostCardProps) {
   const articleHref = localizedPath(`/posts/${post.slug}`, lang);
 
   return (
-    <article className="border-b border-border py-6">
+    <article className="rounded-lg border border-border bg-background/72 p-5 shadow-sm transition hover:border-accent hover:shadow-md">
       {post.cover ? (
         <Link
-          className="mb-5 block aspect-[16/9] overflow-hidden rounded-lg border border-border"
+          className="mb-5 block aspect-[16/9] overflow-hidden rounded-md border border-border"
           href={articleHref}
         >
           <PostImage
@@ -36,7 +36,7 @@ export function PostCard({ lang = 'zh', post }: PostCardProps) {
           {post.category}
         </Link>
       </div>
-      <h2 className="mt-3 text-2xl font-semibold tracking-tight">
+      <h2 className="mt-3 text-xl font-semibold tracking-tight sm:text-2xl">
         <Link className="transition hover:text-link" href={articleHref}>
           {post.title}
         </Link>
