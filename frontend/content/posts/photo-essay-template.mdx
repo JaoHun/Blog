@@ -12,7 +12,7 @@ draft: true
 lang: "zh"
 type: "essay"
 # 添加真实封面文件后再启用下一行：
-# cover: "/images/posts/photo-essay-template/cover.jpg"
+# cover: "/images/moments/2026-08-08-photo-essay-cover.jpg"
 ---
 
 # 照片随笔模板
@@ -25,10 +25,10 @@ type: "essay"
 
 ## 照片记录
 
-把照片放入与文章同名的目录，并为每张图片写清楚替代文本。图片语法示例：
+把照片放入 `frontend/public/images/moments/`，并为每张图片写清楚替代文本。图片语法示例：
 
 ```md
-![傍晚街道上的灯光](/images/posts/photo-essay-template/street-01.jpg)
+![傍晚街道上的灯光](/images/moments/2026-08-08-street-01.jpg)
 ```
 
 ## 留下的一点想法
@@ -44,5 +44,4 @@ type: "essay"
 - [ ] `corepack pnpm content:check` 可以通过。
 - [ ] 发布前在本地暂时将 `draft` 设置为 `false`，运行 `corepack pnpm dev`。
 - [ ] 查看 `/moments` 卡片和 `/posts/<slug>` 文章路由，确认封面裁剪正确、每张正文图片都已加载。
-- [ ] 准备发布时保留 `draft: false`；未完成的文章在提交前恢复 `draft: true`。
-- [ ] 准备发布时才保留 `draft: false`。
+- [ ] 准备发布时保留 `draft: false`；未完成的文章提交前恢复 `draft: true`。

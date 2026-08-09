@@ -91,7 +91,7 @@ async function main() {
   assertContains(englishTech, 'Technical notes and project records', 'English tech page');
   assertContains(englishTech, 'Content stats', 'English tech page sidebar');
   assertContains(englishTech, 'Latest posts', 'English tech page sidebar');
-  assertContains(post, '构建一个轻量静态博客 MVP', 'post page');
+  assertContains(post, '为什么搭建这个个人博客', 'post page');
   assertContains(post, '内容统计', 'post page sidebar');
   assertContains(post, '目录', 'post page table of contents');
   assertContains(post, '最新文章', 'post page sidebar');
@@ -106,8 +106,8 @@ async function main() {
   assertContains(sitemap, '/en/posts/static-blog-mvp', 'sitemap');
   assertNotContains(sitemap, 'draft-example', 'sitemap');
 
-  assertContains(rss, '构建一个轻量静态博客 MVP', 'RSS');
-  assertContains(englishRss, 'Building a Lightweight Static Blog MVP', 'English RSS');
+  assertContains(rss, '为什么搭建这个个人博客', 'RSS');
+  assertContains(englishRss, 'Why I Built This Personal Blog', 'English RSS');
   assertNotContains(rss, 'Draft Example', 'RSS');
   assertNotContains(englishRss, 'Draft Example', 'English RSS');
 

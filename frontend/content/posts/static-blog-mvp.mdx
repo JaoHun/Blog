@@ -1,8 +1,8 @@
 ---
-title: "Building a Lightweight Static Blog MVP"
+title: "Why I Built This Personal Blog"
 date: "2026-07-29"
-updated: "2026-07-29"
-excerpt: "A practical record of the first version of this personal static blog, including scope control, content workflow, deployment choices, and follow-up plans."
+updated: "2026-08-09"
+excerpt: "A place for notes, things worth remembering, Agent and LLM learning, technical writing, and project retrospectives."
 category: "Blog"
 tags:
   - nextjs
@@ -16,63 +16,32 @@ draft: false
 type: "tech"
 ---
 
-# Building a Lightweight Static Blog MVP
+# Why I Built This Personal Blog
 
-This blog started with a narrow goal: create a stable place for technical notes and personal project records without building a heavy publishing platform.
+This blog is not meant to start as a complete product or a heavy publishing platform. It is a long-term place for notes, things worth remembering, and the thoughts that appear while learning and building.
 
-The first version is intentionally small. It focuses on writing, browsing, search, theme switching, SEO output, RSS, and static deployment. Features such as comments, analytics, media management, CMS publishing, Mermaid, math formulas, and multilingual content are left for later iterations.
+I am currently interested in Agent systems, LLM development, Web engineering, and project retrospectives. If these notes stay only in chats, temporary documents, or scattered files, the context disappears quickly. Turning them into posts gives each learning step a stable record.
 
-## Scope
+## Why the First Version Stays Small
 
-The MVP keeps only the parts needed for a working public blog:
+The first version is intentionally lightweight. It keeps the essentials: writing, browsing, search, theme switching, SEO, RSS, and static deployment. Comments, analytics, admin publishing, media libraries, CMS integration, advanced i18n, and heavier interactions can wait.
 
-- MDX posts stored in the repository.
-- Frontmatter validation at build time.
-- Draft filtering for production builds.
-- Category, tag, archive, and post detail pages.
-- Client-side search using a generated static index.
-- Code highlighting with readable dark and light themes.
-- RSS, sitemap, and robots files generated during build.
+The reason is practical: the site needs to be stable, easy to write in, and easy to deploy before it needs more features. Adding too much before the content exists would only make maintenance harder.
 
-This keeps the site simple enough to deploy as static files while still leaving room for future growth.
+## What This Blog Will Contain
 
-## Content Workflow
+The content will grow in a few directions:
 
-Each article is a single MDX file under `content/posts`. Metadata is written in frontmatter and validated before the static build starts.
+- Personal essays, reading notes, and small fragments worth keeping.
+- Agent systems, LLM development, and related tooling.
+- Web engineering, static sites, deployment, and automation.
+- Project process notes, problem reviews, and stage summaries.
+- Photos and life records from trips or daily moments.
 
-```yaml
-title: "Building a Lightweight Static Blog MVP"
-date: "2026-07-29"
-updated: "2026-07-29"
-excerpt: "A short summary for lists, RSS, and SEO."
-category: "Blog"
-tags:
-  - nextjs
-  - mdx
-draft: false
-type: "tech"
-```
+Technical notes and project records can stay more structured. Personal essays and photo records can stay lighter. This keeps the home page warmer while still giving technical content a clear section.
 
-The rule is direct: if metadata is wrong, the build should fail early. This is better than publishing a broken article page.
+## What Comes Next
 
-## Deployment Strategy
+The next useful work is not adding more product features. It is replacing placeholders, cleaning up personal information, improving the project list, and writing a few real posts. After the content is worth sharing, the site can move toward a stable domain, domestic access, HTTPS, CDN, and a more complete publishing workflow.
 
-The current project supports static export, so deployment does not require a backend service. Vercel is kept as the overseas preview and GitHub integration path. For domestic access, the same static output can later be deployed to a domestic static hosting platform or a lightweight server with Nginx.
-
-The important detail is that the public site URL is configurable through `SITE_URL`. This allows RSS, sitemap, canonical links, and robots output to match the real deployment target.
-
-```powershell
-$env:SITE_URL='https://example.com'
-corepack pnpm build
-```
-
-## Next Steps
-
-The next useful work is content completion:
-
-- Replace all remaining placeholder text.
-- Add several real technical notes.
-- Improve the project list with accurate status and links.
-- Decide on a stable domestic access path after the site content is worth sharing.
-
-The engineering work is already close to a usable base. The main gap is now real content and personal positioning.
+The goal is not to finish everything at once. The first stage is valuable as long as adding posts and images remains simple.

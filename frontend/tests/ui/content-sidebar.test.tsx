@@ -44,7 +44,7 @@ describe('ContentSidebar', () => {
     expect(screen.getByText('内容统计')).toBeInTheDocument();
     expect(screen.getByText('最新文章')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'GitHub' })).toHaveAttribute('href', 'https://github.com/JaoHun');
-    expect(screen.getByRole('link', { name: '构建一个轻量静态博客 MVP' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: '为什么搭建这个个人博客' })).toHaveAttribute(
       'href',
       '/posts/static-blog-mvp',
     );

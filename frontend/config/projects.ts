@@ -27,8 +27,7 @@ export const projectConfig = [
     },
     techStack: ['Agent', 'LLM', 'Prompting', 'Notes'],
     status: 'planned',
-    featured: true,
-    articleUrl: '/posts',
+    featured: false,
   }),
   projectSchema.parse({
     name: '生活影像记录',

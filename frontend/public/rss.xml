@@ -5,12 +5,12 @@
     <link>https://blog-nu-wine-76.vercel.app/</link>
     <description>一个轻量个人博客，用来记录随笔、想记的东西、Agent 智能体与大模型开发学习、技术笔记和项目复盘。</description>
     <item>
-      <title>构建一个轻量静态博客 MVP</title>
+      <title>为什么搭建这个个人博客</title>
       <link>https://blog-nu-wine-76.vercel.app/posts/static-blog-mvp</link>
       <guid>https://blog-nu-wine-76.vercel.app/posts/static-blog-mvp</guid>
-      <description>记录这个个人静态博客第一版的范围控制、内容工作流、部署选择、双语支持和后续完善方向。</description>
+      <description>记录各种随笔和想记的东西，也把学习 Agent 智能体、大模型开发、技术笔记和项目复盘的过程沉淀下来。</description>
       <pubDate>Wed, 29 Jul 2026 00:00:00 GMT</pubDate>
-      <lastBuildDate>Wed, 29 Jul 2026 00:00:00 GMT</lastBuildDate>
+      <lastBuildDate>Sun, 09 Aug 2026 00:00:00 GMT</lastBuildDate>
     </item>
     <item>
       <title>川西游</title>
