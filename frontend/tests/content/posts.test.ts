@@ -67,6 +67,6 @@ describe('post content pipeline', () => {
     const adjacent = getAdjacentPosts(published, 'static-blog-mvp');
 
     expect(adjacent.previous).toBeUndefined();
-    expect(adjacent.next).toEqual(expect.objectContaining({ slug: 'bipenggou-2024' }));
+    expect(adjacent.next).toEqual(expect.objectContaining({ slug: 'personal-agent-learning' }));
   });
 });

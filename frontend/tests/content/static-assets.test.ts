@@ -10,22 +10,37 @@ describe('static asset generation', () => {
   it('generates search index without drafts or body content', async () => {
     const index = await buildSearchIndex();
 
-    expect(index).toEqual([
-      expect.objectContaining({
-        slug: 'static-blog-mvp',
-        title: '为什么搭建这个个人博客',
-        category: '博客',
-        lang: 'zh',
-        tags: ['nextjs', 'mdx', 'static-site'],
-      }),
-      expect.objectContaining({
-        slug: 'bipenggou-2024',
-        title: '川西游',
-        category: '生活',
-        lang: 'zh',
-        tags: ['旅行', '照片', '毕棚沟'],
-      }),
-    ]);
+    expect(index).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          slug: 'static-blog-mvp',
+          title: '为什么搭建这个个人博客',
+          category: '博客',
+          lang: 'zh',
+          tags: ['nextjs', 'mdx', 'static-site'],
+        }),
+        expect.objectContaining({
+          slug: 'bipenggou-2024',
+          title: '川西游',
+          category: '生活',
+          lang: 'zh',
+          tags: ['旅行', '照片', '毕棚沟'],
+        }),
+        expect.objectContaining({
+          slug: 'personal-agent-learning',
+          title: '从零开始学习开发个人智能体',
+          category: '技术',
+          lang: 'zh',
+        }),
+        expect.objectContaining({
+          slug: 'summer-part-time-food-2025',
+          title: '暑假兼职时吃到的味道',
+          category: '生活',
+          lang: 'zh',
+          type: 'essay',
+        }),
+      ]),
+    );
     expect(index.every((item) => !('body' in item))).toBe(true);
     expect(index.some((item) => item.slug === 'draft-example')).toBe(false);
 
