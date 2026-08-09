@@ -14,7 +14,7 @@ Recommended manual flow:
 4. Keep `draft: true` while writing.
 5. Change `draft` to `false` only when ready to publish.
 
-For travel notes, life records, and photo essays, copy `frontend/content/posts/photo-essay-template.mdx` instead. Keep `type: "essay"`; add the real images under `frontend/public/images/posts/<slug>/`, then enable `cover` only after the cover file exists.
+For travel notes, life records, and photo essays, copy `frontend/content/posts/photo-essay-template.mdx` instead. Keep `type: "essay"`; add the real images under `frontend/public/images/moments/`, then enable `cover` only after the cover file exists.
 
 Optional helper command, run from `frontend`:
 
@@ -86,27 +86,25 @@ export const message = 'hello';
 
 ## Images
 
-Place article images under:
+Place technical article images under:
 
 ```text
 frontend/public/images/posts/<article-slug>/
 ```
 
-For travel photos or life records, keep one folder per article:
+Place travel photos, life records, and photo essays under:
 
 ```text
-frontend/public/images/posts/chongqing-trip-2026/
-  cover.jpg
-  street-01.jpg
-  food-01.jpg
-  night-view.jpg
+frontend/public/images/moments/
+  2024-11-17-bipenggou-cover.jpg
+  2024-11-17-bipenggou-summit.jpg
 ```
 
 Recommended image rules:
 
 - Use lowercase English file names with hyphens or numbers.
-- Avoid raw names such as `IMG_1234.JPG` or Chinese file names.
-- Compress photos before committing; `1200px` to `1600px` wide is usually enough.
+- Avoid raw names such as `IMG_1234.JPG`. Chinese file names work, but English slugs are easier to maintain.
+- Compress photos before committing; `1600px` to `1800px` wide is usually enough.
 - Keep most web images around `300KB` to `800KB` when practical.
 - Remove private location, people, or document details before publishing.
 
@@ -115,6 +113,31 @@ Use normal MDX image syntax and always provide meaningful alt text:
 ```mdx
 ![Screenshot of the build output](/images/posts/static-blog/build-output.png)
 ```
+
+For a photo essay card and article body:
+
+```yaml
+cover: "/images/moments/2024-11-17-bipenggou-cover.jpg"
+type: "essay"
+```
+
+```mdx
+![Bipenggou lake view](/images/moments/2024-11-17-bipenggou-cover.jpg)
+
+![Bipenggou summit view](/images/moments/2024-11-17-bipenggou-summit.jpg)
+```
+
+## Photo Publishing Flow
+
+Use this flow when publishing travel photos or life records:
+
+1. Put original photos in `frontend/public/images/incoming/` or directly in `frontend/public/images/moments/`.
+2. Compress each public photo before committing. A good default is width `1800px` and JPEG quality around `82`.
+3. Create or update an MDX file under `frontend/content/posts/`.
+4. Set `type: "essay"` so the post appears in `/moments`.
+5. Keep `draft: true` while writing. Change it to `draft: false` only when ready to publish.
+6. Use a real image path in `cover`; the path must start with `/images/`.
+7. Preview `/moments/` and `/posts/<slug>/` locally before pushing.
 
 ## Pre-Publish Checklist
 
