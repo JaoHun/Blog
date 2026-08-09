@@ -18,6 +18,13 @@ describe('static asset generation', () => {
         lang: 'zh',
         tags: ['nextjs', 'mdx', 'static-site'],
       }),
+      expect.objectContaining({
+        slug: 'bipenggou-2024',
+        title: '川西游',
+        category: '生活',
+        lang: 'zh',
+        tags: ['旅行', '照片', '毕棚沟'],
+      }),
     ]);
     expect(index.every((item) => !('body' in item))).toBe(true);
     expect(index.some((item) => item.slug === 'draft-example')).toBe(false);
@@ -40,6 +47,7 @@ describe('static asset generation', () => {
 
     expect(rss).toContain('<rss');
     expect(rss).toContain('构建一个轻量静态博客 MVP');
+    expect(rss).toContain('川西游');
     expect(rss).toContain('一个轻量个人博客');
     expect(rss).not.toContain('Draft Example');
 
@@ -49,6 +57,7 @@ describe('static asset generation', () => {
 
     expect(sitemap).toContain('<urlset');
     expect(sitemap).toContain('/posts/static-blog-mvp');
+    expect(sitemap).toContain('/posts/bipenggou-2024');
     expect(sitemap).toContain('/en/posts/static-blog-mvp');
     expect(sitemap).toContain('/moments');
     expect(sitemap).toContain('/en/moments');
