@@ -69,6 +69,7 @@ export const messages = {
       categories: '分类',
       tags: '标签',
       projects: '项目',
+      agent: 'Agent',
       about: '关于',
     },
     posts: {
@@ -180,6 +181,7 @@ export const messages = {
       categories: 'Categories',
       tags: 'Tags',
       projects: 'Projects',
+      agent: 'Agent',
       about: 'About',
     },
     posts: {

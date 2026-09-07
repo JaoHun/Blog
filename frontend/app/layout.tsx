@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
 import { BackToTop } from '@/components/common/BackToTop';
+import { FloatingAgent } from '@/components/agent/FloatingAgent';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { ThemeProvider } from '@/components/theme/ThemeProvider';
@@ -63,6 +64,7 @@ export default function RootLayout({
           <SiteHeader />
           <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-5 sm:py-10">{children}</main>
           <BackToTop />
+          <FloatingAgent />
           <SiteFooter />
         </ThemeProvider>
       </body>
