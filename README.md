@@ -1,12 +1,12 @@
 # JaoHun Blog
 
-Static-first personal technical blog built with Next.js, MDX, file-based content, Shiki code highlighting, static search assets, RSS, Sitemap, and robots.txt.
+这是一个以静态内容为主导的个人技术博客，使用 Next.js、MDX、基于文件的内容、Shiki 代码高亮显示、静态搜索资源、RSS、站点地图和 robots.txt 构建。
 
 ## Current Status
 
-The project is ready for public preview as a lightweight personal blog base. It includes one real published article, validated draft templates, GitHub deployment flow, and static export output for Vercel or other static hosting platforms.
+该项目已准备好上线了，这只是一个轻量级的个人博客平台。它包含已发布的真实文章、经过验证的草稿模板、GitHub部署流程，以及用于Vercel或其他静态托管平台的静态导出输出。
 
-The default language is Chinese. English pages are generated under `/en` without using Next.js built-in i18n, so static export remains supported.
+默认语言为中文。英文页面生成时/en未使用 Next.js 内置的 i18n 功能，因此仍然支持静态导出。
 
 Remaining work before a formal launch:
 
